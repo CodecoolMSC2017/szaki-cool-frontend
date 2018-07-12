@@ -1,0 +1,14 @@
+<h1>All The Greetings</h1>
+<ul *ngFor="let greeting of greetings">
+  <li>
+    {{greeting.id}} - {{greeting.lang}} - {{greeting.text}} <button (click)="deleteGreeting(greeting)">X</button>
+  </li>
+</ul>
+<h1>Add New Greeting</h1>
+<select [(ngModel)]="newGreeting.lang">
+  <option value="hu">HU</option>
+  <option value="ro">RO</option>
+  <option value="en">EN</option>
+</select>
+<input [(ngModel)]="newGreeting.text">
+<button (click)="addNewGreeting()">Add</button>
