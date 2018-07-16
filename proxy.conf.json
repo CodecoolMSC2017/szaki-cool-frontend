@@ -1,6 +1,11 @@
 {
-  "/all": {
-    "target": "http://localhost:8080/",
-    "source": false
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": false,
+    "logLevel": "debug"
   }
 }
