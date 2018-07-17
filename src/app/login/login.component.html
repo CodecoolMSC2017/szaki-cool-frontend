@@ -1,5 +1,6 @@
 <div>
-  <input [(ngModel)]="username" placeholder="username">
-  <input type="password" [(ngModel)]="password" placeholder="password">
-  <button (click)="login()">login</button>
+  <input [(ngModel)]="loginDetails.username" placeholder="username">
+  <input type="password" [(ngModel)]="loginDetails.password" placeholder="password">
+  <button (click)="getAuth()">login</button>
+  <p *ngIf="loggedin" >login succes</p>
 </div>
