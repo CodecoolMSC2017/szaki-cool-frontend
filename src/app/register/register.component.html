@@ -1,5 +1,6 @@
 <div>
-  <input [(ngModel)]="username" placeholder="username">
+  <input (keyup)="testName()" [(ngModel)]="username" placeholder="username">
+  <p *ngIf="!isAvailable">username is taken</p>
   <input type="password" [(ngModel)]="password" placeholder="password">
   <button (click)="register()">Register</button>
 </div>
