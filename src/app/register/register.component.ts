@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   username;
+  email;
   password;
 
   isAvailable:boolean = true;
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.http.post("api/register", {username:this.username, password:this.password}).subscribe(console.log);
+    this.http.post("api/register", {username:this.username, email:this.email, password:this.password}).subscribe(console.log);
   }
 
   testName() {
