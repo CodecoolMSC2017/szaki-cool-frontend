@@ -7,7 +7,7 @@
   <input type="password" (keyup)="checkPassword()" [(ngModel)]="confirmPassword" placeholder="Re-enter password" required><br>
   <button (click)="register()">Registrate</button><br>
 
-  <span *ngIf="isAvailable" >{{errorMessage}}</span>
+  <span *ngIf="errorMessage" >{{errorMessage}}</span>
 
   <div class="already-member">
     <hr>
