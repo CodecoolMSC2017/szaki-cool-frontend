@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   password;
   confirmPassword;
 
-  isAvailable:boolean = true;
+  errorMessage:string = "";
 
   ngOnInit() {
   }
@@ -25,14 +25,25 @@ export class RegisterComponent implements OnInit {
   }
 
   testName() {
+    this.errorMessage = "";
     this.http.get('api/users/check/' + this.username).subscribe(resp => {
       if (resp) {
-        this.isAvailable = false;
+        this.errorMessage = "This username is already taken";
       }
       else {
-        this.isAvailable = true;
+        this.errorMessage = "";
       }
     });
+  }
+
+  checkPassword() {
+    this.errorMessage = "";
+    if (this.password != this.confirmPassword) {
+      this.errorMessage = "Password should be the same!"
+    }
+    else {
+      this.errorMessage = "";
+    }
   }
 
 }
