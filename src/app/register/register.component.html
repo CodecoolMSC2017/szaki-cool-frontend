@@ -1,6 +1,7 @@
 <div class="popup-reg">
   <a routerLink="/"><div class="close"></div></a>
   <h1>Registrate to SzakiCool</h1>
+
   <input type="text" (keyup)="testName()" [(ngModel)]="username" placeholder="Username" required><br>
   <input type="email" [(ngModel)]="email" placeholder="Email" required><br>
   <input type="password" (keyup)="checkPassword()" [(ngModel)]="password" placeholder="Password" required><br>
