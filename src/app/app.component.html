@@ -1,3 +1,43 @@
+
+<header>
+    <div class="title">Page Title</div>
+    <div class="navigation">
+        <ul>
+            <li><a href="#">Nav 1</a></li>
+            <li><a href="#">Nav 2</a></li>
+            <li><a href="#">Nav 3</a></li>
+            <li><a routerLink="/login" 
+                (click)="loginClicked()">Login</a></li>
+            <li><a routerLink="/register">Register</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="frame">
+    <router-outlet></router-outlet>
+    <div class="info-1"></div>
+    <div class="info-2"></div>
+    <div class="info-3"></div>
+    <div class="info-2"></div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-grid-title">Categories</div>
+        <div class="footer-grid-title">About</div>
+        <div class="footer-grid-title">Support</div>
+        <div class="footer-grid-items">» 5<br>» 5<br>» 5<br>» 5<br>» 5</div>
+        <div class="footer-grid-items">» 6<br>» 6<br>» 6</div>
+        <div class="footer-grid-items">» 7<br>» 7<br>» 7<br>» 7</div>
+    </div>
+    <hr>
+    <i class="fa fa-google-plus fa-lg"></i>
+    <i class="fa fa-facebook-square fa-lg"></i>
+    <i class="fa fa-twitter fa-lg"></i>
+    <i class="fa fa-linkedin fa-lg"></i>
+</footer>
+
+<!--
 <h1>App Comp</h1>
 <nav>
     <a routerLink="/login">Login</a>
@@ -6,3 +46,4 @@
 
 </nav>
 <router-outlet></router-outlet>
+-->

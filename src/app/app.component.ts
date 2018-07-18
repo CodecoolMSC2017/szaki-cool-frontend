@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SzakiCool Website';
+  login = false;
+
+loginClicked() {
+  this.login = true;
+}
+
 }

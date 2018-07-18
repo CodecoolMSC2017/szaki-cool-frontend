@@ -1,0 +1,112 @@
+.dark-filter {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+}
+
+.popup-reg {
+    margin: auto;
+    padding: 10px;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    width: 400px;
+    height: 380px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: grey;
+    text-align: center;
+    z-index: 1002;
+}
+
+.close:after {
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    width: 15px;
+    height: 15px;
+    content: "\274c";
+    font-size: 17px;
+    line-height: 17px;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    display: inline-block;
+    margin: 4px 2px;
+	padding: 10px 12px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 1.2em;
+	font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+button:hover {
+    background-color: #3E8E41;
+}
+button a {
+	text-decoration: none;
+	color: white;
+}
+
+.already-member {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+a:active,  
+a:visited, 
+a:link, 
+a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: gray;
+    text-decoration: none;
+}
+.already-member a, 
+.already-member a:active,  
+.already-member a:visited, 
+.already-member a:link  {
+    color: #4CAF50;
+}
+.already-member a:hover {
+    color: #3E8E41;
+}
+
+hr {
+	border: 0;
+    height: 1px;
+    background: #bbb;
+    background-image: linear-gradient(to right, #ddd, #bbb, #ddd);
+}

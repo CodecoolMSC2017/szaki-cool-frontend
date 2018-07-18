@@ -1,6 +1,14 @@
-<div>
-  <input [(ngModel)]="loginDetails.username" placeholder="username">
-  <input type="password" [(ngModel)]="loginDetails.password" placeholder="password">
-  <button (click)="getAuth()">login</button>
+<div class="popup-login">
+  <a routerLink="/"><div class="close"></div></a>
+  <h1>Login to SzakiCool</h1>
+  <input type="text" [(ngModel)]="loginDetails.username" placeholder="Username"><br>
+  <input type="password" [(ngModel)]="loginDetails.password" placeholder="Password"><br>
+  <button (click)="getAuth()">Login</button><br>
   <p *ngIf="loggedin" >login succes</p>
+  <div class="new-member">
+    <hr>
+    Not a member yet? <a href="/register">Join now!</a>
+  </div>
 </div>
+
+<div class="dark-filter"></div>
