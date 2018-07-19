@@ -8,7 +8,7 @@ import { GreetingsComponent } from './greetings/greetings.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
+import { ActivateAccountComponent } from './activate-account/activate-account.component';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { LogoutComponent } from './logout/logout.component';
     GreetingsComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    RegisterComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,

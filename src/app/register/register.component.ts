@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { timeout } from 'q';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +10,47 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
   username;
   email;
   password;
   confirmPassword;
+  t;
 
   errorMessage:string = "";
+  error;
 
   ngOnInit() {
+    this.t = 3;
   }
 
   register() {
-    this.http.post("api/register", {username:this.username, email:this.email, password:this.password, confirmpassword:this.confirmPassword}).subscribe(console.log);
+    this.http.post("api/register", {
+      username:this.username,
+      email:this.email,
+      password:this.password,
+      confirmpassword:this.confirmPassword}).subscribe(
+        succes => {
+          this.errorMessage = "Redirect to login page in .. " + this.t + " seconds";
+          setTimeout(this.timeout.bind(this), 1000);
+        },
+        error => {
+          this.errorMessage = "Registration Failed!";
+        });
   }
+
+  timeout() {
+    this.t--;
+    this.errorMessage = "Redirect to login page in .. " + this.t + " seconds";
+    if (this.t == 0) {
+      this.router.navigate(["/activate"]);
+    }
+    else {
+      setTimeout(this.timeout.bind(this), 1000);
+    }
+  }
+
 
   testName() {
     this.errorMessage = "";
