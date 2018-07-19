@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
     this.t--;
     this.errorMessage = "Redirect to login page in .. " + this.t + " seconds";
     if (this.t == 0) {
-      this.router.navigate(["/login"]);
+      this.router.navigate(["/activate"]);
     }
     else {
       setTimeout(this.timeout.bind(this), 1000);

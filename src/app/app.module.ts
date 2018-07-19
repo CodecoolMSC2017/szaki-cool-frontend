@@ -8,6 +8,7 @@ import { GreetingsComponent } from './greetings/greetings.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { ActivateAccountComponent } from './activate-account/activate-account.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     GreetingsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,
