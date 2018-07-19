@@ -19,14 +19,16 @@ export class ActivateAccountComponent implements OnInit {
 
   sendActivation() {
       this.http.post('api/account', {activationCode: this.activationCode}).subscribe(
-        success => {
-          console.log(success);
-          this.status = "Your account has been activated";
-          console.log("sadasd");
-          this.router.navigate(["/login"]); },
-        error =>{
-          this.status = "Activation code seems to be not valid"}
-      );
+        
+      error =>{
+          this.status = "Activation code seems to be not valid"
+      },
+      success => {
+        console.log(success);
+        this.status = "Your account has been activated";
+        console.log("sadasd");
+        this.router.navigate(["/login"])
+      })
   }
 
 }
