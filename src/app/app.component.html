@@ -6,9 +6,12 @@
             <li><a href="#">Nav 1</a></li>
             <li><a href="#">Nav 2</a></li>
             <li><a href="#">Nav 3</a></li>
-            <li><a routerLink="/login" 
-                (click)="loginClicked()">Login</a></li>
-            <li><a routerLink="/register">Register</a></li>
+
+            <li *ngIf="!loggedin()"><a routerLink="/login" (click)="loginClicked()">Login</a></li>
+            <li *ngIf="!loggedin()"><a routerLink="/register">Register</a></li>
+
+            <li *ngIf="loggedin()"><a routerLink="/profile">Profile</a></li>
+            <li *ngIf="loggedin()"><a routerLink="/logout">Logout</a></li>
         </ul>
     </div>
 </header>
@@ -16,8 +19,49 @@
 <div class="frame">
     <router-outlet></router-outlet>
     <div class="info-1"></div>
-    <div class="info-2"></div>
-    <div class="info-3"></div>
+    <h1>New on the Marketplace</h1>
+    <div class="marketplace-grid">
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+        <div class="marketplace-grid-item">
+            <div class="item-pic">Picture</div>
+            <div class="item-title">Desc</div>
+            <i class="fa fa-snowflake-o fa-3x"></i>
+        </div>
+    </div>
     <div class="info-2"></div>
 </div>
 

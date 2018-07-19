@@ -5,17 +5,19 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppComponent } from './app.component';
 import { GreetingsComponent } from './greetings/greetings.component';
-import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GreetingsComponent,
+    RegisterComponent,
     LoginComponent,
-    RegisterComponent
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
