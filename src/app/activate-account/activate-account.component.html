@@ -4,6 +4,6 @@
   <p>Please check your email, we sent an activation code!</p>
   <input type="text" [(ngModel)]="activationCode" placeholder="Place your activation code here"><br>
   <button (click)="sendActivation()">Activate</button><br>
-  <p *ngIf="status" >activation success</p>
+  <p *ngIf="status" >{{status}}</p>
 </div>
 
