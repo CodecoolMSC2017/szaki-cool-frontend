@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       confirmpassword:this.confirmPassword}).subscribe(
         succes => {
           this.errorMessage = "Redirect to login page in .. " + this.t + " seconds";
-          setTimeout(this.timeout.bind(this), 1000);
+          setTimeout(this.timeout.bind(this), 1);
         },
         error => {
           this.errorMessage = "Registration Failed!";
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
 
   timeout() {
     this.t--;
-    this.errorMessage = "Redirect to login page in .. " + this.t + " seconds";
+    this.errorMessage = "Redirect to activation page in .. " + this.t + " seconds";
     if (this.t == 0) {
       this.router.navigate(["/activate"]);
     }

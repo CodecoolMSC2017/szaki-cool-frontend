@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { LoginDetails } from '../login-details';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService, 
+    private router: Router
   ) { }
 
   loginDetails: LoginDetails = new LoginDetails();
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.getAuth(this.loginDetails).subscribe(user => {
       sessionStorage.setItem('user', JSON.stringify(user));
       this.loggedin = true;
+      this.router.navigate(["/"]);
     }, error => alert(error.message));
   }
 
