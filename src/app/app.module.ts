@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ActivateAccountComponent } from './activate-account/activate-account.co
     RegisterComponent,
     LoginComponent,
     RegisterComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

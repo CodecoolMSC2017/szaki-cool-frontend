@@ -39,6 +39,7 @@ header {
 	background-size: 70px 70px;
 	background-repeat: no-repeat;
 	background-position: left center;
+	font-size: 1.8em;
 	-webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
     -ms-transition: all 0.4s;
@@ -51,6 +52,7 @@ header {
 	background-size: 30px 30px;
 	height: 30px;
 	line-height: 30px;
+	font-size: 1.2em;
 }
 
 .navigation {
@@ -109,7 +111,7 @@ li a:hover {
 	background-position: center center;
 }
 .info-2 {
-	background-color: green;
+	background-color: lightgrey;
 	height: 300px;
 }
 
@@ -124,7 +126,7 @@ li a:hover {
 	padding: 10px 10px 0px 10px;
 	width: 90%;
 	height: 200px;
-	background-color: purple;
+	background-color: lightgrey;
 }
 
 
