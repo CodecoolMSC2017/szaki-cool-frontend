@@ -1,17 +1,17 @@
 
 <header>
-    <div class="title">SzakiCool</div>
+    <div class="page-title">SzakiCool</div>
     <div class="navigation">
         <ul>
             <li><a href="#">Nav 1</a></li>
             <li><a href="#">Nav 2</a></li>
             <li><a href="#">Nav 3</a></li>
 
-            <li *ngIf="!loggedin()"><a routerLink="/login" (click)="loginClicked()">Login</a></li>
-            <li *ngIf="!loggedin()"><a routerLink="/register">Register</a></li>
+            <li *ngIf="!loggedin()"><a routerLink="/login" (click)="loginClicked()"><i class="fa fa-sign-in fa-lg"></i><span class="nav-title"> Login</span></a></li>
+            <li *ngIf="!loggedin()"><a routerLink="/register"><i class="fa fa-user-plus fa-lg"></i><span class="nav-title"> Register</span></a></li>
 
-            <li *ngIf="loggedin()"><a routerLink="/profile">Profile</a></li>
-            <li *ngIf="loggedin()"><a routerLink="/logout">Logout</a></li>
+            <li *ngIf="loggedin()"><a routerLink="/profile"><i class="fa user-cicle-o fa-lg"></i><span class="nav-title"> Profile</span></a></li>
+            <li *ngIf="loggedin()"><a routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i><span class="nav-title"> Logout</span></a></li>
         </ul>
     </div>
 </header>
@@ -81,14 +81,3 @@
     <i class="fa fa-twitter fa-lg"></i>
     <i class="fa fa-linkedin fa-lg"></i>
 </footer>
-
-<!--
-<h1>App Comp</h1>
-<nav>
-    <a routerLink="/login">Login</a>
-    <br/>
-    <a routerLink="/register">Register</a>
-
-</nav>
-<router-outlet></router-outlet>
--->

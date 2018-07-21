@@ -1,5 +1,5 @@
-<div class="popup-reg">
-  <a routerLink="/"><div class="close"></div></a>
+<div class="popup-frame">
+  <a routerLink="/"><div class="close-button"></div></a>
   <h1>Registrate to SzakiCool</h1>
 
   <input type="text" (keyup)="testName()" [(ngModel)]="username" placeholder="Username" required><br>
@@ -8,13 +8,12 @@
   <input type="password" (keyup)="checkPassword()" [(ngModel)]="confirmPassword" placeholder="Re-enter password" required><br>
   <button (click)="register()">Registrate</button><br>
 
-  <span *ngIf="errorMessage" >{{errorMessage}}</span>
+  <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
 
-  <div class="already-member">
+  <div class="popup-frame-bottom-text">
     <hr>
-    Are you already a member? <a routerLink="/login" >Login now!</a>
+    Are you already a member? <a routerLink="/login">Login now!</a>
   </div>
 </div>
-
 
 <div class="dark-filter"></div>
