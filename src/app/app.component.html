@@ -19,9 +19,9 @@
             </ul>
         </div>
         <div *ngIf="loggedin()" class="user-pic">
-            <img src="https://www.w3schools.com/howto/img_avatar.png">
-            <div class="user-menu">
-                <div class="user-menu-arrow"></div>			
+            <img (click)="dropdownMenu()" src="https://www.w3schools.com/howto/img_avatar.png">
+            <div *ngIf="show" class="dropdown">
+                <div class="dropdown-arrow"></div>			
                 <ul>
                     <li><a routerLink="/profile"><i class="fa user-cicle-o fa-lg"></i><span class="nav-title"> Profile</span></a></li>
                     <li><a href="#">My Dashboard</a></li>

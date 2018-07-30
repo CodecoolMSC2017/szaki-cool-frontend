@@ -20,6 +20,7 @@ export class AppComponent {
   login = false;
   isLoggedin: boolean;
   works;
+  show;
   
 
   loginClicked() {
@@ -33,6 +34,15 @@ export class AppComponent {
 
   getAds() {
     this.http.get("api/works").subscribe((works)=> {this.works = works});
+  }
+
+  dropdownMenu() {
+    if (this.show == true) {
+      this.show = false;
+    }
+    else {
+      this.show = true;
+    }
   }
 
 }
