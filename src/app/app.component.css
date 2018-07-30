@@ -42,6 +42,7 @@ header {
 /* ********** HEADER LOGO & TITLE ********** */
 .logo {
 	float: left;
+	margin-left: 5px;
 	padding-left: 80px;
 	width: 200px;
 	height: 80px;
@@ -150,18 +151,12 @@ header {
 	height: 0;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	border-bottom: 8px solid lightblue;
+	border-bottom: 8px solid #E9E9E9;
 	float: right;
 	margin-top: -8px;
 	margin-right: 10px;	
 }
 .smaller .dropdown-arrow {
-	width: 0;
-	height: 0;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 8px solid lightblue;
-	float: right;
 	margin-top: -5px;
 	margin-right: 5px;	
 }
@@ -169,9 +164,9 @@ header {
     position: fixed;
 	top: 70px;
 	right: 10px;
-    background-color: lightblue;
+    background-color: #E9E9E9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
     z-index: 2;
 	line-height: 15px;
 	-webkit-transition: all 0.4s;
@@ -205,11 +200,17 @@ header {
 .dropdown li a:active {
 	text-decoration: none;
 	color: grey;
-}	
+	-webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
 .dropdown li:hover {
-	background-color: lightgrey;
+	background-color: #A6CE3A;
 	cursor: pointer;
 }
+
 .center-icon {
 	width: 20px;
     text-align: left;
@@ -217,7 +218,6 @@ header {
 /* ********** MAIN CONTENT FRAME ********** */
 .frame {
 	padding-top: 80px;
-	text-align: center;
 }
 
 /* ********** NEW ON MARKETPLACE GRID ********** */
