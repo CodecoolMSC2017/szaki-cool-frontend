@@ -1,0 +1,16 @@
+<header>
+  <div class="page-title">SzakiCool</div>
+  <div class="navigation">
+      <ul>
+          <li><a href="#">Nav 1</a></li>
+          <li><a href="#">Nav 2</a></li>
+          <li><a href="#">Nav 3</a></li>
+
+          <li *ngIf="!loggedin()"><a routerLink="/login" (click)="loginClicked()"><i class="fa fa-sign-in fa-lg"></i><span class="nav-title"> Login</span></a></li>
+          <li *ngIf="!loggedin()"><a routerLink="/register"><i class="fa fa-user-plus fa-lg"></i><span class="nav-title"> Register</span></a></li>
+
+          <li routerLinkActive="active" ><a routerLink="/profile"><i class="fa user-cicle-o fa-lg"></i><span class="nav-title"> Profile</span></a></li>
+          <li *ngIf="loggedin()"><a routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i><span class="nav-title"> Logout</span></a></li>
+      </ul>
+  </div>
+</header>

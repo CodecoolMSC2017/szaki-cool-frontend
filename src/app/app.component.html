@@ -4,13 +4,13 @@
         <div class="logo-title">SzakiCool</div>
     </div>
 	<div class="navigation">
-        <div *ngIf="loggedin()" class="menu-options">
+        <div *ngIf="!loggedin()" class="menu-options">
             <ul>
                 <li><a routerLink="/login" (click)="loginClicked()"><i class="fa fa-sign-in fa-lg"></i><span class="nav-title"> Login</span></a></li>
                 <li><a routerLink="/register"><i class="fa fa-user-plus fa-lg"></i><span class="nav-title"> Register</span></a></li>
             </ul>
         </div>
-        <div *ngIf="!loggedin()" class="menu-options">
+        <div *ngIf="loggedin()" class="menu-options">
             <ul>
                 <li><a href="#">Nav-1</a></li>
                 <li><a href="#">Nav-2</a></li>
@@ -18,7 +18,7 @@
                 <li><a href="#">Messages</a></li>
             </ul>
         </div>
-        <div *ngIf="!loggedin()" class="user-pic">
+        <div *ngIf="loggedin()" class="user-pic">
             <img src="https://www.w3schools.com/howto/img_avatar.png">
             <div class="user-menu">
                 <div class="user-menu-arrow"></div>			
@@ -35,50 +35,11 @@
 
 <div class="frame">
     <router-outlet></router-outlet>
+    
     <div class="info-1"></div>
     <h1>New on the Marketplace</h1>
-    <div class="marketplace-grid">
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-        <div class="marketplace-grid-item">
-            <i class="fa fa-picture-o fa-3x"></i>
-            <div class="item-pic">Picture</div>
-            <div class="item-title">Desc</div>
-        </div>
-    </div>
+    <div *ngFor="let work of works" class="marketplace-grid">
+        <app-adspreview [work]="work" ></app-adspreview>
     <div class="info-2"></div>
 </div>
 

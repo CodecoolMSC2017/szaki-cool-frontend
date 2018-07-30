@@ -10,6 +10,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AdspreviewComponent } from './adspreview/adspreview.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { LogoutComponent } from './logout/logout.component';
     LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProfileComponent,
+    AdspreviewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

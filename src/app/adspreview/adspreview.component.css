@@ -1,0 +1,87 @@
+/*
+.marketplace-grid-item {
+	padding: 10px 10px 0px 10px;
+	width: 90%;
+	height: 200px;
+	background-color: lightgrey;
+}
+*/
+
+.featured-work {
+	width: 200px;
+	height: 250px;
+}
+.featured-work,
+.featured-work a:link, 
+.featured-work a:active, 
+.featured-work a:visited {
+	text-decoration: none;
+	color: black;
+	-webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.featured-work-pic img {
+	margin: 0px;
+	padding-right: 10px;
+	width: 200px;
+	height: 120px;
+	object-fit: cover;
+	vertical-align: middle;
+}
+.featured-work-details {
+	padding: 7px 7px 3px 7px;
+	height: 120px;
+	font-size: 12px;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	border-bottom: 1px solid grey;
+}
+.featured-work-owner {
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+}
+.featured-work-owner img {
+	margin-bottom: -10px;
+	width: 30px;
+	height: 30px;
+    border-radius: 50%;
+}
+.featured-work-text {
+	margin-top: 10px;
+	height: 55px;
+}
+.featured-work-rate {
+	margin-top: 5px;
+	height: 20px;
+	line-height: 20px;
+}
+.fa-star {
+	color: #ffbf00;
+	font-weight: bold;
+}
+.featured-work-total-rates,
+.featured-work-total-rates a:link, 
+.featured-work-total-rates a:active, 
+.featured-work-total-rates a:visited {
+	color: grey;
+}
+.featured-work a:hover, 
+.featured-work-total-rates a:hover {
+	color: green;
+	-webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.featured-work-price {
+	float: right;
+	height: 20px;
+	font-weight: bold;
+	font-size: 1.4em;
+	text-align: right;
+}
