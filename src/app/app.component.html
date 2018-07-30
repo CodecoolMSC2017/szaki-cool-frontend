@@ -38,8 +38,9 @@
     
     <div class="info-1"></div>
     <h1>New on the Marketplace</h1>
-    <div *ngFor="let work of works" class="marketplace-grid">
-        <app-adspreview [work]="work" ></app-adspreview>
+    <div class="marketplace-grid">
+        <app-adspreview [work]="work" *ngFor="let work of works"></app-adspreview>
+    </div>
     <div class="info-2"></div>
 </div>
 

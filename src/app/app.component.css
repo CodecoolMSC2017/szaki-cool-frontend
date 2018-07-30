@@ -237,8 +237,15 @@ li a:hover {
 	padding-top: 80px;
 	text-align: center;
 }
+.marketplace-grid {
+	display: grid;
+	padding: 5px;
+	grid-gap: 20px;
+	grid-template-columns: auto auto auto auto;
+}
+*/
 
-
+/* ********** JUST FOR TESTING ********** */
 .info-1 {
 	height: 400px;
 	background: url(https://stevecoasia.com/wp-content/uploads/2018/03/officetumb.jpg);
@@ -249,8 +256,6 @@ li a:hover {
 	background-color: lightgrey;
 	height: 300px;
 }
-
-
 .marketplace-grid {
 	display: grid;
 	padding: 5px;
@@ -258,6 +263,8 @@ li a:hover {
 	grid-template-columns: auto auto auto auto;
 }
 
+
+/* ********** FOOTER ********** */
 footer {
 	z-index: 1;
 	text-align: left;
@@ -283,8 +290,6 @@ hr {
     background: #bbb;
     background-image: linear-gradient(to right, #ddd, #bbb, #ddd);
 }
-
 footer i {
 	padding: 15px 10px;
 }
-*/
