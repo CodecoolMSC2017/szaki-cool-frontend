@@ -20,13 +20,13 @@
         </div>
         <div *ngIf="loggedin()" class="user-pic">
             <img (click)="dropdownMenu()" src="https://www.w3schools.com/howto/img_avatar.png">
-            <div *ngIf="show" class="dropdown">
+            <div *ngIf="show" class="dropdown animated fadeIn">
                 <div class="dropdown-arrow"></div>			
                 <ul>
-                    <li><a routerLink="/profile"><i class="fa user-cicle-o fa-lg"></i><span class="nav-title"> Profile</span></a></li>
-                    <li><a href="#">My Dashboard</a></li>
-                    <li><a href="#">Account Settings</a></li>
-                    <li><a routerLink="/logout"><i class="fa fa-sign-out fa-lg"></i><span class="nav-title"> Logout</span></a></li>
+                    <li><a routerLink="/profile"><i class="fa fa-user-circle-o fa-1x center-icon"></i><span class="nav-title"> Profile</span></a></li>
+                    <li><a href="#"><i class="fa fa-dashboard fa-1x center-icon"></i><span class="nav-title"> My Dashboard</span></a></li>
+                    <li><a href="#"><i class="fa fa-vcard fa-1x center-icon"></i><span class="nav-title"> Account Settings</span></a></li>
+                    <li><a routerLink="/logout"><i class="fa fa-sign-out fa-1x center-icon"></i><span class="nav-title"> Logout</span></a></li>
                 </ul>
             </div>
         </div>
