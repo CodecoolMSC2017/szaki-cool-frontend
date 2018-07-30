@@ -128,15 +128,6 @@ li a:hover {
 	grid-gap: 20px;
 	grid-template-columns: auto auto auto auto;
 }
-.marketplace-grid-item {
-	padding: 10px 10px 0px 10px;
-	width: 90%;
-	height: 200px;
-	background-color: lightgrey;
-}
-
-
-
 
 footer {
 	z-index: 1;

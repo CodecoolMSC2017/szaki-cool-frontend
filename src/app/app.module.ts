@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdspreviewComponent } from './adspreview/adspreview.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     ActivateAccountComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdspreviewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
