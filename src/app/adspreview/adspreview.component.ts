@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AdsviewComponent} from '../adsview/adsview.component';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AdsdetailsService } from '../adsdetails.service';
 
 @Component({
   selector: 'app-adspreview',
@@ -13,7 +15,10 @@ export class AdspreviewComponent implements OnInit {
   imglink;
   profileImage;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private service : AdsdetailsService
+  ) {}
 
   ngOnInit() {
     console.log(this.work)
@@ -25,6 +30,11 @@ export class AdspreviewComponent implements OnInit {
   loggedin() {
     if (sessionStorage.getItem("user") != null) { return true; }
     else { return false; }
+  }
+
+  navigateDetailedView() {
+    this.service.work = this.work;
+    this.router.navigate(["/adsview"]);
   }
 
 }

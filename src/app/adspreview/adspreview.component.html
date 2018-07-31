@@ -1,7 +1,7 @@
 <div style="padding: 20px;">
 
   <div class="featured-work">
-    <div class="featured-work-pic"><a routerLink="/adsview"><img src="{{imglink}}"></a></div>
+    <div class="featured-work-pic" (click)="navigateDetailedView()"><img src="{{imglink}}"></div>
     <div class="featured-work-details">
       <div class="featured-work-owner"><a href="#USER-DETAILS"><img src="{{profileImage}}"> {{work.userName}}</a></div>
       <div class="featured-work-text"><a href="#WORK-DETAILS">{{work.description}}</a></div>
