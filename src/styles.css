@@ -20,7 +20,7 @@ h1 {
 }
 
 hr {
-	border: 0;
+    border: 0;
     height: 1px;
     background: #bbb;
     background-image: linear-gradient(to right, #ddd, #bbb, #ddd);
@@ -54,10 +54,14 @@ a:active, a:visited, a:link, a:hover {
     z-index: 1002;
 }
 
+.popup-frame-bottom {
+
+}
 .popup-frame-bottom-text {
     position: absolute;
+    padding: 0px;
     bottom: 5px;
-    width: 100%;
+    width: 400px;
     text-align: center;
 }
 
