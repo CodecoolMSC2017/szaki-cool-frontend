@@ -15,6 +15,7 @@ import { AdspreviewComponent } from './adspreview/adspreview.component';
 import { HeaderComponent } from './header/header.component';
 import { AdsviewComponent } from './adsview/adsview.component';
 import { MainComponent } from './main/main.component';
+import { FileuploadComponent } from './fileupload/fileupload.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MainComponent } from './main/main.component';
     ProfileComponent,
     AdspreviewComponent,
     HeaderComponent,
+    FileuploadComponent,
     AdsviewComponent,
     MainComponent
   ],
