@@ -13,6 +13,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdspreviewComponent } from './adspreview/adspreview.component';
 import { HeaderComponent } from './header/header.component';
+import { FileuploadComponent } from './fileupload/fileupload.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HeaderComponent } from './header/header.component';
     LogoutComponent,
     ProfileComponent,
     AdspreviewComponent,
-    HeaderComponent
+    HeaderComponent,
+    FileuploadComponent
   ],
   imports: [
     BrowserModule,

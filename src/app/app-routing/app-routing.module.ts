@@ -5,6 +5,7 @@ import { LogoutComponent } from '../logout/logout.component';
 import { RegisterComponent } from '../register/register.component';
 import { ActivateAccountComponent } from '../activate-account/activate-account.component';
 import { ProfileComponent} from '../profile/profile.component'
+import { FileuploadComponent } from '../fileupload/fileupload.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'activate', component: ActivateAccountComponent },
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent},
+  { path: 'file', component: FileuploadComponent}
 ];
 
 @NgModule({
