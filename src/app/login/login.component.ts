@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.getAuth(this.loginDetails).subscribe(user => {
       sessionStorage.setItem('user', JSON.stringify(user));
       this.loggedin = true;
-      this.router.navigate(["/"]);
+      this.router.navigate(["/main"]);
     }, error => alert(error.message));
   }
 

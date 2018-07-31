@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProfileComponent} from './profile/profile.component'
+import { ProfileComponent} from './profile/profile.component';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -33,7 +33,7 @@ export class AppComponent {
   }
 
   getAds() {
-    this.http.get("api/works").subscribe((works)=> {this.works = works});
+    this.http.get("api/works/simple").subscribe((works)=> {this.works = works});
   }
 
   dropdownMenu() {

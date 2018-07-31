@@ -1,8 +1,10 @@
 <header>
-    <div class="logo">
-        <div class="logo-pic"></div>
-        <div class="logo-title">SzakiCool</div>
-    </div>
+    <a routerLink="/main">
+        <div class="logo">
+            <div class="logo-pic"></div>
+            <div class="logo-title">SzakiCool</div>
+        </div>
+    </a>
 	<div class="navigation">
         <div *ngIf="!loggedin()" class="menu-options">
             <ul>
@@ -35,13 +37,15 @@
 
 <div class="frame">
     <router-outlet></router-outlet>
-    
-    <div class="info-1"></div>
-    <h1>New on the Marketplace</h1>
-    <div class="marketplace-grid">
-        <app-adspreview [work]="work" *ngFor="let work of works"></app-adspreview>
+
+    <div *ngIf="!loggedin()">
+        <div class="info-1"></div>
+        <h1>New on the Marketplace</h1>
+        <div class="marketplace-grid">
+            <app-adspreview [work]="work" *ngFor="let work of works"></app-adspreview>
+        </div>
+        <div class="info-2"></div>
     </div>
-    <div class="info-2"></div>
 </div>
 
 

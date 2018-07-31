@@ -1,24 +1,14 @@
-<!--
-<div class="marketplace-grid-item">
-  <i class="fa fa-picture-o fa-3x"></i>
-  <div class="item-pic">
-    <img src="{{imglink}}" alt="" height="150">
-  </div>
-  <div class="item-title">{{work.description}}</div>
-</div>
--->
-
 <div style="padding: 20px;">
 
   <div class="featured-work">
-    <div class="featured-work-pic"><a href="#WORK-DETAILS"><img src="{{imglink}}"></a></div>
+    <div class="featured-work-pic"><a routerLink="/adsview"><img src="{{imglink}}"></a></div>
     <div class="featured-work-details">
-      <div class="featured-work-owner"><a href="#USER-DETAILS"><img src="https://www.w3schools.com/howto/img_avatar.png"> Teszt Elek</a></div>
+      <div class="featured-work-owner"><a href="#USER-DETAILS"><img src="{{profileImage}}"> {{work.userName}}</a></div>
       <div class="featured-work-text"><a href="#WORK-DETAILS">{{work.description}}</a></div>
       <div class="featured-work-rate">
-        <span class="fa fa-star"> 4.9</span>
-        <span class="featured-work-total-rates"><a href="#RATE-DETAILS"> (15)</a></span>
-        <div class="featured-work-price">$15</div>
+        <span class="fa fa-star"> {{work.userRating}}</span>
+        <span class="featured-work-total-rates"><a href="#RATE-DETAILS"> ({{work.numberOfRatings}})</a></span>
+        <div class="featured-work-price">${{work.price}}</div>
       </div>
     </div>
   </div>
