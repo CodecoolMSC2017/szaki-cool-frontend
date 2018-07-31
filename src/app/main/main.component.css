@@ -1,0 +1,16 @@
+/* ************************************** */
+/* ********** JUST FOR TESTING ********** */
+/* ************************************** */
+.info-1 {
+	height: 400px;
+	background: url(https://stevecoasia.com/wp-content/uploads/2018/03/officetumb.jpg);
+	background-size: 100% auto;
+	background-position: center center;
+}
+
+.marketplace-grid {
+	display: grid;
+	padding: 5px;
+	grid-gap: 20px;
+	grid-template-columns: auto auto auto auto;
+}

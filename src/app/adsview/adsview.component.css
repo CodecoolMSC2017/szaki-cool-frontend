@@ -1,0 +1,23 @@
+.current-ads-grid {
+    display: grid;
+    padding: 10px;
+	grid-gap: 20px;
+    grid-template-columns: 500px auto;
+}
+
+.ads-pics {
+    background-color: lightblue;
+    height: 300px;
+}
+
+.ads-details {
+    background-color: lightblue;
+    height: 300px;
+}
+
+
+.ads-long-decription {
+    margin: 0px 10px 10px 10px;
+    background-color: lightblue;
+    height: 300px;
+}
