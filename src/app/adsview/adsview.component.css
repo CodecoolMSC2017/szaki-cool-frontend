@@ -21,3 +21,15 @@
     background-color: lightblue;
     height: 300px;
 }
+
+
+.bigPic {
+    width: 500px;
+    height: 200px;
+    margin-bottom: 5px;
+    background-size: auto 100%;
+	background-position: center center;
+    background-repeat: no-repeat;
+    background: url(https://www.w3schools.com/w3css/img_snow_wide.jpg);
+
+}
