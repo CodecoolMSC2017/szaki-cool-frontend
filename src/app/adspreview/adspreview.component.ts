@@ -21,20 +21,19 @@ export class AdspreviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.work)
     this.imglink = "api/pics/" + this.work.workImgUrl;  
-    this.profileImage = "api/pics/" + this.work.userImgUrl;
-    this.work.userRating = Math.round(this.work.userRating * 10) / 10; 
+    this.profileImage = "api/pics/" + this.work.userImgUrl;    
   }
 
   loggedin() {
     if (sessionStorage.getItem("user") != null) { return true; }
     else { return false; }
   }
-
+  
   navigateDetailedView() {
     this.service.work = this.work;
     this.router.navigate(["/adsview"]);
+    this.work.userRating = Math.round(this.work.userRating * 10) / 10; 
   }
 
 }

@@ -28,6 +28,7 @@ export class AdsviewComponent implements OnInit {
 
     this.work = this.service.work;
     this.requestWork();
+    this.work.userRating = Math.round(this.work.userRating * 10) / 10; 
   }
 
   requestWork() {

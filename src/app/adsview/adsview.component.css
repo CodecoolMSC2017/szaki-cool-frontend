@@ -8,21 +8,8 @@
 .ads-pics {
     background-color: lightblue;
     height: auto;
+    text-align: center;
 }
-
-.ads-details {
-    background-color: lightblue;
-    height: 300px;
-}
-
-
-.ads-long-decription {
-    margin: 0px 10px 10px 10px;
-    background-color: lightblue;
-    height: 300px;
-}
-
-
 .bigPic {
     width: 500px;
     height: 350px;
@@ -36,4 +23,61 @@
     margin: 10px;
     object-fit: cover;
     vertical-align: middle;
+}
+
+.details {
+    height: auto;
+}
+.ads-details {
+    padding: 10px;
+    background-color: lightblue;
+}
+.ads-tile {
+    margin: 0px;
+    font-size: 1.35em;
+    font-weight: bold;
+}
+.ads-short-decription {}
+.ads-price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.ads-guarantee {}
+.seller-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: lightblue;
+}
+.seller-details a:link, 
+.seller-details a:active, 
+.seller-details a:visited {
+	color: grey;
+}
+.seller-details a:hover {
+	color: green;
+	-webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.seller-tile {
+    margin: 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.seller {
+}
+.seller-rating {
+    
+}
+.fa-star {
+	color: #ffbf00;
+	font-weight: bold;
+}
+
+.ads-long-decription {
+    margin: 0px 10px 10px 10px;
+    background-color: lightblue;
+    height: 300px;
 }
