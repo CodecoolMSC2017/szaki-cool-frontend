@@ -18,6 +18,10 @@ export class ProfileComponent implements OnInit {
   //userId: String;
 
   //constructor() { }
+
+  edit = false;
+  selectedFile;
+
   constructor(private http: HttpClient) {
   }
 
@@ -46,12 +50,30 @@ export class ProfileComponent implements OnInit {
   });
   }
 
-  /*showProfile() {
-    let observable = this.getGreetings();
-    observable.subscribe(response => {
-      this.profile = response;
-      console.log(this.profile);
-    });
-  } */
+  showEdit() {
+    if (this.edit) {
+      this.edit = false;
+    }
+    else {
+      this.edit = true;
+    }
+  }
+
+  saveChanges() {
+    this.http.post("api/profile/update", this.profile).subscribe(console.log);
+  }
+
+  uploadPic() {
+    let fd = new FormData();
+    fd.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post('api/file', fd).subscribe(console.log);
+    this.profile.picture = this.selectedFile.name;
+    this.saveChanges();
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
 
 }

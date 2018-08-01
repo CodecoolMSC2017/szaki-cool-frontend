@@ -1,0 +1,63 @@
+.profile {
+    position: relative;
+    padding-bottom: 45%;
+    background-color: powderblue;
+    border : solid 1px;
+}
+
+.profilepics {
+    height: 12em;
+    width: 12em;
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    top: 5em;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.profileData {
+    padding-left: 14em;
+    padding-top: 0em;
+    position: absolute;
+    top: 5em;
+}
+
+.profileAttribute {
+    padding-left: 0em;
+    padding-top: 0em;
+    position: absolute;
+    top: 5em;
+}
+
+.profileValue {
+    padding-left: 6em;
+    padding-top: 0em;
+    position: absolute;
+    top: 5em;
+}
+
+.profileEdit {
+    padding-left: 6em;
+    padding-top: 0em;
+    position: absolute;
+    top: 0em;
+}
+
+.editButton {
+    padding-left: 0;
+    padding-top: 0em;
+    position: absolute;
+    top: 0em;
+}
+
+.editButton :hover {
+    background-color: aliceblue;
+}
+
+.uploadPic {
+}
+
