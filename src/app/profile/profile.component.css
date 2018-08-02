@@ -1,6 +1,6 @@
 .profile {
     position: relative;
-    padding-bottom: 45%;
+    padding-bottom: 25%;
     background-color: powderblue;
     border : solid 1px;
 }
@@ -64,6 +64,11 @@ span {
 }
 
 .uploadPic {
+    padding-left: 0em;
+    padding-top: 0em;
+    position: absolute;
+    top: 12em;
+    left: 1em;
 }
 
 input[type=text], input[type=email], input[type=password] {

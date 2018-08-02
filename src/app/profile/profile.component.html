@@ -1,34 +1,40 @@
 <div class="profile">
-    <h1>Profile</h1>
-    <div class="profilepics">
-        <img  src="api/pics/{{profile.picture}}"/>
+        <h1>Profile</h1>
+        <div class="profilepics">
+            <img  src="api/pics/{{profile.picture}}"/>
+        </div>
+        <div class="profileData" >
+            <div class="profileAttribute">
+                    <span>Firstname:</span> <br>
+                    <span>Lastname:</span><br>
+                    <span>Phone:</span><br>
+                    <span>Address: </span><br>
+                    <span>Description: </span>
+            </div>
+            <div *ngIf="!edit" class="profileValue" >
+                    <span>{{profile.firstName}}</span><br>
+                    <span>{{profile.lastName}}</span><br>
+                    <span>{{profile.phone}}</span><br>
+                    <span>{{profile.address}}</span><br>
+                    <span>{{profile.description}}</span>
+            </div>
+            <div *ngIf="edit" class="profileEdit">
+                    <input [(ngModel)]="profile.firstName" type="profile" placeholder="{{profile.firstName}}">
+                    <input [(ngModel)]="profile.lastName" type="profile" placeholder="{{profile.lastName}}">
+                    <input [(ngModel)]="profile.phone" type="profile" placeholder="{{profile.phone}}">
+                    <input [(ngModel)]="profile.address" type="profile" placeholder="{{profile.address}}">
+                    <input [(ngModel)]="profile.description" type="profile" placeholder="{{profile.description}}">
+                <button id="update-button" (click)="saveChanges()">Save</button>
+                
+            </div>
+            <div class="editButton" (click)="showEdit()">
+                <span class="fa fa-edit">Edit</span>
+            </div>
+            <div class="uploadPic" *ngIf="edit">
+                    <input type="file" (change)="onFileSelected($event)">
+                    <input type="button" value="upload" (click)="uploadPic()">
+            </div>
+        </div>
+        
     </div>
-    <div class="profileData" >
-        <div class="profileAttribute">
-            Firstname:<br>
-            Lastname:<br>
-            Phone:<br>
-            Address:
-        </div>
-        <div *ngIf="!edit" class="profileValue" >
-            {{profile.firstName}}<br>
-            {{profile.lastName}}<br>
-            {{profile.phone}}<br>
-            {{profile.address}}
-        </div>
-        <div *ngIf="edit" class="profileEdit">
-            <input [(ngModel)]="profile.firstName" type="profile" placeholder="{{profile.firstName}}">
-            <input [(ngModel)]="profile.lastName" type="profile" placeholder="{{profile.lastName}}">
-            <input [(ngModel)]="profile.phone" type="profile" placeholder="{{profile.phone}}">
-            <input [(ngModel)]="profile.address" type="profile" placeholder="{{profile.address}}">
-            <input type="button" value="save" (click)="saveChanges()">
-        </div>
-        <div class="editButton" (click)="showEdit()">
-            <span class="fa fa-edit">Edit</span>
-        </div>
-    </div>
-    <div class="uploadPic">
-        <input type="file" (change)="onFileSelected($event)">
-        <input type="button" value="upload" (click)="uploadPic()">
-    </div>
-</div>
+    
