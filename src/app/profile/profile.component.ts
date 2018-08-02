@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   edit = false;
   selectedFile;
   profile = new Profile;
+  error;
 
   constructor(private http: HttpClient) {
   }
@@ -47,8 +48,15 @@ export class ProfileComponent implements OnInit {
   }
 
   saveChanges() {
+    this.error = null;
     let that = this;
-    this.http.post("api/profile/update", this.profile).subscribe(console.log);
+    this.http.post("api/profile/update", this.profile).subscribe(
+      success => {
+        console.log(success);
+      },
+      error => {
+        that.error = JSON.stringify(error);
+      });
   }
 
   uploadPic() {
