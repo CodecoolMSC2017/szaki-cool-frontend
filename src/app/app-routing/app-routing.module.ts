@@ -7,8 +7,8 @@ import { ActivateAccountComponent } from '../activate-account/activate-account.c
 import { MainComponent} from '../main/main.component';
 import { ProfileComponent} from '../profile/profile.component';
 import { AdsviewComponent} from '../adsview/adsview.component';
+import { AdslistComponent } from '../adslist/adslist.component';
 import { FileuploadComponent } from '../fileupload/fileupload.component';
-
 
 
 const routes: Routes = [
@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'adsview', component: AdsviewComponent},
+  { path: 'adslist', component: AdslistComponent},
   { path: 'file', component: FileuploadComponent}
 ];
 
