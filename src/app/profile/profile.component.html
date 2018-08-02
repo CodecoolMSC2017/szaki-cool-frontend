@@ -24,8 +24,8 @@
                     <input [(ngModel)]="profile.phone" type="profile" placeholder="{{profile.phone}}">
                     <input [(ngModel)]="profile.address" type="profile" placeholder="{{profile.address}}">
                     <input [(ngModel)]="profile.description" type="profile" placeholder="{{profile.description}}">
-                <button id="update-button" (click)="saveChanges()">Save</button>
-                
+                    <button id="update-button" (click)="saveChanges()">Save</button>
+                    <p *ngIf="error">update failed</p>
             </div>
             <div class="editButton" (click)="showEdit()">
                 <span class="fa fa-edit">Edit</span>
