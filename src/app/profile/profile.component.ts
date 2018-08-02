@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
   }
 
   saveChanges() {
-    this.profile.user_id = this.getProfile();
+    let that = this;
     this.http.post("api/profile/update", {
       firstName: this.profile.firstName,
       lastName: this.profile.lastName,
@@ -57,16 +57,19 @@ export class ProfileComponent implements OnInit {
       picture: this.profile.picture
     }).subscribe(resp =>{
           console.log(resp);
-          this.getProfile();
+          that.getProfile();
         }
       );
   }
 
   uploadPic() {
+    let that = this;
     let fd = new FormData();
     fd.append('file', this.selectedFile, this.selectedFile.name);
-    this.http.post('api/file', fd).subscribe(console.log);
-    this.profile.picture = this.selectedFile.name;
+    this.http.post('api/file', fd).subscribe(resp => {
+      console.log(resp);
+      that.profile.picture = that.selectedFile.name;
+    } );
     //this.saveChanges();
   }
 
