@@ -6,7 +6,8 @@
 }
 
 .ads-pics {
-    background-color: lightblue;
+    background-color: lightgrey;
+    border: 1px solid grey;
     height: auto;
     text-align: center;
 }
@@ -23,6 +24,7 @@
     margin: 10px;
     object-fit: cover;
     vertical-align: middle;
+    border: 1px dashed grey;
 }
 
 .details {
@@ -30,7 +32,8 @@
 }
 .ads-details {
     padding: 10px;
-    background-color: lightblue;
+    background-color: lightgrey;
+    border: 1px solid grey;
 }
 .ads-tile {
     margin: 0px;
@@ -46,7 +49,8 @@
 .seller-details {
     margin-top: 10px;
     padding: 10px;
-    background-color: lightblue;
+    background-color: lightgrey;
+    border: 1px solid grey;
 }
 .seller-details a:link, 
 .seller-details a:active, 
@@ -78,6 +82,7 @@
 
 .ads-long-decription {
     margin: 0px 10px 10px 10px;
-    background-color: lightblue;
+    background-color: lightgrey;
+    border: 1px solid grey;
     height: 300px;
 }

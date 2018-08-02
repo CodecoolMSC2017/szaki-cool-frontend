@@ -28,13 +28,19 @@ export class AdsviewComponent implements OnInit {
 
     this.work = this.service.work;
     this.requestWork();
-    console.log(this.work);
     this.work.userRating = Math.round(this.work.userRating * 10) / 10; 
   }
 
   requestWork() {
-    this.http.get("api/works/" + this.work.id).subscribe((work)=>{this.work = work; console.log(work); this.bigPic = this.work.links[0]});
+    this.http.get("api/works/" + this.work.id).subscribe((work)=>{
+      this.work = work;
+      console.log("------");
+      console.log(work);
+      console.log("------");
+      this.bigPic = this.work.links[0]
+    });
   }
+
 
   changeBigPic(pic) {
     this.bigPic = pic;
