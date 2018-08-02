@@ -3,5 +3,7 @@ export class Profile {
     lastName: string;
     phone: string;
     address: string;
-    user_id: string;
+    userId: string;
+    picture: string;
+    description: string;
 }

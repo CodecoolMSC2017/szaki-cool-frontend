@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Profile } from './profile';
 
 @Component({
   selector: 'app-profile-page',
@@ -9,9 +10,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProfileComponent implements OnInit {
   username: String;
-  profile;
   edit = false;
   selectedFile;
+  profile = new Profile;
 
   constructor(private http: HttpClient) {
   }
@@ -30,9 +31,9 @@ export class ProfileComponent implements OnInit {
 
   getProfile() {
     let userId = this.getUserId();
-    this.http.get("api/profiles/" + userId).subscribe(response => {
-      console.log(response);
+    this.http.get<Profile>("api/profile/" + userId).subscribe(response => {
       this.profile = response;
+      console.log(this.profile);
   });
   }
 
@@ -47,19 +48,7 @@ export class ProfileComponent implements OnInit {
 
   saveChanges() {
     let that = this;
-    this.http.post("api/profile/update", {
-      firstName: this.profile.firstName,
-      lastName: this.profile.lastName,
-      userId: this.getUserId(),
-      phone: this.profile.phone,
-      address: this.profile.address,
-      description: this.profile.description,
-      picture: this.profile.picture
-    }).subscribe(resp =>{
-          console.log(resp);
-          that.getProfile();
-        }
-      );
+    this.http.post("api/profile/update", this.profile).subscribe(console.log);
   }
 
   uploadPic() {
@@ -67,10 +56,9 @@ export class ProfileComponent implements OnInit {
     let fd = new FormData();
     fd.append('file', this.selectedFile, this.selectedFile.name);
     this.http.post('api/file', fd).subscribe(resp => {
-      console.log(resp);
       that.profile.picture = that.selectedFile.name;
-    } );
-    //this.saveChanges();
+    });
+    
   }
 
   onFileSelected(event) {
