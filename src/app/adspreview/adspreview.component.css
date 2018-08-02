@@ -1,6 +1,7 @@
 .featured-work {
 	width: 200px;
 	height: 250px;
+	border: 1px solid lightgrey;
 }
 .featured-work,
 .featured-work a:link, 
@@ -16,19 +17,16 @@
 }
 .featured-work-pic img {
 	margin: 0px;
-	padding-right: 10px;
 	width: 200px;
 	height: 120px;
 	object-fit: cover;
 	vertical-align: middle;
+	border-bottom: 1px solid lightgrey;
 }
 .featured-work-details {
 	padding: 7px 7px 3px 7px;
 	height: 120px;
 	font-size: 12px;
-	border-left: 1px solid grey;
-	border-right: 1px solid grey;
-	border-bottom: 1px solid grey;
 }
 .featured-work-owner {
 	height: 30px;

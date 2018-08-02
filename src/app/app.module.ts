@@ -17,6 +17,7 @@ import { AdsviewComponent } from './adsview/adsview.component';
 import { MainComponent } from './main/main.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { AdslistComponent } from './adslist/adslist.component';
+import { CookiepolicyComponent } from './cookiepolicy/cookiepolicy.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AdslistComponent } from './adslist/adslist.component';
     FileuploadComponent,
     AdsviewComponent,
     MainComponent,
-    AdslistComponent
+    AdslistComponent,
+    CookiepolicyComponent
   ],
   imports: [
     BrowserModule,
