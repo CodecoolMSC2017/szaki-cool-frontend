@@ -5,16 +5,16 @@
     </div>
     <div class="profileData" >
         <div class="profileAttribute">
-                <span>Firstname:</span> <br>
-                <span>Lastname:</span> <br>
-                <span>Phone:</span> <br>
-                <span>Address: </span>
+            Firstname:<br>
+            Lastname:<br>
+            Phone:<br>
+            Address:
         </div>
         <div *ngIf="!edit" class="profileValue" >
-            <span>{{profile.firstName}}</span> <br>
-            <span>{{profile.lastName}}</span> <br>
-            <span>{{profile.phone}}</span> <br>
-            <span>{{profile.address}}</span>
+            {{profile.firstName}}<br>
+            {{profile.lastName}}<br>
+            {{profile.phone}}<br>
+            {{profile.address}}
         </div>
         <div *ngIf="edit" class="profileEdit">
             <input [(ngModel)]="profile.firstName" type="text" placeholder="{{profile.firstName}}">
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="uploadPic">
-            <input type="file" (change)="onFileSelected($event)">
-            <input type="button" value="upload" (click)="uploadPic()">
-        </div>
+        <input type="file" (change)="onFileSelected($event)">
+        <input type="button" value="upload" (click)="uploadPic()">
+    </div>
 </div>

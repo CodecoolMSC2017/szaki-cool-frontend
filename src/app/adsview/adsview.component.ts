@@ -32,7 +32,7 @@ export class AdsviewComponent implements OnInit {
   }
 
   requestWork() {
-    this.http.get("api/works/1").subscribe((work)=>{this.work = work; console.log(work); this.bigPic = this.work.links[0]});
+    this.http.get("api/works/" + this.work.id).subscribe((work)=>{this.work = work; console.log(work); this.bigPic = this.work.links[0]});
   }
 
   changeBigPic(pic) {

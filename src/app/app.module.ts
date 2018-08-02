@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { AdsviewComponent } from './adsview/adsview.component';
 import { MainComponent } from './main/main.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
+import { AdslistComponent } from './adslist/adslist.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
     HeaderComponent,
     FileuploadComponent,
     AdsviewComponent,
-    MainComponent
+    MainComponent,
+    AdslistComponent
   ],
   imports: [
     BrowserModule,
