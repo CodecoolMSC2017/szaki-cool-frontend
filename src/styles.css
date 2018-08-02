@@ -1,3 +1,19 @@
+/* ************************************** */
+/* ********** JUST FOR TESTING ********** */
+/* ************************************** */
+.info-1 {
+	height: 400px;
+	background: url(https://stevecoasia.com/wp-content/uploads/2018/03/officetumb.jpg);
+	background-size: 100% auto;
+	background-position: center center;
+}
+.info-2 {
+	background-color: lightgrey;
+	height: 300px;
+}
+/* ************************************** */
+
+
 .dark-filter {
     position: fixed;
     top: 0;

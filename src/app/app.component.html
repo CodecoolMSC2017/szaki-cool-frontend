@@ -40,9 +40,9 @@
         <div class="info-1"></div>
         <h1>New on the Marketplace</h1>
         <div class="marketplace-grid">
-            <app-adspreview [work]="work" *ngFor="let work of works"></app-adspreview>
+            <app-adspreview [work]="work" *ngFor="let work of works.slice(0,4)">
+            </app-adspreview>
         </div>
-        <div class="info-2"></div>
     </div>
 </div>
 
@@ -51,10 +51,10 @@
     <div class="footer-grid">
         <div class="footer-grid-title">Categories</div>
         <div class="footer-grid-title">About</div>
-        <div class="footer-grid-title">Support</div>
-        <div class="footer-grid-items">» 5<br>» 5<br>» 5<br>» 5<br>» 5</div>
-        <div class="footer-grid-items">» 6<br>» 6<br>» 6</div>
-        <div class="footer-grid-items">» 7<br>» 7<br>» 7<br>» 7</div>
+        <div class="footer-grid-title">Contact</div>
+        <div class="footer-grid-items">» Art<br>» Butcher<br>» Car Mechanic<br>» Electrician<br>» Farmer</div>
+        <div class="footer-grid-items">» Info<br>» Site rules<br>» Privacy policy</div>
+        <div class="footer-grid-items">» szakicool@gmail.com<br>» +36 30 1234567</div>
     </div>
     <hr>
     <i class="fa fa-google-plus fa-lg"></i>
