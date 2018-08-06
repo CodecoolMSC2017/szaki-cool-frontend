@@ -38,7 +38,6 @@ export class AppComponent {
   }
 
   dropdownMenu() {
-    console.log(this.str);
     if (this.show == true) {
       this.show = false;
     }
@@ -48,10 +47,7 @@ export class AppComponent {
   }
 
   search() {
-    console.log(this.str);
     this.http.get("api/works/search/" + this.str).subscribe((works)=> {this.works = works;
-    console.log(works);
     console.log(this.works)});
   }
-
 }
