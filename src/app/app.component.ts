@@ -21,6 +21,7 @@ export class AppComponent {
   isLoggedin: boolean;
   works;
   show;
+  str: string;
   
 
   loginClicked() {
@@ -37,12 +38,20 @@ export class AppComponent {
   }
 
   dropdownMenu() {
+    console.log(this.str);
     if (this.show == true) {
       this.show = false;
     }
     else {
       this.show = true;
     }
+  }
+
+  search() {
+    console.log(this.str);
+    this.http.get("api/works/search/" + this.str).subscribe((works)=> {this.works = works;
+    console.log(works);
+    console.log(this.works)});
   }
 
 }
