@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WebsocketService } from '../websocket.service';
 import { Message } from '../message';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-chat',
@@ -9,21 +10,37 @@ import { Message } from '../message';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private ws: WebsocketService) { }
+  constructor(private ws: WebsocketService, private http: HttpClient) { }
 
   chatText;
   destinationId;
-
-  messages : Message[];
+  messages = [];
 
   ngOnInit() {
     this.ws.connect();
     this.messages = this.ws.messages;
+    let myId = JSON.parse(sessionStorage.getItem("user")).id;
+    this.http.get('api/conversation/' + myId + "/" + "2").subscribe(messages => {
+      //this.messages = messages;
+      this.convertMessage(this, messages);
+    });
+  }
+
+  convertMessage(that, messages) {
+    messages.forEach(message => {
+      console.log(message);
+      message.date = new Date(message.date);
+      that.messages.push(message);
+    });
+  }
+
+  getMessageHistory() {
+    this.http.get
   }
 
   sendMessage() {
     let message = new Message;
-    message.date = new Date;
+    message.date = new Date().getTime();
     message.message = this.chatText;
     message.receiverId = this.destinationId;
     message.senderId = JSON.parse(sessionStorage.getItem("user")).id;

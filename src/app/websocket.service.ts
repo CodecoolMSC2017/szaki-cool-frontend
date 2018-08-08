@@ -35,6 +35,7 @@ export class WebsocketService {
 
   messegeReceived(message) {
     let parsedMessage : Message = JSON.parse(message.body);
+    parsedMessage.date = new Date(parsedMessage.date);
     this.messages.push(parsedMessage);
   }
 

@@ -1,6 +1,7 @@
 <div>
   <div class="messageView">
       <div *ngFor="let message of messages">
+        <p>{{message.senderId}}</p>
         <p>{{message.message}}</p>
         <p>{{message.date}}</p>
       </div>
