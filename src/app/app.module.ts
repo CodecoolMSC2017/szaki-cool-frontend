@@ -18,6 +18,7 @@ import { MainComponent } from './main/main.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { AdslistComponent } from './adslist/adslist.component';
 import { CookiepolicyComponent } from './cookiepolicy/cookiepolicy.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CookiepolicyComponent } from './cookiepolicy/cookiepolicy.component';
     AdsviewComponent,
     MainComponent,
     AdslistComponent,
-    CookiepolicyComponent
+    CookiepolicyComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

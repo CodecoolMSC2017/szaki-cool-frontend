@@ -4,10 +4,10 @@
 
 npm install --save font-awesome angular-font-awesome
 
-## stompjs sockjs-client
+## stompjs, sockjs-client
 
-npm install stompjs
-npm install sockjs-client
+- npm install stompjs
+- npm install sockjs-client
 
 # JsToAngular
 
