@@ -9,6 +9,14 @@ npm install --save font-awesome angular-font-awesome
 - npm install stompjs
 - npm install sockjs-client
 
+After the installation is successful, search for this file `node_modules/stompjs/index.js` and comment out the following lines:
+```
+// var StompNode = require('./lib/stomp-node.js');
+
+// module.exports.overTCP = StompNode.overTCP;
+// module.exports.overWS = StompNode.overWS;
+```
+
 # JsToAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
