@@ -6,7 +6,7 @@
       </div>
   </div>
   <div class="messageFeed">
-    <input type="text" placeholder="partner id">
-    <input type="text" placeholder="type here">
+    <input type="text" [(ngModel)]="destinationId" placeholder="partner id">
+    <input type="text" [(ngModel)]="chatText" placeholder="type here" (keydown)="keyDown($event)">
   </div>
 </div>

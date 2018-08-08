@@ -39,7 +39,7 @@ export class WebsocketService {
   }
 
   sendMessage(message: Message) {
-    this.stompClient.send('/app/message' ,{}, JSON.stringify(message));
+    this.stompClient.send('/app/lobby' ,{}, JSON.stringify(message));
   }
 
   getMessages() {
