@@ -21,6 +21,7 @@ export class AppComponent {
   isLoggedin: boolean;
   works;
   show;
+  str: string;
   
 
   loginClicked() {
@@ -45,4 +46,8 @@ export class AppComponent {
     }
   }
 
+  search() {
+    this.http.get("api/works/search/" + this.str).subscribe((works)=> {this.works = works;
+    console.log(this.works)});
+  }
 }
