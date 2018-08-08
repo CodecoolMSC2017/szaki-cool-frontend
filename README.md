@@ -1,3 +1,14 @@
+# packages to install
+
+## Angular Font Awesome component
+
+npm install --save font-awesome angular-font-awesome
+
+## stompjs sockjs-client
+
+npm install stompjs
+npm install sockjs-client
+
 # JsToAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
@@ -10,9 +21,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Angular Font Awesome component
-To use Angular component:
-npm install --save font-awesome angular-font-awesome
+
 
 
 ## Build
