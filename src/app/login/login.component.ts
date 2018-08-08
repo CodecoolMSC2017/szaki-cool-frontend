@@ -35,4 +35,10 @@ export class LoginComponent implements OnInit {
     }, error => alert(error.message));
   }
 
+  keyDown(event: KeyboardEvent) {
+    if (event.key === "Enter") {
+      this.getAuth();
+    }
+  }
+
 }
