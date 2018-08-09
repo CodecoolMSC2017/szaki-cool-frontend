@@ -26,8 +26,7 @@ export class ChatComponent implements OnInit {
     this.ws.connect();
     this.messages = this.ws.messages;
     let myId = JSON.parse(sessionStorage.getItem("user")).id;
-    this.http.get('api/conversation/' + myId + "/" + "2").subscribe(messages => {
-      //this.messages = messages;
+    this.http.get('api/conversation/' + myId + "/" + this.destinationId).subscribe(messages => {
       this.convertMessage(this, messages);
     });
   }
@@ -38,10 +37,6 @@ export class ChatComponent implements OnInit {
       message.date = new Date(message.date);
       that.messages.push(message);
     });
-  }
-
-  getMessageHistory() {
-    this.http.get
   }
 
   sendMessage() {
