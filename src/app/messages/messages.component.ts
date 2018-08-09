@@ -12,13 +12,13 @@ export class MessagesComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  messages;
+  messages = [];
   userId;
 
   ngOnInit() {
     this.userId = JSON.parse(sessionStorage.getItem("user")).id;
     this.http.get('api/conversation/' + this.userId).subscribe(message => {
-      this.messages = message;
+      this.convertMessage(this, message);
     });
   }
 
@@ -32,6 +32,14 @@ export class MessagesComponent implements OnInit {
       id = message.senderId;
     }
     this.router.navigate(['chat/' + id]);
-  } 
+  }
+
+  convertMessage(that, messages) {
+    messages.forEach(message => {
+      console.log(message);
+      message.date = new Date(message.date);
+      that.messages.push(message);
+    });
+  }
 
 }
