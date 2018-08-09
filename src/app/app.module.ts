@@ -19,6 +19,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { AdslistComponent } from './adslist/adslist.component';
 import { CookiepolicyComponent } from './cookiepolicy/cookiepolicy.component';
 import { ChatComponent } from './chat/chat.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ChatComponent } from './chat/chat.component';
     MainComponent,
     AdslistComponent,
     CookiepolicyComponent,
-    ChatComponent
+    ChatComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

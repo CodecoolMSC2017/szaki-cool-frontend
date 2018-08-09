@@ -11,6 +11,7 @@ import { AdslistComponent } from '../adslist/adslist.component';
 import { FileuploadComponent } from '../fileupload/fileupload.component';
 import { CookiepolicyComponent } from '../cookiepolicy/cookiepolicy.component';
 import { ChatComponent } from '../chat/chat.component';
+import { MessagesComponent } from '../messages/messages.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'adslist', component: AdslistComponent},
   { path: 'file', component: FileuploadComponent},
   { path: 'cookiepolicy', component: CookiepolicyComponent},
-  { path: 'chat', component: ChatComponent}
+  { path: 'chat/:id', component: ChatComponent},
+  { path: 'messages', component: MessagesComponent}
 ];
 
 @NgModule({
