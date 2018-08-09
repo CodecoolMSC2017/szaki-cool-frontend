@@ -20,29 +20,29 @@
             </ul>
         </div>
         <div *ngIf="loggedin()" class="user-pic">
-            <img (click)="dropdownMenu()" src="https://www.w3schools.com/howto/img_avatar.png">
-            <div *ngIf="show" class="dropdown animated fadeIn">
+            <img src="https://www.w3schools.com/howto/img_avatar.png">
+            <div class="dropdown animated fadeIn">
+                <div class="dropdown-user-pic-frame"></div>
                 <div class="dropdown-arrow"></div>			
                 <ul>
-                    <li><a routerLink="/profile"><i class="fa fa-user-circle-o fa-1x center-icon"></i><span class="nav-title"> Profile</span></a></li>
-                    <li><a href="#"><i class="fa fa-dashboard fa-1x center-icon"></i><span class="nav-title"> My Dashboard</span></a></li>
-                    <li><a href="#"><i class="fa fa-vcard fa-1x center-icon"></i><span class="nav-title"> Account Settings</span></a></li>
-                    <li><a routerLink="/logout"><i class="fa fa-sign-out fa-1x center-icon"></i><span class="nav-title"> Logout</span></a></li>
+                    <a routerLink="/profile"><li><i class="fa fa-user-circle-o fa-1x center-icon"></i><span class="nav-title"> Profile</span></li></a>
+                    <a href="#"><li><i class="fa fa-dashboard fa-1x center-icon"></i><span class="nav-title"> My Dashboard</span></li></a>
+                    <a href="#"><li><i class="fa fa-vcard fa-1x center-icon"></i><span class="nav-title"> Account Settings</span></li></a>
+                    <a routerLink="/logout"><li><i class="fa fa-sign-out fa-1x center-icon"></i><span class="nav-title"> Logout</span></li></a>
                 </ul>
             </div>
         </div>
     </div>
 </header>
+<div class="header-gap"></div>
 
-<div class="frame">
-    <router-outlet></router-outlet>
-
-    <div *ngIf="!loggedin()">
-        <div class="info-1">
-            <div class="search-bar">
-                <input [(ngModel)]="str" type="search" placeholder="What service are you looking for?"><button (click)="search()">Search</button>
-            </div>
-        </div>
+<div class="search" *ngIf="!loggedin()">
+	<div class="search-bar">
+		<input [(ngModel)]="str" type="text" placeholder="What service are you looking for?"><button (click)="search()">Search</button>
+	</div>
+</div>
+<div class="frame" *ngIf="!loggedin()">
+    <div>
         <h1>New on the Marketplace</h1>
         <div class="marketplace-grid">
             <app-adspreview [work]="work" *ngFor="let work of works.slice(0,4)">
@@ -51,8 +51,9 @@
     </div>
 </div>
 
+<router-outlet></router-outlet>
 
-<footer>
+<footer class="frame">
     <div class="footer-grid">
         <div class="footer-grid-title">Categories</div>
         <div class="footer-grid-title">About</div>
@@ -62,8 +63,8 @@
         <div class="footer-grid-items">» szakicool@gmail.com<br>» +36 30 1234567</div>
     </div>
     <hr>
-    <i class="fa fa-google-plus fa-lg"></i>
-    <i class="fa fa-facebook-square fa-lg"></i>
-    <i class="fa fa-twitter fa-lg"></i>
-    <i class="fa fa-linkedin fa-lg"></i>
+	<i class="fa fa-google-plus fa-lg"></i>
+	<i class="fa fa-facebook-square fa-lg"></i>
+	<i class="fa fa-twitter fa-lg"></i>
+	<i class="fa fa-linkedin fa-lg"></i>
 </footer>
