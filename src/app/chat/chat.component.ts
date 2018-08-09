@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { WebsocketService } from '../websocket.service';
 import { Message } from '../message';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -10,18 +11,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private ws: WebsocketService, private http: HttpClient) { }
+  constructor(
+    private ws: WebsocketService,
+    private http: HttpClient,
+    private route:ActivatedRoute
+  ) { }
 
   chatText;
   destinationId;
   messages = [];
 
   ngOnInit() {
+    this.destinationId = +this.route.snapshot.paramMap.get('id');
     this.ws.connect();
     this.messages = this.ws.messages;
     let myId = JSON.parse(sessionStorage.getItem("user")).id;
-    this.http.get('api/conversation/' + myId + "/" + "2").subscribe(messages => {
-      //this.messages = messages;
+    this.http.get('api/conversation/' + myId + "/" + this.destinationId).subscribe(messages => {
       this.convertMessage(this, messages);
     });
   }
@@ -32,10 +37,6 @@ export class ChatComponent implements OnInit {
       message.date = new Date(message.date);
       that.messages.push(message);
     });
-  }
-
-  getMessageHistory() {
-    this.http.get
   }
 
   sendMessage() {

@@ -1,0 +1,15 @@
+<div class="frame">
+  <table>
+    <tr> 
+      <td>From</td>
+      <td>Message</td>
+      <td>Date</td>
+    </tr>
+    <tr *ngFor="let message of messages" (click)=navigate(message)>
+      <td>{{message.senderId}}</td>
+      <td>{{message.message}}</td>
+      <td>{{message.date}}</td>
+    </tr>
+  </table>
+</div>
+

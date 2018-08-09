@@ -12,7 +12,7 @@ export class WebsocketService {
 
   constructor(private http: HttpClient) { }
 
-  private serverUrl = 'api/socket';
+  private serverUrl = 'http://localhost:4200/api/socket';
   private stompClient;
 
   messages = [];
