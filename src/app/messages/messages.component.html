@@ -8,7 +8,11 @@
     <tr *ngFor="let message of messages" (click)=navigate(message)>
       <td>{{message.senderId}}</td>
       <td>{{message.message}}</td>
-      <td>{{message.date}}</td>
+      <td>
+        <div class="date">
+            <span>{{formatDate(message.date)}}</span>
+        </div>
+      </td>
     </tr>
   </table>
 </div>

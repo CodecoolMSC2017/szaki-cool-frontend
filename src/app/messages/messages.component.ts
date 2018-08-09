@@ -36,10 +36,18 @@ export class MessagesComponent implements OnInit {
 
   convertMessage(that, messages) {
     messages.forEach(message => {
-      console.log(message);
-      message.date = new Date(message.date);
+      message.date = that.formatDate(message.date);
       that.messages.push(message);
     });
+  }
+
+  formatDate(long) {
+    let date = new Date(long);
+    console.log(date.toLocaleDateString());
+    let dateInString = "";
+    dateInString += date.toLocaleDateString();
+    dateInString += date.toLocaleTimeString();
+    return date.toLocaleDateString();
   }
 
 }
