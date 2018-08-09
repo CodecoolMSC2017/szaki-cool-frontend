@@ -1,3 +1,48 @@
+<div class="frame">
+        <div class="edit-profile" (click)="showEdit()">
+                <span class="fa fa-edit">Edit</span>
+        </div>
+        <div class="user-image">
+                <img src="api/pics/{{profile.picture}}">
+        </div>
+        <div class="user-info bold">
+                <div>Username: </div>
+                <div>First name: </div>
+                <div>Last name: </div>
+                <div>Role: </div>
+                <div>Address: </div>
+                <div>Email: </div>
+                <div>Phone: </div>
+                <div *ngIf="edit">Picture: </div>
+        </div>
+        <div class="user-info" *ngIf="!edit">
+                <div>.</div>
+                <div>{{profile.firstName}}</div>
+                <div>{{profile.lastName}}</div>
+                <div>.</div>
+                <div>{{profile.address}}</div>
+                <div>.</div>
+                <div>{{profile.phone}}</div>
+        </div>
+        <div class="clear-both introduction" *ngIf="!edit"><h3>Introduction:</h3>{{profile.description}}</div>
+
+        <div class="user-info" *ngIf="edit">
+                <div><input type="text" value=""></div>
+                <div><input [(ngModel)]="profile.firstName" type="text" value="{{profile.firstName}}"></div>
+                <div><input [(ngModel)]="profile.lastName" type="text" value="{{profile.firstName}}"></div>
+                <div>.</div>
+                <div><input [(ngModel)]="profile.address" type="text" value="{{profile.address}}"></div>
+                <div><input type="email" value=""></div>
+                <div><input [(ngModel)]="profile.phone" type="text" value="{{profile.phone}}"></div>
+                <div><input type="file" (change)="onFileSelected($event)"> <input type="button" value="Upload" (click)="uploadPic()"></div>
+        </div>
+        <div class="clear-both introduction" *ngIf="edit"><h3>Introduction:</h3><textarea [(ngModel)]="profile.description">{{profile.description}}</textarea></div>
+        <p align="center" *ngIf="edit"><button (click)="saveChanges()">SAVE</button></p>
+        <p *ngIf="error">update failed</p>
+</div>
+
+
+<!--
 <div class="profile">
         <h1>Profile</h1>
         <div class="profilepics">
@@ -37,4 +82,4 @@
         </div>
         
     </div>
-    
+-->
