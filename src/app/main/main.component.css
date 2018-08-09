@@ -1,34 +1,42 @@
-/* ************************************** */
-/* ********** JUST FOR TESTING ********** */
-/* ************************************** */
-.info-1 {
+.search {
 	height: 400px;
-	background: url(https://stevecoasia.com/wp-content/uploads/2018/03/officetumb.jpg);
+	background-image: url("../../assets/site_template/search_bar_1.jpg");
 	background-size: 100% auto;
 	background-position: center center;
 }
-
 .search-bar {
 	margin: 0 auto;
 	padding-top: 300px;
 	width: 400px;
 }
-
 input[type=text], input[type=email], input[type=password] {
-	width: 250px;
-	height: 40px;
-    padding: 0px 20px;
-    margin: 8px 0;
     display: inline-block;
+    padding: 0px 20px;
+	width: 300px;
+	height: 40px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
     box-sizing: border-box;
 }
-
 button {
+	margin: 0px;
+	padding: 0px;
+	width: 100px;
+    background-color: #4CAF50;
+    color: white;
+	font-size: 1.0em;
+	line-height: 40px;
+	text-align: center;
+    text-decoration: none;
 	height: 40px;
-    margin: 4px 2px;
-	padding: 0px 12px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+/* ********** MAIN CONTENT FRAME ********** */
+.frame {
+	padding: 10px;
+	height: auto;
 }
 
 .marketplace-grid {

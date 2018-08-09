@@ -1,9 +1,14 @@
 <div class="current-ads-grid">
 
   <div class="ads-pics">
+<!--
       <img class="bigPic" src="api/pics/{{bigPic}}">
       <img class="smallPic" *ngFor="let pic of work.links" src="api/pics/{{pic}}" (click)=changeBigPic(pic)>
-  </div>
+-->
+      <a href="api/pics/{{bigPic}}" data-fancybox="gallery"><img class="bigPic" src="api/pics/{{bigPic}}"></a>
+      <a *ngFor="let pic of work.links.slice(1)" href="api/pics/{{pic}}" data-fancybox="gallery"><img class="smallPic" src="api/pics/{{pic}}"></a>
+
+  </div> 
 
   <div class="details">
     <div class="ads-details">
