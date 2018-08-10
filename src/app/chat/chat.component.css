@@ -1,0 +1,85 @@
+.send-new-message {
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.05);
+	border: 1px solid lightgrey;
+}
+.send-to {
+	padding-right: 10px;
+	font-weight: bold;
+	line-height: 1.5em;
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+button {
+	border-radius: 5px;
+}
+.message-history {
+	margin: 20px 0px;
+	padding: 10px;
+}
+.message-history-title {
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: center;
+}
+.message-out {
+	float: right;
+	width: 60%;
+}
+.message-sender-in {
+	float: left;
+	font-weight: bold;
+}
+.message-sender-out {
+	float: right;
+	font-weight: bold;
+}
+.message-date {
+	font-weight: normal;
+	font-size: 0.8em;
+}
+.message-text-in {
+	float: left;
+	margin: 0px 30px;
+	padding: 10px;
+	width: 60%;
+	text-align: justify;
+	background-color: lightgrey;
+	border-radius: 10px;
+}
+.message-text-out {
+	float: right;
+	margin: 0px 30px;
+	padding: 10px;
+	text-align: justify;
+	background-color: lightgrey;
+	border-radius: 10px;
+}
+.message-text-arrow-in {
+	width: 0;
+	height: 0;
+	float: left;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 15px solid lightgrey;
+	margin-left: -25px;	
+}
+.message-text-arrow-out {
+	width: 0;
+	height: 0;
+	float: right;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 15px solid lightgrey;
+	margin-right: -25px;	
+}
+.clear-both {
+	padding: 10px;
+	clear: both;
+}

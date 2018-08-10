@@ -55,4 +55,8 @@ export class ChatComponent implements OnInit {
     }
   }
 
+  sendNewMessage() {
+      this.sendMessage();
+  }
+
 }
