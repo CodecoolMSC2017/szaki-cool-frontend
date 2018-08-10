@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit {
   chatText;
   destinationId;
   messages = [];
+  ownMessage: boolean;
 
   ngOnInit() {
     this.destinationId = +this.route.snapshot.paramMap.get('id');
@@ -57,6 +58,18 @@ export class ChatComponent implements OnInit {
 
   sendNewMessage() {
       this.sendMessage();
+  }
+
+  isOwnMessage(message) {
+    if (message.senderId == 1) {
+      this.ownMessage = true;
+    }
+    else {
+      this.ownMessage = false;
+    }
+
+    console.log("-------");
+    console.log('Sender ID: ' + message.senderId + ', Is mine: ' + this.ownMessage + ', Msg: ' +  message.message);
   }
 
 }

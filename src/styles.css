@@ -10,8 +10,11 @@
 
 body {
 	margin: 0px;
-	padding: 0px;
-    background-image: url("assets/site_template/background.jpg") no-repeat center center fixed; 
+    padding: 0px;
+    background-image: url("assets/site_template/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
