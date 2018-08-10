@@ -44,10 +44,8 @@ export class MessagesComponent implements OnInit {
   formatDate(long) {
     let date = new Date(long);
     console.log(date.toLocaleDateString());
-    let dateInString = "";
-    dateInString += date.toLocaleDateString();
-    dateInString += date.toLocaleTimeString();
-    return date.toLocaleDateString();
+    let dateInString = date.toLocaleDateString() + " " +  date.toLocaleTimeString();
+    return dateInString;
   }
 
 }
