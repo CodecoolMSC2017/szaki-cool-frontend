@@ -37,7 +37,7 @@ export class MessagesComponent implements OnInit {
   convertMessage(that, messages) {
     messages.forEach(message => {
       console.log(message);
-      message.date = new Date(message.date);
+      message.date = new Date(message.date);      
       that.messages.push(message);
     });
   }
