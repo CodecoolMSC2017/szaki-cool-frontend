@@ -1,3 +1,77 @@
+.edit-profile {
+    float: right;
+}
+
+
+/*.user-image-update, */
+.user-image {
+	float: left;
+}
+/*.user-image-update img, */
+.user-image img {
+	width: 170px;
+	height: 170px;
+	transition: 0.5s ease;
+	backface-visibility: hidden;
+	opacity: 1;
+}
+/*
+.user-image:hover img {
+	opacity: 0.3;
+}
+.user-image-edit {
+	margin: 0 auto;
+	margin-top: -110px;
+	text-align: center;
+	opacity: 1;
+}
+.user-image:hover .user-image-edit {
+	opacity: 1;
+}
+*/
+.user-info {
+	float: left;
+	padding-left: 20px;
+	line-height: 25px;
+}
+.bold {
+	font-weight: bold;
+}
+.clear-both {
+	clear: both;
+}
+.introduction {
+	padding-top: 1px;
+}
+input[type=text], input[type=email], input[type=password] {
+    display: inline-block;
+	margin: 2px 0px;
+    padding: 0px 5px;
+	width: 300px;
+	height: 19px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+button {
+	border-radius: 5px;
+} 
+
+
+
+
+
+
+
+/*
 .profile {
     position: relative;
     padding-bottom: 25%;
@@ -79,3 +153,4 @@ input[type=text], input[type=email], input[type=password] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+*/

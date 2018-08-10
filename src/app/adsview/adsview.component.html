@@ -1,36 +1,40 @@
-<div class="current-ads-grid">
+<div class="frame">
 
-  <div class="ads-pics">
-<!--
-      <img class="bigPic" src="api/pics/{{bigPic}}">
-      <img class="smallPic" *ngFor="let pic of work.links" src="api/pics/{{pic}}" (click)=changeBigPic(pic)>
--->
-      <a href="api/pics/{{bigPic}}" data-fancybox="gallery"><img class="bigPic" src="api/pics/{{bigPic}}"></a>
-      <a *ngFor="let pic of work.links.slice(1)" href="api/pics/{{pic}}" data-fancybox="gallery"><img class="smallPic" src="api/pics/{{pic}}"></a>
+  <div class="current-ads-grid">
 
-  </div> 
+    <div class="ads-pics">
+  <!--
+        <img class="bigPic" src="api/pics/{{bigPic}}">
+        <img class="smallPic" *ngFor="let pic of work.links" src="api/pics/{{pic}}" (click)=changeBigPic(pic)>
+  -->
+        <a href="api/pics/{{bigPic}}" data-fancybox="gallery"><img class="bigPic" src="api/pics/{{bigPic}}"></a>
+        <a *ngFor="let pic of work.links.slice(1)" href="api/pics/{{pic}}" data-fancybox="gallery"><img class="smallPic" src="api/pics/{{pic}}"></a>
 
-  <div class="details">
-    <div class="ads-details">
-      <p class="ads-tile">{{work.title}}</p>
-      <p class="ads-short-decription">{{work.description}}</p>
-      <p class="ads-price">{{work.currency.currency}} {{work.price}}</p>
-      <p class="ads-guarantee">Seller Guarantees {{work.guarantee_value}} {{work.guarantee_length.guarantee_length}}</p>
-      <button>BUY IT NOW!</button>
+    </div> 
+
+    <div class="details">
+      <div class="ads-details">
+        <p class="ads-tile">{{work.title}}</p>
+        <p class="ads-short-decription">{{work.description}}</p>
+        <p class="ads-price">{{work.currency.currency}} {{work.price}}</p>
+        <p class="ads-guarantee">Seller Guarantees {{work.guarantee_value}} {{work.guarantee_length.guarantee_length}}</p>
+        <button>BUY IT NOW!</button>
+      </div>
+      <div class="seller-details">
+        <p class="seller-tile">Seller information</p>
+        <p class="seller">
+          {{work.userName}}
+          <span class="fa fa-star"> {{work.userRating}}</span>
+          <span class="seller-rating"><a href="#RATE-DETAILS"> ({{work.numberOfRatings}})</a></span>
+        </p>
+        <hr class="dotted">
+        <p><a href="#PRIVATE-MESSAGE">Contact seller</a></p>
+        <p><a href="#VISIT-SHOP">Visit Shop</a></p>
+      </div>
     </div>
-    <div class="seller-details">
-      <p class="seller-tile">Seller information</p>
-      <p class="seller">
-        {{work.userName}}
-        <span class="fa fa-star"> {{work.userRating}}</span>
-        <span class="seller-rating"><a href="#RATE-DETAILS"> ({{work.numberOfRatings}})</a></span>
-      </p>
-      <hr class="dotted">
-      <p><a href="#PRIVATE-MESSAGE">Contact seller</a></p>
-      <p><a href="#VISIT-SHOP">Visit Shop</a></p>
-    </div>
+
   </div>
 
+  <div class="ads-long-decription">Here is the loooooong description of the aaaaaaaaads</div>
+  
 </div>
-
-<div class="ads-long-decription">Here is the loooooong description of the aaaaaaaaads</div>
