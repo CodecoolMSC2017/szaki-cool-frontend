@@ -37,7 +37,10 @@ export class MessagesComponent implements OnInit {
   convertMessage(that, messages) {
     messages.forEach(message => {
       console.log(message);
-      message.date = new Date(message.date);      
+      message.date = new Date(message.date);
+      this.getUserName(message.receiverId).subscribe( msg => {
+        message.username = (msg as any).username;
+      })   
       that.messages.push(message);
     });
   }
@@ -47,6 +50,10 @@ export class MessagesComponent implements OnInit {
     console.log(date.toLocaleDateString());
     let dateInString = date.toLocaleDateString() + " " +  date.toLocaleTimeString();
     return dateInString;
+  }
+
+  getUserName(id) {
+    return this.http.get("api/users/" + id);
   }
 
 }

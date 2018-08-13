@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
 
   works;
   show;
+  str: string;
 
   constructor(
     private http: HttpClient,
@@ -28,4 +29,8 @@ export class MainComponent implements OnInit {
     this.http.get("api/works/simple").subscribe((works)=> {this.works = works});
   }
 
+  search() {
+    this.http.get("api/works/search/" + this.str).subscribe((works)=> {this.works = works;
+    console.log(this.works)});
+  }
 }
