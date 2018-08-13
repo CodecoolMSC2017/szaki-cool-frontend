@@ -59,6 +59,9 @@ export class ChatComponent implements OnInit {
       if (message.seen === false) {
         this.sendSeen(message.id);
       }
+      that.getUserName(message.senderId).subscribe( msg => {
+        message.username = (msg as any).username;
+      });
       that.messages.push(message);
     });
   }
@@ -83,7 +86,6 @@ export class ChatComponent implements OnInit {
     parsedMessage.date = new Date(parsedMessage.date);
     this.getUserName(parsedMessage.senderId).subscribe( msg => {
       parsedMessage.username = (msg as any).username;
-      console.log(parsedMessage);
     })
     this.messages.push(parsedMessage);
   }
