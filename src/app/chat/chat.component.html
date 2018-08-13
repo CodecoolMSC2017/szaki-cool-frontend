@@ -1,30 +1,22 @@
 <div class="frame">
 
-	<div class="send-new-message">
-    <div [(ngModel)]="destinationId"><span class="send-to">Send to:</span>{{myPartnerName}}</div>
-		<textarea [(ngModel)]="chatText"></textarea>
-		<p align="center"><button (click)="sendNewMessage()">SEND</button></p>
-	</div>
-
 	<div class="message-history">
 		<div class="message-history-title">Message history</div>
     <hr>
-<!--
-		<div class="message-in" *ngFor="let message of messages">
-			<div class="message-sender-in">{{message.senderId}}<div class="message-date">{{message.date | date:'yyyy.MM.dd - HH:mm:ss'}}</div></div>
-			<div class="message-text-in"><div class="message-text-arrow-in"></div>{{message.message}}</div>
-			<div class="clear-both"></div>
-    </div>
--->
 		<div *ngFor="let message of messages" [class.message-out]="message.senderId != destinationId" [class.message-in]="message.senderId == destinationId">
       <div [class.message-sender-out]="message.senderId != destinationId" [class.message-sender-in]="message.senderId == destinationId">{{message.username}}<div class="message-date">{{message.date | date:'yyyy.MM.dd - HH:mm:ss'}}</div></div>
       <div [class.message-text-out]="message.senderId != destinationId" [class.message-text-in]="message.senderId == destinationId"><div [class.message-text-arrow-out]="message.senderId != destinationId" [class.message-text-arrow-in]="message.senderId == destinationId"></div>{{message.message}}</div>
       <div class="clear-both"></div>
     </div>
-
   </div>
-  
 	<div style="clear:both"></div>
+
+  <div class="send-new-message">
+    <div><span class="send-to">Send to:</span>{{myPartnerName}}</div>
+    <textarea [(ngModel)]="chatText"></textarea>
+    <p align="center"><button (click)="sendNewMessage()">SEND</button></p>
+  </div>
+
 </div>
 
 

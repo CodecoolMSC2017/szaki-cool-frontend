@@ -26,25 +26,26 @@ export class ChatComponent implements OnInit {
   myPartnerName;
 
   ngOnInit() {
+    let that = this;
+    this.stompClient = this.ws.getStompClient();
+    this.stompClient.connect({}, connected => { 
+      this.init();
+      this.stompClient.subscribe("/user/reply/", (message) => {
+        that.messegeReceived(message);
+      });
+    });
+    
+  }
+
+  init() {
     this.destinationId = +this.route.snapshot.paramMap.get('id'); 
     let myId = JSON.parse(sessionStorage.getItem("user")).id;
     this.http.get('api/conversation/' + myId + "/" + this.destinationId).subscribe(messages => {
       this.convertMessage(this, messages);
     });
-    /*
-    this.ws.connect(this.messegeReceived);
-    //this.messages = this.ws.messages;   
-    */
-    let that = this;
-    this.stompClient = this.ws.getStompClient();
-    this.stompClient.connect({}, connected => { 
-    this.stompClient.subscribe("/user/reply/", (message) => {
-      that.messegeReceived(message);
-    });
-    });
     this.getUserName(this.destinationId).subscribe( msg => {
       this.myPartnerName = (msg as any).username;
-    })
+    });
   }
 
   getUserName(id) {
@@ -109,9 +110,6 @@ export class ChatComponent implements OnInit {
     else {
       this.ownMessage = false;
     }
-
-    console.log("-------");
-    console.log('Sender ID: ' + message.senderId + ', Is mine: ' + this.ownMessage + ', Msg: ' +  message.message);
   }
 
 }
