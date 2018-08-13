@@ -16,6 +16,7 @@ export class AdsviewComponent implements OnInit {
   bigPicEl;
   bigPic;
 
+
   constructor(
     private router: Router,
     private http : HttpClient,
@@ -29,13 +30,12 @@ export class AdsviewComponent implements OnInit {
 
     this.work = this.service.work;
     this.requestWork();
-    this.work.userRating = Math.round(this.work.userRating * 10) / 10; 
+    this.work.userRating = Math.round(this.work.userRating * 10) / 10;
   }
 
   requestWork() {
     this.http.get("api/works/works/" + this.work.id).subscribe((work)=>{
       this.work = work;
-      console.log(work);
       this.bigPic = this.work.links[0]
     });
   }
