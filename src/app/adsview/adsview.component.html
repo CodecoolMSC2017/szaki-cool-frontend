@@ -17,15 +17,15 @@
         <p class="ads-tile">{{work.title}}</p>
         <p class="ads-short-decription">{{work.description}}</p>
         <p class="ads-price">{{work.currency.currency}} {{work.price}}</p>
-        <p class="ads-guarantee">Seller Guarantees {{work.guarantee_value}} {{work.guarantee_length.guarantee_length}}</p>
+        <p class="ads-guarantee">Seller Guarantees: {{work.guarantee_value}} {{work.guarantee_length.guarantee_length}}(s)</p>
         <button>BUY IT NOW!</button>
       </div>
       <div class="seller-details">
         <p class="seller-tile">Seller information</p>
         <p class="seller">
-          {{work.userName}}
-          <span class="fa fa-star"> {{work.userRating}}</span>
-          <span class="seller-rating"><a href="#RATE-DETAILS"> ({{work.numberOfRatings}})</a></span>
+          <!--{{work.userName}}-->
+          <span class="fa fa-star"><!-- {{work.userRating}}--></span>
+          <span class="seller-rating"><a href="#RATE-DETAILS"><!-- ({{work.numberOfRatings}})--></a></span>
         </p>
         <hr class="dotted">
         <p><a href="#PRIVATE-MESSAGE">Contact seller</a></p>
@@ -35,6 +35,6 @@
 
   </div>
 
-  <div class="ads-long-decription">Here is the loooooong description of the aaaaaaaaads</div>
+  <div class="ads-long-decription">{{work.description}}</div>
   
 </div>
