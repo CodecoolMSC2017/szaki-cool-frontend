@@ -17,7 +17,7 @@ export class WebsocketService {
 
   messages = [];
 
-  connect() {
+  connect(callback) {
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     let that = this;
@@ -27,10 +27,15 @@ export class WebsocketService {
   }
 
   onConnect() {
+    let that = this;
     this.stompClient.subscribe("/user/reply/", (message) => {
-      //that.messages.push(JSON.parse(message.body));
-      this.messegeReceived(message);
+      that.messages.push(JSON.parse(message.body));
     });
+  }
+
+  getStompClient() {
+    let ws = new SockJS(this.serverUrl);
+    return Stomp.over(ws);
   }
 
   messegeReceived(message) {
@@ -45,5 +50,9 @@ export class WebsocketService {
 
   getMessages() {
     return this.messages;
+  }
+
+  updateMessage(id) {
+    this.stompClient.send('/app/updateMessage' , {}, {"id":id});
   }
 }

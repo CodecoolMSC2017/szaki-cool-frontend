@@ -1,0 +1,47 @@
+<head>
+        <style>
+            .a {
+                background-color: red;
+                width: 200px;
+                height: 200px;
+                position: relative;
+            }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", init);
+            let startTime = 0;
+            let endTime = 0;
+            let el;
+            function init() {
+                el = document.getElementById("box");
+                el.addEventListener("mousedown", clicked);
+                document.addEventListener("keypress", clicked);
+                start();
+            }
+            function start() {
+                setTimeout(changeColor, getRandomNumber());
+            } 
+            function getRandomNumber() {
+                return Math.floor(Math.random() * 2000) + 500;
+            }
+            function changeColor() {
+                startTime = new Date().getTime();
+                el.style.background = "green";
+            }
+            function reserTimer() {
+                el.innerHTML = "";
+                el.style.background = "red";
+                setTimeout(changeColor, getRandomNumber());
+            }
+            function clicked() {
+                endTime = new Date().getTime();
+                el.innerHTML = endTime - startTime;
+                setTimeout(reserTimer, 1000);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="parrent">
+            <div id="box" class="a"></div>
+        </div>
+    </body>

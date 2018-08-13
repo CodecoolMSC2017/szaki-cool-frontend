@@ -4,4 +4,5 @@ export class Message {
     message: string;
     date: any;
     seen: boolean;
+    id: number;
 }
