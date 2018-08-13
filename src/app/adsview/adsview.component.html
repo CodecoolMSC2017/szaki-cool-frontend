@@ -23,12 +23,12 @@
       <div class="seller-details">
         <p class="seller-tile">Seller information</p>
         <p class="seller">
-          <!--{{work.userName}}-->
-          <span class="fa fa-star"><!-- {{work.userRating}}--></span>
-          <span class="seller-rating"><a href="#RATE-DETAILS"><!-- ({{work.numberOfRatings}})--></a></span>
+          {{work.contractor.username}}
+          <span class="fa fa-star">{{work.userRating}}</span>
+          <span class="seller-rating"><a href="#RATE-DETAILS">({{work.numberOfRatings}})</a></span>
         </p>
         <hr class="dotted">
-        <p><a href="#PRIVATE-MESSAGE">Contact seller</a></p>
+        <p><a routerLink="/chat/{{work.contractor.id}}">Contact seller</a></p>
         <p><a href="#VISIT-SHOP">Visit Shop</a></p>
       </div>
     </div>

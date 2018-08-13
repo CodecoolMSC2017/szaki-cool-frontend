@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AdsdetailsService } from '../adsdetails.service';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdsviewComponent implements OnInit {
 
-  work;
+  @Input() work;
+  works;
   smallPicUrl;
   bigPicEl;
   bigPic;
@@ -32,11 +33,9 @@ export class AdsviewComponent implements OnInit {
   }
 
   requestWork() {
-    this.http.get("api/works/" + this.work.id).subscribe((work)=>{
+    this.http.get("api/works/works/" + this.work.id).subscribe((work)=>{
       this.work = work;
-      console.log("------");
       console.log(work);
-      console.log("------");
       this.bigPic = this.work.links[0]
     });
   }
@@ -44,6 +43,10 @@ export class AdsviewComponent implements OnInit {
 
   changeBigPic(pic) {
     this.bigPic = pic;
+  }
+
+  getAds() {
+    this.http.get("api/works/works/id").subscribe((works)=> {this.works = works});
   }
 
 }
