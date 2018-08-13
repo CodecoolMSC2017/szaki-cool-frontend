@@ -67,9 +67,6 @@ export class ChatComponent implements OnInit {
     else {
       this.ownMessage = false;
     }
-
-    console.log("-------");
-    console.log('Sender ID: ' + message.senderId + ', Is mine: ' + this.ownMessage + ', Msg: ' +  message.message);
   }
 
 }
