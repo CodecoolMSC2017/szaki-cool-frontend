@@ -46,6 +46,7 @@ export class ChatComponent implements OnInit {
     message.message = this.chatText;
     message.receiverId = this.destinationId;
     message.senderId = JSON.parse(sessionStorage.getItem("user")).id;
+    message.seen = false;
     this.ws.sendMessage(message);
     this.chatText = "";
   }
