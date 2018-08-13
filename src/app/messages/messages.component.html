@@ -1,19 +1,19 @@
 <div class="frame">
-  <table>
-    <tr> 
-      <td>From</td>
-      <td>Message</td>
-      <td>Date</td>
-    </tr>
-    <tr *ngFor="let message of messages" (click)=navigate(message)>
-      <td>{{message.senderId}}</td>
-      <td>{{message.message}}</td>
-      <td>
-        <div class="date">
-            <span>{{formatDate(message.date)}}</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
 
+  <div class="messages-table-header">
+    <div class="messages-table-icon">&nbsp;</div>
+    <div class="messages-table-from center">From</div>
+    <div class="messages-table-message center">Message</div>
+    <div class="messages-table-date center">Date</div>
+  </div>
+  
+  <a *ngFor="let message of messages" (click)=navigate(message)>
+    <div class="messages-table-record">
+      <div class="messages-table-icon"><i class="fa fa-envelope fa-1x"></i></div>
+      <div class="messages-table-from">{{message.senderId}}</div>
+      <div class="messages-table-message">{{message.message}}</div>
+      <div class="messages-table-date"><small>{{message.date | date:'yyyy.MM.dd - HH:mm:ss'}}</small></div>
+    </div>
+  </a>
+
+</div>

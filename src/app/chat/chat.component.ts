@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit {
   chatText;
   destinationId;
   messages = [];
+  ownMessage: boolean;
 
   ngOnInit() {
     this.destinationId = +this.route.snapshot.paramMap.get('id');
@@ -45,6 +46,7 @@ export class ChatComponent implements OnInit {
     message.message = this.chatText;
     message.receiverId = this.destinationId;
     message.senderId = JSON.parse(sessionStorage.getItem("user")).id;
+    message.seen = false;
     this.ws.sendMessage(message);
     this.chatText = "";
   }
@@ -53,6 +55,22 @@ export class ChatComponent implements OnInit {
     if (event.key === "Enter") {
       this.sendMessage();
     }
+  }
+
+  sendNewMessage() {
+      this.sendMessage();
+  }
+
+  isOwnMessage(message) {
+    if (message.senderId == 1) {
+      this.ownMessage = true;
+    }
+    else {
+      this.ownMessage = false;
+    }
+
+    console.log("-------");
+    console.log('Sender ID: ' + message.senderId + ', Is mine: ' + this.ownMessage + ', Msg: ' +  message.message);
   }
 
 }
