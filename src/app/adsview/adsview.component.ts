@@ -16,6 +16,7 @@ export class AdsviewComponent implements OnInit {
   smallPicUrl;
   bigPicEl;
   bigPic;
+  isContactValid = true;
 
 
   constructor(
@@ -45,11 +46,19 @@ export class AdsviewComponent implements OnInit {
   getWorkDetailDto(){
     this.http.get('api/works/details/' + this.work.id).subscribe(workDetails => {
       this.workDetails = workDetails;
+      if (this.workDetails.userId === JSON.parse(sessionStorage.getItem('user')).id) {
+        this.isContactValid = false;
+      }
     });
   }
 
 
   changeBigPic(pic) {
     this.bigPic = pic;
+  }
+
+  contactable() {
+    if (this.isContactValid) { return true; } else { return false; }
+
   }
 }
