@@ -4,7 +4,7 @@
     <div class="featured-work-pic" (click)="navigateDetailedView()"><img src="{{imglink}}"></div>
     <div class="featured-work-details">
       <div class="featured-work-owner"><a href="#USER-DETAILS"><img src="{{profileImage}}"> {{work.userName}}</a></div>
-      <div class="featured-work-text"><a href="#WORK-DETAILS">{{work.description}}</a></div>
+      <div class="featured-work-text" (click)="navigateDetailedView()">{{work.description.slice(0,100)}} ...</div>
       <div class="featured-work-rate">
         <span class="fa fa-star"> {{work.userRating}}</span>
         <span class="featured-work-total-rates"><a href="#RATE-DETAILS"> ({{work.numberOfRatings}})</a></span>

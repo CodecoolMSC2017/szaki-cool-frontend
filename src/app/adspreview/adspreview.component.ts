@@ -22,7 +22,7 @@ export class AdspreviewComponent implements OnInit {
 
   ngOnInit() {
     this.imglink = "api/pics/" + this.work.workImgUrl;  
-    this.profileImage = "api/pics/" + this.work.userImgUrl;    
+    this.profileImage = "api/pics/" + this.work.userImgUrl;  
   }
 
   loggedin() {
