@@ -20,28 +20,28 @@ export class ChatComponent implements OnInit {
   chatText;
   destinationId;
   messages = [];
-  stompClient;
   ownMessage;
   myName;
   myPartnerName;
+  typeStatus :boolean;
+  myId;
 
   ngOnInit() {
-    let that = this;
-    this.stompClient = this.ws.getStompClient();
-    this.stompClient.connect({}, connected => { 
-      this.init();
-      this.stompClient.subscribe("/user/reply/", (message) => {
-        that.messegeReceived(message);
-      });
-    });
     
+    this.init();
+    this.ws.getMessage().subscribe( message=>{
+      this.messegeReceived(message);
+    });
+    this.ws.getTypeStatus().subscribe( message=> {
+      this.typeStatus = (JSON.parse(message.body)).typing;
+    })
   }
 
   init() {
     this.destinationId = +this.route.snapshot.paramMap.get('id'); 
-    let myId = JSON.parse(sessionStorage.getItem("user")).id;
-    this.http.get('api/conversation/' + myId + "/" + this.destinationId).subscribe(messages => {
-      this.convertMessage(this, messages);
+    this.myId = JSON.parse(sessionStorage.getItem("user")).id;
+    this.http.get('api/conversation/' + this.myId + "/" + this.destinationId).subscribe(messages => {
+      this.addMessageHistory(messages);
     });
     this.getUserName(this.destinationId).subscribe( msg => {
       this.myPartnerName = (msg as any).username;
@@ -52,18 +52,27 @@ export class ChatComponent implements OnInit {
     return this.http.get("api/users/" + id);
   }
 
-  convertMessage(that, messages) {
+  addMessageHistory(messages) {
     messages.forEach(message => {
-      console.log(message);
-      message.date = new Date(message.date);
-      if (message.seen === false) {
-        this.sendSeen(message.id);
-      }
-      that.getUserName(message.senderId).subscribe( msg => {
-        message.username = (msg as any).username;
-      });
-      that.messages.push(message);
+      this.convertMessage(message);
     });
+  }
+
+  messegeReceived(message) {
+    let parsedMessage = JSON.parse(message.body);
+    this.convertMessage(parsedMessage);
+  }
+
+  convertMessage(parsedMessage) {
+    let receiverId = parsedMessage.receiverId;  
+    if (receiverId == this.myId) {
+      this.ws.sendSeen(parsedMessage);
+    }
+    parsedMessage.date = new Date(parsedMessage.date);
+    this.getUserName(parsedMessage.senderId).subscribe( msg => {
+      parsedMessage.username = (msg as any).username;
+    })
+    this.messages.push(parsedMessage);
   }
 
   sendMessage() {
@@ -73,31 +82,34 @@ export class ChatComponent implements OnInit {
     message.receiverId = this.destinationId;
     message.senderId = JSON.parse(sessionStorage.getItem("user")).id;
     message.seen = false;
-    //this.ws.sendMessage(message);
-    this.stompClient.send('/app/lobby' ,{}, JSON.stringify(message));
+    message.type = "message";
+    this.ws.sendMessage(message);
     this.chatText = "";
   }
 
-  messegeReceived(message) {
-    let parsedMessage = JSON.parse(message.body);
-    if (parsedMessage.receiverId != this.destinationId) {
-      this.sendSeen(parsedMessage);
-    }
-    parsedMessage.date = new Date(parsedMessage.date);
-    this.getUserName(parsedMessage.senderId).subscribe( msg => {
-      parsedMessage.username = (msg as any).username;
-    })
-    this.messages.push(parsedMessage);
+  sendType(status) {
+    let message : any = {};
+    message.type = "typing";
+    message.senderId = this.myId;
+    message.receiverId = this.destinationId;
+    message.typing = status;
+    this.ws.sendTypeStatus(message);
   }
 
-  sendSeen(message) {
-    this.stompClient.send('/app/updateMessage' , {}, JSON.stringify(message));
-  }
-
-
+  
   keyDown(event: KeyboardEvent) {
+    console.log(event);
     if (event.key === "Enter") {
       this.sendMessage();
+      this.sendType(false);
+    }
+    else {
+      if (this.chatText != "") {
+        this.sendType(true);
+      }
+      else {
+        this.sendType(false);
+      }
     }
   }
 

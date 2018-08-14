@@ -5,4 +5,5 @@ export class Message {
     date: any;
     seen: boolean;
     id: number;
+    type: string;
 }
