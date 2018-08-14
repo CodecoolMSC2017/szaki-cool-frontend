@@ -13,7 +13,8 @@
 
   <div class="send-new-message">
     <div><span class="send-to">Send to:</span>{{myPartnerName}}</div>
-    <textarea [(ngModel)]="chatText"></textarea>
+    <textarea (keyup)="keyDown($event)" [(ngModel)]="chatText"></textarea>
+    <p *ngIf="typeStatus">your partner is typing</p>
     <p align="center"><button (click)="sendNewMessage()">SEND</button></p>
   </div>
 

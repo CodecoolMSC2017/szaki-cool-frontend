@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProfileComponent} from './profile/profile.component';
 import { HttpClient } from '@angular/common/http';
+import { WebsocketService } from './websocket.service';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +10,40 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private ws: WebsocketService) {}
 
   ngOnInit() {
     this.getAds();
     console.log(this.works);
+    this.ws.connect().subscribe(()=> {
+      this.ws.getNumberOfUnreadedMessages().subscribe( msg => {
+        this.unreadmessages = JSON.parse(msg.body);
+      })
+    })
+    this.initWs();
   }
-
+  stompclient;
   title = 'SzakiCool Website';
   login = false;
   isLoggedin: boolean;
   works;
   show;
   str: string;
+  unreadmessages;
+
+  handlePush() {
+
+  }
   
+  initWs() {
+    let that = this;
+    this.stompclient.connect({}, connected=> {
+      this.stompclient.subscribe("/user/unreadMessages/", (msg) => {
+        that.unreadmessages = msg;
+        console.log(msg);
+      })
+    })
+  }
 
   loginClicked() {
     this.login = true;
