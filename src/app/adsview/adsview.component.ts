@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class AdsviewComponent implements OnInit {
 
   @Input() work;
-  works;
+  @Input() works;
+  workDetails;
   smallPicUrl;
   bigPicEl;
   bigPic;
@@ -30,13 +31,20 @@ export class AdsviewComponent implements OnInit {
 
     this.work = this.service.work;
     this.requestWork();
-    this.work.userRating = Math.round(this.work.userRating * 10) / 10;
+    this.getWorkDetailDto();
   }
 
   requestWork() {
     this.http.get("api/works/works/" + this.work.id).subscribe((work)=>{
       this.work = work;
-      this.bigPic = this.work.links[0]
+      this.bigPic = this.work.links[0];
+      this.work.userRating = Math.round(this.work.userRating * 10) / 10;
+    });
+  }
+
+  getWorkDetailDto(){
+    this.http.get('api/works/details/' + this.work.id).subscribe(workDetails => {
+      this.workDetails = workDetails;
     });
   }
 
@@ -44,9 +52,4 @@ export class AdsviewComponent implements OnInit {
   changeBigPic(pic) {
     this.bigPic = pic;
   }
-
-  getAds() {
-    this.http.get("api/works/works/id").subscribe((works)=> {this.works = works});
-  }
-
 }
