@@ -8,6 +8,7 @@ import { MainComponent} from '../main/main.component';
 import { ProfileComponent} from '../profile/profile.component';
 import { AdsviewComponent} from '../adsview/adsview.component';
 import { AdslistComponent } from '../adslist/adslist.component';
+import { AdseditComponent } from '../adsedit/adsedit.component';
 import { FileuploadComponent } from '../fileupload/fileupload.component';
 import { CookiepolicyComponent } from '../cookiepolicy/cookiepolicy.component';
 import { ChatComponent } from '../chat/chat.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'adsview', component: AdsviewComponent},
   { path: 'adslist', component: AdslistComponent},
+  { path: 'adsedit', component: AdseditComponent},
   { path: 'file', component: FileuploadComponent},
   { path: 'cookiepolicy', component: CookiepolicyComponent},
   { path: 'chat/:id', component: ChatComponent},
