@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import { Message } from './message';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,45 +14,79 @@ export class WebsocketService {
 
   private serverUrl = 'http://localhost:4200/api/socket';
   private stompClient;
+  private connectObservable = new Subject<any>();
+  private messageSource = new Subject<any>();
+  private unreadedMessages = new Subject<any>();
+  private typeStatus = new Subject<any>();
+  message$ = this.messageSource.asObservable();
+  connect$ = this.connectObservable.asObservable();
+  unread$ = this.unreadedMessages.asObservable();
+  type$ = this.typeStatus.asObservable();
 
-  messages = [];
-
-  connect(callback) {
+  init() {
+    let that = this;
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
-    let that = this;
     this.stompClient.connect({}, connected => {
-      that.onConnect();
+      this.connectObservable.next();
+      this.stompClient.subscribe("/user/reply/", (message) => {
+        let parsedMessage = JSON.parse(message.body);
+        if (parsedMessage.type == "message") {
+          console.log("type message");
+          that.putMessage(message);
+        }
+
+        else if (parsedMessage.type == "typing") {
+          console.log("type typing");
+          that.putType(message);
+
+        }
+        else {
+          console.log("type other");
+          that.putUnreadCount(message);
+      }});
     });
   }
 
-  onConnect() {
-    let that = this;
-    this.stompClient.subscribe("/user/reply/", (message) => {
-      that.messages.push(JSON.parse(message.body));
-    });
+  connect() {
+    this.init();
+    return this.connectObservable;
+  }
+  private putType(message) {
+    this.typeStatus.next(message);
   }
 
-  getStompClient() {
-    let ws = new SockJS(this.serverUrl);
-    return Stomp.over(ws);
+  private putMessage(message) {
+    this.messageSource.next(message);
   }
 
-  messegeReceived(message) {
-    let parsedMessage : Message = JSON.parse(message.body);
-    parsedMessage.date = new Date(parsedMessage.date);
-    this.messages.push(parsedMessage);
+  private putUnreadCount(message) {
+    this.unreadedMessages.next(message);
   }
 
-  sendMessage(message: Message) {
-    this.stompClient.send('/app/lobby' ,{}, JSON.stringify(message));
+  getMessage() {
+    return this.messageSource;
   }
 
-  getMessages() {
-    return this.messages;
+  getTypeStatus() {
+    return this.typeStatus;
   }
 
-  updateMessage(id) {
-    this.stompClient.send('/app/updateMessage' , {}, {"id":id});
+  getNumberOfUnreadedMessages() {
+    return this.unreadedMessages;
   }
+
+  sendMessage(message) {
+    this.stompClient.send("/app/lobby", {},JSON.stringify(message));
+  }
+
+  sendSeen(message) {
+    message.date = 0;
+    this.stompClient.send('/app/updateMessage' , {}, JSON.stringify(message));
+  }
+
+  sendTypeStatus(message) {
+    this.stompClient.send('/app/typing', {}, JSON.stringify(message));
+  }
+
 }

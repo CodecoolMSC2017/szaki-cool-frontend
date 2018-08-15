@@ -1,3 +1,16 @@
+.tooltip {
+  border: 1px solid black;
+  width: 260px;
+  position: absolute;
+  text-align: center;
+  margin-left: 108px;
+  margin-top: -35px;
+  background-color: darkcyan;
+  border-radius: 4px;
+  height: 20px;
+  color: white;
+}
+
 .current-ads-grid {
     display: grid;
     padding: 10px;
@@ -52,8 +65,8 @@
     background-color: lightgrey;
     border: 1px solid grey;
 }
-.seller-details a:link, 
-.seller-details a:active, 
+.seller-details a:link,
+.seller-details a:active,
 .seller-details a:visited {
 	color: grey;
 }
@@ -73,7 +86,7 @@
 .seller {
 }
 .seller-rating {
-    
+
 }
 .fa-star {
 	color: #ffbf00;

@@ -11,10 +11,12 @@ import { HttpClient } from '@angular/common/http';
 export class AdsviewComponent implements OnInit {
 
   @Input() work;
-  works;
+  @Input() works;
+  workDetails;
   smallPicUrl;
   bigPicEl;
   bigPic;
+  isContactValid = true;
 
 
   constructor(
@@ -30,13 +32,24 @@ export class AdsviewComponent implements OnInit {
 
     this.work = this.service.work;
     this.requestWork();
-    console.log(this.work);
+    this.getWorkDetailDto();
+
   }
 
   requestWork() {
     this.http.get("api/works/works/" + this.work.id).subscribe((work)=>{
       this.work = work;
-      this.bigPic = this.work.links[0]
+      this.bigPic = this.work.links[0];
+      this.work.userRating = Math.round(this.work.userRating * 10) / 10;
+    });
+  }
+
+  getWorkDetailDto(){
+    this.http.get('api/works/details/' + this.work.id).subscribe(workDetails => {
+      this.workDetails = workDetails;
+      if (this.workDetails.userId === JSON.parse(sessionStorage.getItem('user')).id) {
+        this.isContactValid = false;
+      }
     });
   }
 
@@ -45,8 +58,8 @@ export class AdsviewComponent implements OnInit {
     this.bigPic = pic;
   }
 
-  getAds() {
-    this.http.get("api/works/works/id").subscribe((works)=> {this.works = works});
-  }
+  contactable() {
+    if (this.isContactValid) { return true; } else { return false; }
 
+  }
 }
