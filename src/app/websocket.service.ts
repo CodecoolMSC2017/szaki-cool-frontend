@@ -64,6 +64,7 @@ export class WebsocketService {
     this.unreadedMessages.next(message);
   }
 
+
   getMessage() {
     return this.messageSource;
   }
@@ -81,7 +82,6 @@ export class WebsocketService {
   }
 
   sendSeen(message) {
-    message.date = 0;
     this.stompClient.send('/app/updateMessage' , {}, JSON.stringify(message));
   }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProfileComponent} from './profile/profile.component';
 import { HttpClient } from '@angular/common/http';
 import { WebsocketService } from './websocket.service';
+import { UtilityService } from './utility.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,15 @@ import { WebsocketService } from './websocket.service';
 })
 export class AppComponent {
 
-  constructor(private http: HttpClient, private ws: WebsocketService) {}
+  constructor(
+    private http: HttpClient,
+    private ws: WebsocketService,
+    private utility: UtilityService) {}
 
   ngOnInit() {
+    this.unreadmessages = this.utility.getMessages();
     this.getAds();
-    console.log(this.works);
-    this.ws.connect().subscribe(()=> {
-      this.ws.getNumberOfUnreadedMessages().subscribe( msg => {
-        this.unreadmessages = JSON.parse(msg.body);
-      })
-    })
-    this.initWs();
+    this.ws.connect().subscribe(this.subscribeCallback.bind(this));
   }
   stompclient;
   title = 'SzakiCool Website';
@@ -31,8 +30,13 @@ export class AppComponent {
   str: string;
   unreadmessages;
 
-  handlePush() {
-
+  subscribeCallback() {
+    console.log("sssssssssssssssssssssssssssss");
+    this.ws.getNumberOfUnreadedMessages().subscribe( msg => {
+      this.utility.numberOfUnreadedMessages = JSON.parse(msg.body);
+      console.log("sssss" + this.unreadmessages);
+      console.log("aaaaaa" + this.utility.numberOfUnreadedMessages);
+    })
   }
   
   initWs() {
