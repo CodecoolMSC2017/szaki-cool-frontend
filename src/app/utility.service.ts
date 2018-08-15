@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from '../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,18 +9,16 @@ export class UtilityService {
 
   constructor(private http: HttpClient) { }
 
-  numberOfUnreadedMessages;
+  private loggedInObservable = new Subject<any>();
+  leggedIn$ = this.loggedInObservable.asObservable();
 
 
-  getMessages() {
-    
-    return this.numberOfUnreadedMessages;
+  loggedin() {
+    this.loggedInObservable.next();
   }
 
-  RequestMsg(userId) {
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    this.http.get('api/unreadMessage/' + userId).subscribe(msg=> {
-      this.numberOfUnreadedMessages = msg;
-    });
+  loginSucces() {
+    return this.loggedInObservable;
   }
+  
 }

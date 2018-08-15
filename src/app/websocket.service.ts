@@ -28,7 +28,6 @@ export class WebsocketService {
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     this.stompClient.connect({}, connected => {
-      this.connectObservable.next();
       this.stompClient.subscribe("/user/reply/", (message) => {
         let parsedMessage = JSON.parse(message.body);
         if (parsedMessage.type == "message") {
@@ -45,13 +44,18 @@ export class WebsocketService {
           console.log("type other");
           that.putUnreadCount(message);
       }});
+      this.connectObservable.next();
     });
   }
 
   connect() {
-    this.init();
     return this.connectObservable;
   }
+
+  disconnect() {
+    this.stompClient = null;
+  }
+
   private putType(message) {
     this.typeStatus.next(message);
   }
@@ -88,5 +92,4 @@ export class WebsocketService {
   sendTypeStatus(message) {
     this.stompClient.send('/app/typing', {}, JSON.stringify(message));
   }
-
 }

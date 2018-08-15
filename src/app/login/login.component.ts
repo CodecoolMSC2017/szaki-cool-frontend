@@ -4,6 +4,8 @@ import { AuthService } from '../auth.service';
 import { LoginDetails } from '../login-details';
 import { Route, Router } from '@angular/router';
 import { UtilityService } from '../utility.service';
+import { WebsocketService } from '../websocket.service';
+import { Subject } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService, 
     private router: Router,
-    private utility: UtilityService
+    private utility: UtilityService,
+    private ws : WebsocketService
   ) { }
 
   loginDetails: LoginDetails = new LoginDetails();
@@ -33,10 +36,12 @@ export class LoginComponent implements OnInit {
     this.authService.getAuth(this.loginDetails).subscribe(user => {
       sessionStorage.setItem('user', JSON.stringify(user));
       this.loggedin = true;
-      this.utility.RequestMsg(user.id);
+      this.utility.loggedin();
       this.router.navigate(["/main"]);
     }, error => alert(error.message));
   }
+
+  
 
 
   keyDown(event: KeyboardEvent) {
