@@ -1,6 +1,7 @@
 .tooltip {
   border: 1px solid black;
   width: 260px;
+  transition: .5s ease;
   position: absolute;
   text-align: center;
   margin-left: 108px;
