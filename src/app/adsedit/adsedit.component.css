@@ -1,0 +1,72 @@
+.current-ads-grid {
+    display: grid;
+    padding: 10px;
+    grid-gap: 20px;
+    grid-template-columns: 500px auto;
+}
+
+.ads-pics {
+    padding: 10px;
+    background-color: lightgrey;
+    border: 1px solid grey;
+    height: auto;
+}
+
+.details {
+    height: auto;
+}
+.ads-details {
+    padding: 10px;
+    background-color: lightgrey;
+    border: 1px solid grey;
+}
+.ads-tile {
+    margin: 0px;
+    font-size: 1.35em;
+    font-weight: bold;
+}
+.ads-short-decription {}
+.ads-price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.ads-guarantee {}
+.seller-details {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: lightgrey;
+    border: 1px solid grey;
+}
+
+.seller-tile {
+    margin: 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.ads-long-decription {
+    margin: 0px 10px 10px 10px;
+    padding: 10px;
+    background-color: lightgrey;
+    border: 1px solid grey;
+    height: auto;
+}
+input[type=text], input[type=email], input[type=password] {
+    height: 30px;
+    width: auto;
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+select {
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+}

@@ -20,7 +20,7 @@ import { AdslistComponent } from './adslist/adslist.component';
 import { CookiepolicyComponent } from './cookiepolicy/cookiepolicy.component';
 import { ChatComponent } from './chat/chat.component';
 import { MessagesComponent } from './messages/messages.component';
-import { AdvertiseComponent } from './advertise/advertise.component';
+import { AdseditComponent } from './adsedit/adsedit.component';
 
 
 @NgModule({
@@ -42,7 +42,7 @@ import { AdvertiseComponent } from './advertise/advertise.component';
     CookiepolicyComponent,
     ChatComponent,
     MessagesComponent,
-    AdvertiseComponent
+    AdseditComponent
   ],
   imports: [
     BrowserModule,

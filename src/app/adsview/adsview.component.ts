@@ -33,6 +33,7 @@ export class AdsviewComponent implements OnInit {
     this.work = this.service.work;
     this.requestWork();
     this.getWorkDetailDto();
+
   }
 
   requestWork() {
