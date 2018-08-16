@@ -38,7 +38,7 @@ export class MessagesComponent implements OnInit {
     messages.forEach(message => {
       console.log(message);
       message.date = new Date(message.date);
-      this.getUserName(message.receiverId).subscribe( msg => {
+      this.getUserName(message.senderId).subscribe( msg => {
         message.username = (msg as any).username;
       })   
       that.messages.push(message);
