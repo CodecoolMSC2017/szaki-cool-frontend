@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ProfileComponent} from './profile/profile.component';
 import { HttpClient } from '@angular/common/http';
 import { WebsocketService } from './websocket.service';
-import { UtilityService } from './utility.service';
 import { LoginComponent } from './login/login.component';
 
 @Component({
@@ -14,20 +13,17 @@ export class AppComponent {
 
   constructor(
     private http: HttpClient,
-    private ws: WebsocketService,
-    private utility: UtilityService
+    private ws: WebsocketService
   ) {}
 
   ngOnInit() {
     this.getAds();
-    this.utility.loginSucces().subscribe(()=> {
-      this.ws.init();
-      this.requestMsg(this.user.id);
-    });
-    this.ws.connect().subscribe(this.subscribeCallback.bind(this));
+    this.ws.loginSucces().subscribe(this.subscribeCallback.bind(this));
+    //this.ws.connect().subscribe(this.subscribeCallback.bind(this));
   }
   
-  user = JSON.parse(sessionStorage.getItem("user"));
+  stompClient;
+  user;
   loginSucces;
   title = 'SzakiCool Website';
   login = false;
@@ -38,6 +34,8 @@ export class AppComponent {
   unreadmessages;
 
   subscribeCallback() {
+    this.user = JSON.parse(sessionStorage.getItem("user"));
+    this.requestMsg(this.user.id);
     this.ws.getNumberOfUnreadedMessages().subscribe( msg => {
       this.unreadmessages = JSON.parse(msg.body);
     })

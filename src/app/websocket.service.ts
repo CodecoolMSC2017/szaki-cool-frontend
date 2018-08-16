@@ -14,14 +14,22 @@ export class WebsocketService {
 
   private serverUrl = 'http://localhost:4200/api/socket';
   private stompClient;
-  private connectObservable = new Subject<any>();
   private messageSource = new Subject<any>();
   private unreadedMessages = new Subject<any>();
   private typeStatus = new Subject<any>();
+  private loggedInObservable = new Subject<any>();
+  leggedIn$ = this.loggedInObservable.asObservable();
   message$ = this.messageSource.asObservable();
-  connect$ = this.connectObservable.asObservable();
   unread$ = this.unreadedMessages.asObservable();
   type$ = this.typeStatus.asObservable();
+
+  loggedin() {
+    this.init();
+  }
+
+  loginSucces() {
+    return this.loggedInObservable;
+  }
 
   init() {
     let that = this;
@@ -44,16 +52,14 @@ export class WebsocketService {
           console.log("type other");
           that.putUnreadCount(message);
       }});
-      this.connectObservable.next();
+      this.loggedInObservable.next();  
     });
   }
 
-  connect() {
-    return this.connectObservable;
-  }
-
   disconnect() {
-    this.stompClient = null;
+    this.stompClient.disconnect(()=> {
+      this.stompClient = null;
+    }, {});
   }
 
   private putType(message) {
