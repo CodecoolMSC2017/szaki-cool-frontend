@@ -1,7 +1,6 @@
 <div class="frame">
-
-	<div class="message-history">
-		<div class="message-history-title">Message history</div>
+  <div class="message-history-title">Message history</div>
+	<div class="message-history" #scrollMe [scrollTop]="scrollMe.scrollHeight">
     <hr>
 		<div *ngFor="let message of messages" [class.message-out]="message.senderId != destinationId" [class.message-in]="message.senderId == destinationId">
       <div [class.message-sender-out]="message.senderId != destinationId" [class.message-sender-in]="message.senderId == destinationId">{{message.username}}<div class="message-date">{{message.date | date:'yyyy.MM.dd - HH:mm:ss'}}</div></div>
