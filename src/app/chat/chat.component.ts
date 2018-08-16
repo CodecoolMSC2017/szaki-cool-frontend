@@ -1,15 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { WebsocketService } from '../websocket.service';
 import { Message } from '../message';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
+ 
 
   constructor(
     private ws: WebsocketService,
@@ -26,16 +28,26 @@ export class ChatComponent implements OnInit {
   typeStatus :boolean;
   myId;
 
+  msgSubscription : Subscription;
+  typeSubscription : Subscription;
+
+
   ngOnInit() {
-    
     this.init();
-    this.ws.getMessage().subscribe( message=>{
+    this.msgSubscription = this.ws.getMessage().subscribe( message=>{
       this.messegeReceived(message);
     });
-    this.ws.getTypeStatus().subscribe( message=> {
+    this.typeSubscription = this.ws.getTypeStatus().subscribe( message=> {
       this.typeStatus = (JSON.parse(message.body)).typing;
     })
   }
+
+  ngOnDestroy(): void {
+    this.msgSubscription.unsubscribe();
+    this.typeSubscription.unsubscribe();
+  }
+
+  
 
   init() {
     this.destinationId = +this.route.snapshot.paramMap.get('id'); 
@@ -84,6 +96,7 @@ export class ChatComponent implements OnInit {
     message.seen = false;
     message.type = "message";
     this.ws.sendMessage(message);
+    this.sendType(false);
     this.chatText = "";
   }
 
@@ -98,10 +111,8 @@ export class ChatComponent implements OnInit {
 
   
   keyDown(event: KeyboardEvent) {
-    console.log(event);
     if (event.key === "Enter") {
       this.sendMessage();
-      this.sendType(false);
     }
     else {
       if (this.chatText != "") {
@@ -125,5 +136,4 @@ export class ChatComponent implements OnInit {
       this.ownMessage = false;
     }
   }
-
 }
