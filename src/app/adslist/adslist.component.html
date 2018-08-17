@@ -19,11 +19,11 @@
   </select>
     <br>
     <h3>Price</h3>
-    Min<input type="text" [(ngModel)]="min" value="0" (keyup)="checkMinNumber()">
+    Min<input type="text" [(ngModel)]="min" (keyup)="checkMinNumber()">
     <p *ngIf="minMessage">
         {{ minMessage }}
     </p>
-    Max<input type="text" [(ngModel)]="max" value="10000" (keyup)="checkMaxNumber()" (keyup)="checkPrices()">
+    Max<input type="text" [(ngModel)]="max" (keyup)="checkMaxNumber()" (keyup)="checkPrices()">
     <p *ngIf="maxMessage">
         {{ maxMessage }}
     </p>
@@ -31,11 +31,11 @@
         {{ pricesMessage }}
     </p>
     <h3>Rating</h3>
-    Min<input type="text" [(ngModel)]="minRating" value="0" (keyup)="checkMinRating()">
+    Min<input type="text" [(ngModel)]="minRating" (keyup)="checkMinRating()">
     <p *ngIf="minRatingMessage">
         {{ minRatingMessage }}
     </p>
-    Max<input type="text" [(ngModel)]="maxRating" value="5" (keyup)="checkMaxRating()" (keyup)="checkRatings()">
+    Max<input type="text" [(ngModel)]="maxRating" (keyup)="checkMaxRating()" (keyup)="checkRatings()">
     <p *ngIf="maxRatingMessage">
         {{ maxRatingMessage }}
     </p>
