@@ -9,7 +9,10 @@
   
   <a *ngFor="let message of messages" (click)=navigate(message)>
     <div class="messages-table-record">
-      <div class="messages-table-icon"><i class="fa fa-envelope fa-1x"></i></div>
+      <div class="messages-table-icon">
+        <i *ngIf="!message.seen" class="fa fa-envelope fa-1x"></i>
+        <i *ngIf="message.seen" class="fa fa-envelope-open-o fa-1x"></i>
+      </div>
       <div class="messages-table-from">{{message.username}}</div>
       <div class="messages-table-message">{{message.message}}</div>
       <div class="messages-table-date"><small>{{message.date | date:'yyyy.MM.dd - HH:mm:ss'}}</small></div>

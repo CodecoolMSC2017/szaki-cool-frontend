@@ -22,6 +22,8 @@ button {
 .message-history {
 	margin: 0px 0px 20px 0px;
 	padding: 10px;
+	overflow-y: auto;	
+	height: 20em;
 }
 .message-history-title {
 	font-weight: bold;

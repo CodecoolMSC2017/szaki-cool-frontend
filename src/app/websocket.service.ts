@@ -14,21 +14,28 @@ export class WebsocketService {
 
   private serverUrl = 'http://localhost:4200/api/socket';
   private stompClient;
-  private connectObservable = new Subject<any>();
   private messageSource = new Subject<any>();
   private unreadedMessages = new Subject<any>();
   private typeStatus = new Subject<any>();
+  private loggedInObservable = new Subject<any>();
+  leggedIn$ = this.loggedInObservable.asObservable();
   message$ = this.messageSource.asObservable();
-  connect$ = this.connectObservable.asObservable();
   unread$ = this.unreadedMessages.asObservable();
   type$ = this.typeStatus.asObservable();
+
+  loggedin() {
+    this.init();
+  }
+
+  loginSucces() {
+    return this.loggedInObservable;
+  }
 
   init() {
     let that = this;
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     this.stompClient.connect({}, connected => {
-      this.connectObservable.next();
       this.stompClient.subscribe("/user/reply/", (message) => {
         let parsedMessage = JSON.parse(message.body);
         if (parsedMessage.type == "message") {
@@ -45,13 +52,16 @@ export class WebsocketService {
           console.log("type other");
           that.putUnreadCount(message);
       }});
+      this.loggedInObservable.next();  
     });
   }
 
-  connect() {
-    this.init();
-    return this.connectObservable;
+  disconnect() {
+    this.stompClient.disconnect(()=> {
+      this.stompClient = null;
+    }, {});
   }
+
   private putType(message) {
     this.typeStatus.next(message);
   }
@@ -63,6 +73,7 @@ export class WebsocketService {
   private putUnreadCount(message) {
     this.unreadedMessages.next(message);
   }
+
 
   getMessage() {
     return this.messageSource;
@@ -81,12 +92,10 @@ export class WebsocketService {
   }
 
   sendSeen(message) {
-    message.date = 0;
     this.stompClient.send('/app/updateMessage' , {}, JSON.stringify(message));
   }
 
   sendTypeStatus(message) {
     this.stompClient.send('/app/typing', {}, JSON.stringify(message));
   }
-
 }

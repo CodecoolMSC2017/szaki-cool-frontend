@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProfileComponent} from './profile/profile.component';
 import { HttpClient } from '@angular/common/http';
 import { WebsocketService } from './websocket.service';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +11,20 @@ import { WebsocketService } from './websocket.service';
 })
 export class AppComponent {
 
-  constructor(private http: HttpClient, private ws: WebsocketService) {}
+  constructor(
+    private http: HttpClient,
+    private ws: WebsocketService
+  ) {}
 
   ngOnInit() {
     this.getAds();
-    console.log(this.works);
-    this.ws.connect().subscribe(()=> {
-      this.ws.getNumberOfUnreadedMessages().subscribe( msg => {
-        this.unreadmessages = JSON.parse(msg.body);
-      })
-    })
-    this.initWs();
+    this.ws.loginSucces().subscribe(this.subscribeCallback.bind(this));
+    //this.ws.connect().subscribe(this.subscribeCallback.bind(this));
   }
-  stompclient;
+  
+  stompClient;
+  user;
+  loginSucces;
   title = 'SzakiCool Website';
   login = false;
   isLoggedin: boolean;
@@ -31,19 +33,14 @@ export class AppComponent {
   str: string;
   unreadmessages;
 
-  handlePush() {
-
-  }
-  
-  initWs() {
-    let that = this;
-    this.stompclient.connect({}, connected=> {
-      this.stompclient.subscribe("/user/unreadMessages/", (msg) => {
-        that.unreadmessages = msg;
-        console.log(msg);
-      })
+  subscribeCallback() {
+    this.user = JSON.parse(sessionStorage.getItem("user"));
+    this.requestMsg(this.user.id);
+    this.ws.getNumberOfUnreadedMessages().subscribe( msg => {
+      this.unreadmessages = JSON.parse(msg.body);
     })
   }
+
 
   loginClicked() {
     this.login = true;
@@ -70,5 +67,11 @@ export class AppComponent {
   search() {
     this.http.get("api/works/search/" + this.str).subscribe((works)=> {this.works = works;
     console.log(this.works)});
+  }
+
+  requestMsg(userId) {
+    this.http.get('api/unreadMessage/' + userId).subscribe(msg=> {
+      this.unreadmessages = msg;
+    });
   }
 }
