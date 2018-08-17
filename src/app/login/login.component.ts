@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { LoginDetails } from '../login-details';
 import { Route, Router } from '@angular/router';
+import { WebsocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private authService: AuthService, 
-    private router: Router
+    private router: Router,
+    private ws : WebsocketService
   ) { }
 
   loginDetails: LoginDetails = new LoginDetails();
@@ -31,9 +33,13 @@ export class LoginComponent implements OnInit {
     this.authService.getAuth(this.loginDetails).subscribe(user => {
       sessionStorage.setItem('user', JSON.stringify(user));
       this.loggedin = true;
+      this.ws.loggedin();
       this.router.navigate(["/main"]);
     }, error => alert(error.message));
   }
+
+  
+
 
   keyDown(event: KeyboardEvent) {
     if (event.key === "Enter") {

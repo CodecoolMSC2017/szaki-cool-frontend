@@ -16,7 +16,7 @@
             <ul>
                 <li><a routerLink="/adslist">Advertisements</a></li>
                 <li><a routerLink="/adsedit">Advertise</a></li>
-                <li><a routerLink="/messages">Messages {{unreadmessages}}</a></li>
+                <li><a routerLink="/messages">Messages <span class="msgalert" *ngIf="unreadmessages">({{unreadmessages}})</span></a></li>
             </ul>
         </div>
         <div *ngIf="loggedin()" class="user-pic">
@@ -45,7 +45,7 @@
     <div>
         <h1>New on the Marketplace</h1>
         <div class="marketplace-grid">
-            <app-adspreview [work]="work" *ngFor="let work of works.slice(0,4)">
+            <app-adspreview [work]="work" *ngFor="let work of works.reverse().slice(0,4)">
             </app-adspreview>
         </div>
     </div>
