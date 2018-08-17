@@ -60,12 +60,16 @@ export class AdslistComponent implements OnInit {
   }
 
   checkMaxNumber(): void {
-    for(let i in this.max){
-      if (this.max[i].match(/\d/)) {
-        this.maxMessage = null;
-      } else {
-        this.maxMessage = 'Only numbers';
-        break;
+    if (this.max == null) {
+      this.maxMessage = null;
+    } else {
+      for(let i in this.max){
+        if (this.max[i].match(/\d/)) {
+          this.maxMessage = null;
+        } else {
+          this.maxMessage = 'Only numbers';
+          break;
+        }
       }
     }
   }
@@ -87,16 +91,20 @@ export class AdslistComponent implements OnInit {
   }
 
   checkMaxRating(): void {
-    for(let i in this.maxRating){
-      if (this.maxRating[i].match(/\d/)) {
-        this.maxRatingMessage = null;
-      } else {
-        if(this.maxRating[i] === ".")
-        {
-          continue;
+    if (this.max == null) {
+      this.maxMessage = null;
+    } else {
+      for(let i in this.maxRating){
+        if (this.maxRating[i].match(/\d/)) {
+          this.maxRatingMessage = null;
         } else {
-          this.maxRatingMessage = 'Only numbers or dot';
-          break;
+          if(this.maxRating[i] === ".")
+          {
+            continue;
+          } else {
+            this.maxRatingMessage = 'Only numbers or dot';
+            break;
+          }
         }
       }
     }
@@ -133,6 +141,21 @@ export class AdslistComponent implements OnInit {
   }
 
   advancedSearch() {
+    if(this.category == null || this.category == "") {
+      this.category = null;
+    }
+    if(this.min == null || this.min == "") {
+      this.min = null;
+    }
+    if(this.max == null || this.max == "") {
+      this.max = null;
+    }
+    if(this.minRating == null || this.minRating == "") {
+      this.minRating = null;
+    }
+    if(this.maxRating == null || this.maxRating == "") {
+      this.maxRating = null;
+    }
     this.http.get("api/works/search/" + this.category+"/"+this.min+"/"+this.max+"/"+this.minRating+"/"+this.maxRating).subscribe((works)=> {this.works = works;
       console.log(this.works)});
 
