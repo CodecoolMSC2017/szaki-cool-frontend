@@ -15,28 +15,28 @@
     <div class="details">
       <div class="ads-details">
         <p class="ads-tile">
-          Title: 
-          <input [(ngModel)]="workDetails.workTitle" type="text" value="{{workDetails.workTitle}}">
+          Title:
+          <input [(ngModel)]="addAdvertisement.workTitle" type="text" value="{{addAdvertisement.workTitle}}">
         </p>
         <p class="ads-short-decription">
-          Description: 
-          <textarea [(ngModel)]="workDetails.workDescription">{{workDetails.workDescription}}</textarea>
+          Description:
+          <textarea [(ngModel)]="addAdvertisement.workDescription">{{addAdvertisement.workDescription}}</textarea>
         </p>
         <p class="ads-price">
-          Price: 
+          Price:
           <select>
             <option value="USD">USD</option>
           </select>
-          {{work.currency.currency}} 
-          <input [(ngModel)]="work.price" type="text" value="{{work.price}}">
+          {{addAdvertisement.currency}}
+          <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}">
         </p>
         <p class="ads-guarantee">
-          Seller Guarantees: 
-          <input [(ngModel)]="work.guarantee_value" type="text" value="{{work.guarantee_value}}"> 
+          Seller Guarantees:
+          <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}">
           <select>
             <option value="Year">Year</option>
           </select>
-          {{work.guarantee_length.guarantee_length}}
+          {{addAdvertisement.guarantee_length}}
         </p>
       </div>
     </div>
@@ -44,10 +44,10 @@
   </div>
 
   <div class="ads-long-decription">
-    Description: 
-    <textarea [(ngModel)]="workDetails.workDescription">{{workDetails.workDescription}}</textarea>
+    Description:
+    <textarea [(ngModel)]="addAdvertisement.workDescription">{{addAdvertisement.workDescription}}</textarea>
   </div>
 
-  <p align="center"><button (click)="saveChanges()">SAVE</button></p>  
+  <p align="center"><button (click)="saveChanges()">SAVE</button></p>
 
 </div>
