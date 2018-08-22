@@ -32,7 +32,7 @@ export class AdseditComponent implements OnInit {
       currency: 'USD',
       price: this.addAdvertisement.price,
       guarantee_length: 'Year',
-      guarantee_value: '0',
+      guarantee_value: this.addAdvertisement.guarantee_value,
       category: 'default'
     }).subscribe(console.log);
   }
