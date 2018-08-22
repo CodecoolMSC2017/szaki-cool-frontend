@@ -12,7 +12,7 @@
         <input type="button" value="Upload" (click)="uploadPic()">
     </div>
 
-    <div class="details">
+    <div class="details" (keyup)="checkError()">
       <div class="ads-details">
         <p class="ads-tile">
           Title:
@@ -22,14 +22,16 @@
           Description:
           <textarea [(ngModel)]="addAdvertisement.workDescription">{{addAdvertisement.workDescription}}</textarea>
         </p>
-        <p class="ads-price">
+        <div class="ads-price">
           Price:
           <select>
             <option value="USD">USD</option>
           </select>
           {{addAdvertisement.currency}}
           <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}">
-        </p>
+          <p>{{error.price}}</p>
+        </div>
+        
         <p class="ads-guarantee">
           Seller Guarantees:
           <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}">
@@ -38,6 +40,7 @@
           </select>
           {{addAdvertisement.guarantee_length}}
         </p>
+        <p class="error">{{error.garanteeLength}}</p>
       </div>
     </div>
 
@@ -49,5 +52,11 @@
   </div>
 
   <p align="center"><button (click)="saveChanges()">SAVE</button></p>
+  <div class="error" *ngIf="error">
+    <p class="garanteeLengthError">{{error.garanteeLength}}</p>
+    <p>{{error.price}}</p>
+    <p>{{error.title}}</p>
+    <p>{{error.description}}</p>
+  </div>
 
 </div>

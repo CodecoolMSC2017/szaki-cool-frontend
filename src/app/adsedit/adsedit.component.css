@@ -14,6 +14,7 @@
 
 .details {
     height: auto;
+    position: relative;
 }
 .ads-details {
     padding: 10px;
@@ -29,6 +30,7 @@
 .ads-price {
     font-size: 1.2em;
     font-weight: bold;
+    position: relative;
 }
 .ads-guarantee {}
 .seller-details {
@@ -69,4 +71,11 @@ select {
     border-radius: 5px;
     box-sizing: border-box;
     resize: none;
+}
+
+.error {
+    color: red;
+    margin: 0;
+    position: absolute;
+    bottom: 0.75em;
 }
