@@ -20,10 +20,14 @@ export class AdseditComponent implements OnInit {
     private router: Router) { }
 
     currencies :any;
+    currency;
 
   ngOnInit() {
     this.checkError();
     this.getCurrency();
+  }
+  asd() {
+    console.log(this.currency);
   }
 
   getCurrency() {
@@ -46,7 +50,7 @@ export class AdseditComponent implements OnInit {
       userId: this.getUserIdFromSession(),
       workTitle: this.addAdvertisement.workTitle,
       workDescription: this.addAdvertisement.workDescription,
-      currency: 'USD',
+      currency: this.currency.currency,
       price: this.addAdvertisement.price,
       guarantee_length: 'Year',
       guarantee_value: this.addAdvertisement.guarantee_value,
