@@ -15,21 +15,21 @@ export class ClockComponent implements OnInit, OnDestroy {
   hours = 0;
   minutes = 0;
   seconds = 0;
-  compareDates = new Date();
+  compareDates;
+  endMessage = ' ';
 
   constructor(private service: ClockserviceService) { }
 
   ngOnInit() {
     this.workFull = this.service.workFull;
     this.processDueDate(this.workFull.due_date);
-    this.compareDates.setDate(this.compareDates.getDate() + 7);
+    this.compareDates = this.processDueDate(this.workFull.due_date);
     this.timer = setInterval(() => this.timeRemaining(this.compareDates), 1000);
 
   }
 
-  processDueDate(date) {
-    console.log(date);
-
+  processDueDate(dueDate) {
+    return new Date(dueDate);
   }
 
   timeRemaining(dueDate){
@@ -38,6 +38,7 @@ export class ClockComponent implements OnInit, OnDestroy {
     let difference = dateEntered.getTime() - now.getTime();
 
     if(difference <= 0) {
+      this.endMessage = 'Sorry, this auction is over...';
       clearInterval(this.timer);
     }
     else {
