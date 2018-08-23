@@ -13,6 +13,7 @@ import { FileuploadComponent } from '../fileupload/fileupload.component';
 import { CookiepolicyComponent } from '../cookiepolicy/cookiepolicy.component';
 import { ChatComponent } from '../chat/chat.component';
 import { MessagesComponent } from '../messages/messages.component';
+import { MyadsComponent } from '../myads/myads.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'file', component: FileuploadComponent},
   { path: 'cookiepolicy', component: CookiepolicyComponent},
   { path: 'chat/:id', component: ChatComponent},
-  { path: 'messages', component: MessagesComponent}
+  { path: 'messages', component: MessagesComponent},
+  { path: 'myads', component: MyadsComponent}
 ];
 
 @NgModule({
