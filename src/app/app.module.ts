@@ -22,6 +22,7 @@ import { ChatComponent } from './chat/chat.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AdseditComponent } from './adsedit/adsedit.component';
 import { MyadsComponent } from './myads/myads.component';
+import { ClockComponent } from './clock/clock.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MyadsComponent } from './myads/myads.component';
     ChatComponent,
     MessagesComponent,
     AdseditComponent,
-    MyadsComponent
+    MyadsComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,
