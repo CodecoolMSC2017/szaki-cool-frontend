@@ -31,7 +31,7 @@
         <div class="ads-price">
           Price:
           <select>
-            <option value="USD">USD</option>
+            <option *ngFor="let currency of currencies" value="USD">{{currency.currency}}</option>
           </select>
           {{addAdvertisement.currency}}
           <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}">

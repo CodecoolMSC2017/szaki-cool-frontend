@@ -19,8 +19,17 @@ export class AdseditComponent implements OnInit {
     private http: HttpClient,
     private router: Router) { }
 
+    currencies :any;
+
   ngOnInit() {
     this.checkError();
+    this.getCurrency();
+  }
+
+  getCurrency() {
+    this.http.get('api/currency/all').subscribe(response => {
+      this.currencies = response;
+    });
   }
 
   getUserIdFromSession() {
