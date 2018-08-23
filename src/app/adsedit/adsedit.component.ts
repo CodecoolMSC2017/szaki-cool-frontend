@@ -28,7 +28,11 @@ export class AdseditComponent implements OnInit {
   }
 
   saveChanges() {
-    console.log(this.addAdvertisement.guarantee_value);
+    if (this.sendCheck()) {
+      alert("All fields must be filled!");
+    }
+    else {
+      console.log(this.addAdvertisement.guarantee_value);
     this.http.post('api/works/addnew', {
       userId: this.getUserIdFromSession(),
       workTitle: this.addAdvertisement.workTitle,
@@ -39,15 +43,18 @@ export class AdseditComponent implements OnInit {
       guarantee_value: this.addAdvertisement.guarantee_value,
       category: 'default'
     }).subscribe(console.log);
+    }
   }
 
   checkValidYear() {
     let num = Number(this.addAdvertisement.guarantee_value);
     if(!num && this.addAdvertisement.guarantee_value != "") {
       this.error.garanteeLength = "Year must be a number!"
+      return false;
     }
     else {
       this.error.garanteeLength = "";
+      return true;
     }
   }
 
@@ -55,9 +62,11 @@ export class AdseditComponent implements OnInit {
     let num = Number(this.addAdvertisement.price);
     if(!num && this.addAdvertisement.price != "") {
       this.error.price = "Price must be a number!"
+      return false;
     }
     else {
       this.error.price = "";
+      return true;
     }
   }
 
@@ -65,9 +74,11 @@ export class AdseditComponent implements OnInit {
     let title = this.addAdvertisement.workTitle
     if(title === "" || title == null) {
       this.error.title = "Title must be set!"
+      return false;
     }
     else {
       this.error.title = "";
+      return true;
     }
   }
 
@@ -75,17 +86,32 @@ export class AdseditComponent implements OnInit {
     let description = this.addAdvertisement.workDescription;
     if(description === "" || description == null) {
       this.error.description = "Description must be set!"
+      return false;
     }
     else {
       this.error.description = "";
+      return true;
+    }
+  }
+
+  sendCheck() {
+    if (
+      this.checkValidYear() &&
+      this.checkValidPrice() &&
+      this.checkTitleEmpty() &&
+      this.checkDescriptionEmpty()
+      ){
+        return false;
+    }
+    else {
+      return true;
     }
   }
 
   checkError() {
     this.checkValidYear();
     this.checkValidPrice();
-    this.checkTitleEmpty();
+    this.checkTitleEmpty(); 
     this.checkDescriptionEmpty();
   }
-
 }
