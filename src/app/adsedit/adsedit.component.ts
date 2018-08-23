@@ -20,6 +20,7 @@ export class AdseditComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.checkError();
   }
 
   getUserIdFromSession() {
@@ -61,7 +62,8 @@ export class AdseditComponent implements OnInit {
   }
 
   checkTitleEmpty() {
-    if(this.addAdvertisement.workTitle === "") {
+    let title = this.addAdvertisement.workTitle
+    if(title === "" || title == null) {
       this.error.title = "Title must be set!"
     }
     else {
@@ -70,7 +72,8 @@ export class AdseditComponent implements OnInit {
   }
 
   checkDescriptionEmpty() {
-    if(this.addAdvertisement.workDescription === "") {
+    let description = this.addAdvertisement.workDescription;
+    if(description === "" || description == null) {
       this.error.description = "Description must be set!"
     }
     else {
