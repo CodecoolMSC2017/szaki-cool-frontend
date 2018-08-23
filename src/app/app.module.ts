@@ -21,6 +21,7 @@ import { CookiepolicyComponent } from './cookiepolicy/cookiepolicy.component';
 import { ChatComponent } from './chat/chat.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AdseditComponent } from './adsedit/adsedit.component';
+import { ClockComponent } from './clock/clock.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AdseditComponent } from './adsedit/adsedit.component';
     CookiepolicyComponent,
     ChatComponent,
     MessagesComponent,
-    AdseditComponent
+    AdseditComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,
