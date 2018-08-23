@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { ClockserviceService } from '../clockservice.service';
 
 @Component({
   selector: 'app-clock',
@@ -6,6 +7,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./clock.component.css']
 })
 export class ClockComponent implements OnInit, OnDestroy {
+  @Input()
+  workFull;
+
   timer;
   days = 0;
   hours = 0;
@@ -13,11 +17,19 @@ export class ClockComponent implements OnInit, OnDestroy {
   seconds = 0;
   compareDates = new Date();
 
-  constructor() { }
+  constructor(private service: ClockserviceService) { }
 
   ngOnInit() {
+    this.workFull = this.service.workFull;
+    this.processDueDate(this.workFull.due_date);
     this.compareDates.setDate(this.compareDates.getDate() + 7);
     this.timer = setInterval(() => this.timeRemaining(this.compareDates), 1000);
+
+  }
+
+  processDueDate(date) {
+    console.log(date);
+
   }
 
   timeRemaining(dueDate){
