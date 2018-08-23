@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AdsdetailsService } from '../adsdetails.service';
 import { HttpClient } from '@angular/common/http';
+import { ClockserviceService } from '../clockservice.service';
+
 
 @Component({
   selector: 'app-adsview',
@@ -22,7 +24,8 @@ export class AdsviewComponent implements OnInit {
   constructor(
     private router: Router,
     private http : HttpClient,
-    private service : AdsdetailsService
+    private service : AdsdetailsService,
+    private clockservice: ClockserviceService
   ) {}
 
   ngOnInit() {
@@ -39,6 +42,7 @@ export class AdsviewComponent implements OnInit {
   requestWork() {
     this.http.get("api/works/works/" + this.work.id).subscribe((work)=>{
       this.work = work;
+      this.clockservice.workFull = work;
       this.bigPic = this.work.links[0];
       this.work.userRating = Math.round(this.work.userRating * 10) / 10;
     });
