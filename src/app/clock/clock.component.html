@@ -1,5 +1,18 @@
+
+<div *ngIf="endMessage === ' '" class="bid-money">
+    Minimum bid step is {{workFull.min_bidder_user_rate}} {{workFull.currency.currency}}.
+
+    <input [(ngModel)]="bidMoney" type="text" value="Bid here">
+</div>
+
 <div id="timer">
     <div id="endMessage" *ngIf='endMessage'>{{endMessage}}</div>
-    <div id="timer">{{days}} days {{hours}} hours {{minutes}} minutes {{seconds}} seconds remaining</div>
+    <span *ngIf="days !== undefined" [ngStyle]="{'color': days >= '1' ? 'green' : 'red'}">
+      {{days}} days {{hours}} hours {{minutes}} minutes {{seconds}} seconds remaining
+    </span>
+
 </div>
+
+<button *ngIf="endMessage === ' '">Bid now!</button>
+
 

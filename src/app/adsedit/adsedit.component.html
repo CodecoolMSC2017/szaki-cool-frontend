@@ -3,11 +3,7 @@
   <div class="current-ads-grid">
 
     <div class="ads-pics">
-        Picture 2: <input type="file"><br>
-        Picture 2: <input type="file"><br>
-        Picture 3: <input type="file"><br>
-        Picture 4: <input type="file"><br>
-        Picture 5:  <input type="file"><br>
+        Picture: <input type="file"><br>
         <br>
         <input type="button" value="Upload" (click)="uploadPic()">
     </div>
@@ -37,7 +33,7 @@
           <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}">
           <p class="error price-error"><i>{{error.price}}</i></p>
         </div>
-        
+
         <p class="ads-guarantee">
           Seller Guarantees:
           <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}">

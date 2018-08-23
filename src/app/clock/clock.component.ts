@@ -10,11 +10,12 @@ export class ClockComponent implements OnInit, OnDestroy {
   @Input()
   workFull;
 
+  bidMoney;
   timer;
-  days = 0;
-  hours = 0;
-  minutes = 0;
-  seconds = 0;
+  days;
+  hours;
+  minutes;
+  seconds;
   compareDates;
   endMessage = ' ';
 
@@ -25,6 +26,7 @@ export class ClockComponent implements OnInit, OnDestroy {
     this.processDueDate(this.workFull.due_date);
     this.compareDates = this.processDueDate(this.workFull.due_date);
     this.timer = setInterval(() => this.timeRemaining(this.compareDates), 1000);
+    this.bidMoney = this.service.workFull.price - this.workFull.min_bidder_user_rate ;
 
   }
 
@@ -39,6 +41,10 @@ export class ClockComponent implements OnInit, OnDestroy {
 
     if(difference <= 0) {
       this.endMessage = 'Sorry, this auction is over...';
+      this.days = 0;
+      this.hours = 0;
+      this.minutes = 0;
+      this.seconds = 0;
       clearInterval(this.timer);
     }
     else {

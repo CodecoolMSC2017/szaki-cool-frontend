@@ -6,10 +6,15 @@
   letter-spacing: -1px;
 }
 
+
 #endMessage {
   font-family: Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   color:red;
   letter-spacing: -1px;
 
+}
+
+.btn {
+  height: auto;
 }

@@ -15,6 +15,7 @@ import { ChatComponent } from '../chat/chat.component';
 import { MessagesComponent } from '../messages/messages.component';
 import { MyadsComponent } from '../myads/myads.component';
 import { ClockComponent } from '../clock/clock.component';
+import { BiddingComponent } from '../bidding/bidding.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'chat/:id', component: ChatComponent},
   { path: 'messages', component: MessagesComponent},
   { path: 'myads', component: MyadsComponent},
-  { path: 'clock', component: ClockComponent}
+  { path: 'clock', component: ClockComponent},
+  { path: 'bidding', component: BiddingComponent}
 ];
 
 @NgModule({
