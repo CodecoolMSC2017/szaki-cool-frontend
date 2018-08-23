@@ -28,10 +28,10 @@
           </p>
           <p class="error description-error">{{error.description}}</p>
         </div>
-        <div class="ads-price">
+        <div class="ads-price" (click)="asd()">
           Price:
-          <select>
-            <option *ngFor="let currency of currencies" value="USD">{{currency.currency}}</option>
+          <select [(ngModel)]="currency"  >
+            <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.currency}}</option>
           </select>
           {{addAdvertisement.currency}}
           <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}">
