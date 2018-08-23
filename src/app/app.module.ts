@@ -21,6 +21,7 @@ import { CookiepolicyComponent } from './cookiepolicy/cookiepolicy.component';
 import { ChatComponent } from './chat/chat.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AdseditComponent } from './adsedit/adsedit.component';
+import { MyadsComponent } from './myads/myads.component';
 import { ClockComponent } from './clock/clock.component';
 
 
@@ -44,6 +45,7 @@ import { ClockComponent } from './clock/clock.component';
     ChatComponent,
     MessagesComponent,
     AdseditComponent,
+    MyadsComponent,
     ClockComponent
   ],
   imports: [
