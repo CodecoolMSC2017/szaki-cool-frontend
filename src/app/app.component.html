@@ -59,7 +59,7 @@
         <div class="footer-grid-title">Categories</div>
         <div class="footer-grid-title">About</div>
         <div class="footer-grid-title">Contact</div>
-        <div class="footer-grid-items">» Art<br>» Butcher<br>» Car Mechanic<br>» Electrician<br>» Farmer</div>
+        <div class="footer-grid-items"><p *ngFor="let item of categories; let i=index">» {{categories[i]}}</p></div>
         <div class="footer-grid-items">» Info<br>» Site rules<br>» Privacy policy</div>
         <div class="footer-grid-items">» szakicool@gmail.com<br>» +36 30 1234567</div>
     </div>

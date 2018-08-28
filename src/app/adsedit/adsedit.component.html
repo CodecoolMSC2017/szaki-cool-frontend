@@ -13,16 +13,16 @@
         <div class="ads-titlee">
             <p>
                 Title:
-                <input [(ngModel)]="addAdvertisement.workTitle" type="text" value="{{addAdvertisement.workTitle}}">
+                <input [(ngModel)]="addAdvertisement.workTitle" type="text" value="{{addAdvertisement.workTitle}}" placeholder="{{error.title}}">
             </p>
-            <p class="error title-error">{{error.title}}</p>
+            <!-- <p class="error title-error">{{error.title}}</p> -->
         </div>
         <div class="ads-short-decription">
           <p>
             Description:
-            <textarea [(ngModel)]="addAdvertisement.workDescription">{{addAdvertisement.workDescription}}</textarea>
+            <textarea [(ngModel)]="addAdvertisement.workDescription" placeholder="{{error.description}}">{{addAdvertisement.workDescription}}</textarea>
           </p>
-          <p class="error description-error">{{error.description}}</p>
+          <!-- <p class="error description-error">{{error.description}}</p> -->
         </div>
         <div class="ads-price" (click)="asd()">
           Price:
@@ -30,19 +30,19 @@
             <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.currency}}</option>
           </select>
           {{addAdvertisement.currency}}
-          <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}">
-          <p class="error price-error"><i>{{error.price}}</i></p>
+          <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}" placeholder="{{error.price}}">
+          <!-- <p class="error price-error"><i>{{error.price}}</i></p> -->
         </div>
 
         <p class="ads-guarantee">
           Seller Guarantees:
-          <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}">
+          <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}" placeholder="{{error.garanteeLength}}">
           <select>
             <option value="Year">Year</option>
           </select>
           {{addAdvertisement.guarantee_length}}
         </p>
-        <p class="error">{{error.garanteeLength}}</p>
+        <!-- <p class="error">{{error.garanteeLength}}</p> -->
       </div>
     </div>
     <p align="center"><button (click)="saveChanges()">SAVE</button></p>

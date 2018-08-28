@@ -17,6 +17,7 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
+    this.getCategories();
     this.getAds();
     this.ws.loginSucces().subscribe(this.subscribeCallback.bind(this));
     //this.ws.connect().subscribe(this.subscribeCallback.bind(this));
@@ -32,6 +33,7 @@ export class AppComponent {
   show;
   str: string;
   unreadmessages;
+  categories;
 
   subscribeCallback() {
     this.user = JSON.parse(sessionStorage.getItem("user"));
@@ -74,4 +76,9 @@ export class AppComponent {
       this.unreadmessages = msg;
     });
   }
+
+  getCategories() {
+    this.http.get("api/works/categories").subscribe((categories)=> {this.categories = categories;});
+  }
+
 }
