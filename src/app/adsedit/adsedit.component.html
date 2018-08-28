@@ -13,25 +13,24 @@
         <div class="ads-titlee">
             <p>
                 Title:
-                <input [(ngModel)]="addAdvertisement.workTitle" type="text" value="{{addAdvertisement.workTitle}}" placeholder="{{error.title}}">
+                <input [(ngModel)]="addAdvertisement.workTitle" type="text" value="{{addAdvertisement.workTitle}}"  placeholder="{{error.title}}">
+                <!-- <span class="error"> {{error.title}}</span> -->
             </p>
-            <!-- <p class="error title-error">{{error.title}}</p> -->
         </div>
         <div class="ads-short-decription">
           <p>
             Description:
+            <!--<span class="error desc-error"> {{error.description}}</span> -->
             <textarea [(ngModel)]="addAdvertisement.workDescription" placeholder="{{error.description}}">{{addAdvertisement.workDescription}}</textarea>
           </p>
-          <!-- <p class="error description-error">{{error.description}}</p> -->
         </div>
         <div class="ads-price" (click)="asd()">
           Price:
           <select [(ngModel)]="currency"  >
             <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.currency}}</option>
           </select>
-          {{addAdvertisement.currency}}
-          <input [(ngModel)]="addAdvertisement.price" type="text" value="{{addAdvertisement.price}}" placeholder="{{error.price}}">
-          <!-- <p class="error price-error"><i>{{error.price}}</i></p> -->
+          <input [(ngModel)]="addAdvertisement.price" type="number" value="{{addAdvertisement.price}}" placeholder="{{error.price}}">
+          <!-- <span class="error"> {{error.price}}</span> -->
         </div>
 
         <p class="ads-guarantee">
@@ -40,9 +39,8 @@
           <select>
             <option value="Year">Year</option>
           </select>
-          {{addAdvertisement.guarantee_length}}
+          <!-- <span class="error"> {{error.garanteeLength}}</span> -->
         </p>
-        <!-- <p class="error">{{error.garanteeLength}}</p> -->
       </div>
     </div>
     <p align="center"><button (click)="saveChanges()">SAVE</button></p>
