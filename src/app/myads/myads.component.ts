@@ -3,35 +3,35 @@ import { HttpClient } from '@angular/common/http';
 import { Route, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-myads',
-  templateUrl: './myads.component.html',
-  styleUrls: ['./myads.component.css']
-})
+    selector: 'app-myads',
+    templateUrl: './myads.component.html',
+    styleUrls: ['./myads.component.css']
+    })
 export class MyadsComponent implements OnInit {
 
-  works;
+    works;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {}
+    constructor(
+        private http: HttpClient,
+        private router: Router
+    ) {}
 
-  ngOnInit() {
-    this.getMyAds();
-  }
+    ngOnInit() {
+        this.getMyAds();
+    }
 
 
-  public getUserId() {
-    let userString = sessionStorage.getItem("user");
-    let userObject = JSON.parse(userString);
-    let userId = JSON.stringify(userObject.id);
-    return userId;
-  }
+    public getUserId() {
+        let userString = sessionStorage.getItem("user");
+        let userObject = JSON.parse(userString);
+        let userId = JSON.stringify(userObject.id);
+        return userId;
+    }
 
-  getMyAds() {
-    let userId = this.getUserId();
-    console.log(userId);
-    this.http.get("api/works/my/"+ userId).subscribe((works)=> {this.works = works;
-    console.log(this.works)});
-  }
+    getMyAds() {
+        let userId = this.getUserId();
+        console.log(userId);
+        this.http.get("api/works/favourite/"+ userId).subscribe((works)=> {this.works = works;
+        console.log(this.works)});
+    }
 }
