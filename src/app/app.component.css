@@ -45,3 +45,7 @@ button {
 .msgalert {
 	color: red;
 }
+/* ********** ********** ********** */
+.footer-grid-items p {
+	margin: 0px;
+}
