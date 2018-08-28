@@ -4,3 +4,37 @@
 	grid-gap: 20px;
 	grid-template-columns: auto auto auto auto;
 }
+
+.advanced {
+	display: grid;
+	padding: 5px;
+	grid-gap: 20px;
+	grid-template-columns: auto auto auto;
+}
+
+input[type=text] {
+	width: 90%;
+}
+
+input[type=number] {
+    display: inline-block;
+    padding: 0px 10px;
+	width: 100px;
+	height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+select {
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+button {
+	float: right;
+	margin: 7px 2px;
+}

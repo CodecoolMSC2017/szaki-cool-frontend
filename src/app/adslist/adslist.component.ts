@@ -36,6 +36,7 @@ export class AdslistComponent implements OnInit {
       this.router.navigate(["/"]);
     }
     this.getAds();
+    this.getCategories();
   }
 
   showSearch() {
@@ -141,6 +142,9 @@ export class AdslistComponent implements OnInit {
   }
 
   advancedSearch() {
+    if(this.str == null || this.str == "") {
+      this.str = null;
+    }
     if(this.category == null || this.category == "") {
       this.category = null;
     }
@@ -156,7 +160,7 @@ export class AdslistComponent implements OnInit {
     if(this.maxRating == null || this.maxRating == "") {
       this.maxRating = null;
     }
-    this.http.get("api/works/search/" + this.category+"/"+this.min+"/"+this.max+"/"+this.minRating+"/"+this.maxRating).subscribe((works)=> {this.works = works;
+    this.http.get("api/works/search/" + this.str+"/"+ this.category+"/"+this.min+"/"+this.max+"/"+this.minRating+"/"+this.maxRating).subscribe((works)=> {this.works = works;
       console.log(this.works)});
 
 

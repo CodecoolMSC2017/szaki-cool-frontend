@@ -1,56 +1,83 @@
 <div class="frame">
   
-  <h1>Advertisement List</h1>
+    <h1>Advertisement List</h1>
 
-  <div class="search">
-    <div class="search-bar">
-      <input [(ngModel)]="str" type="text" placeholder="What service are you looking for?"><button (click)="search()">Search</button>
+    <div class="search">
+        <div class="search-bar">
+            <button (click)="advancedSearch()">Search</button>
+            <input [(ngModel)]="str" type="text" placeholder="What service are you looking for?">
+        </div>
+
+        <div class="advanced">
+            <div>
+                <b>Category: </b>
+                <select [(ngModel)]="category" id="category">
+                    <option value="*">All</option>
+                    <option *ngFor="let item of categories; let i = index" [attr.data-index]="i"  [value]="categories[i]">{{categories[i]}}</option>
+                </select>
+            </div>
+            <div>
+                <b>Price</b>
+                Min: <input type="number" [(ngModel)]="min" (keyup)="checkMinNumber()">
+                <p *ngIf="minMessage">{{ minMessage }}</p>
+                Max: <input type="number" [(ngModel)]="max" (keyup)="checkMaxNumber()" (keyup)="checkPrices()">
+                <p *ngIf="maxMessage">{{ maxMessage }}</p>
+                <p *ngIf="pricesMessage">{{ pricesMessage }}</p>
+            </div>
+            <div>
+                <b>Rating</b>
+                Min: <input type="number" [(ngModel)]="minRating" (keyup)="checkMinRating()">
+                <p *ngIf="minRatingMessage">{{ minRatingMessage }}</p>
+                Max: <input type="number" [(ngModel)]="maxRating" (keyup)="checkMaxRating()" (keyup)="checkRatings()">
+                <p *ngIf="maxRatingMessage">{{ maxRatingMessage }}</p>
+                <p *ngIf="ratingsMessage">{{ ratingsMessage }}</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="advanced-search" (click)="showSearch()">
-    <span class="fa fa-search">Advanced Search</span>
-</div>
-
-<div class="user-info" *ngIf="searching">
-  <h3>Category</h3>
-  <select [(ngModel)]="category" id="category">
-    <option *ngFor="let item of categories; let i = index" [attr.data-index]="i"  [value]="categories[i]">{{categories[i]}}</option>
-  </select>
-    <br>
-    <h3>Price</h3>
-    Min<input type="text" [(ngModel)]="min" (keyup)="checkMinNumber()">
-    <p *ngIf="minMessage">
-        {{ minMessage }}
-    </p>
-    Max<input type="text" [(ngModel)]="max" (keyup)="checkMaxNumber()" (keyup)="checkPrices()">
-    <p *ngIf="maxMessage">
-        {{ maxMessage }}
-    </p>
-    <p *ngIf="pricesMessage">
-        {{ pricesMessage }}
-    </p>
-    <h3>Rating</h3>
-    Min<input type="text" [(ngModel)]="minRating" (keyup)="checkMinRating()">
-    <p *ngIf="minRatingMessage">
-        {{ minRatingMessage }}
-    </p>
-    Max<input type="text" [(ngModel)]="maxRating" (keyup)="checkMaxRating()" (keyup)="checkRatings()">
-    <p *ngIf="maxRatingMessage">
-        {{ maxRatingMessage }}
-    </p>
-    <p *ngIf="ratingsMessage">
-        {{ ratingsMessage }}
-    </p>
-    <div class="advanced" (click)="advancedSearch()">
-        <span class="fa fa-search">Search</span>
+    <hr>
+<!--
+    <div class="advanced-search" (click)="showSearch()">
+        <span class="fa fa-search">Advanced Search</span>
     </div>
-</div>
 
-
-
-  <div class="advertisement-grid">
-    <app-adspreview [work]="work" *ngFor="let work of works"></app-adspreview>
-  </div>
+    <div class="user-info" *ngIf="searching">
+        <h3>Category</h3>
+        <select [(ngModel)]="category" id="category">
+            <option *ngFor="let item of categories; let i = index" [attr.data-index]="i"  [value]="categories[i]">{{categories[i]}}</option>
+        </select>
+        <br>
+        <h3>Price</h3>
+        Min: <input type="minmax" [(ngModel)]="min" (keyup)="checkMinNumber()">
+        <p *ngIf="minMessage">
+            {{ minMessage }}
+        </p>
+        Max: <input type="minmax" [(ngModel)]="max" (keyup)="checkMaxNumber()" (keyup)="checkPrices()">
+        <p *ngIf="maxMessage">
+            {{ maxMessage }}
+        </p>
+        <p *ngIf="pricesMessage">
+            {{ pricesMessage }}
+        </p>
+        <h3>Rating</h3>
+        Min: <input type="minmax" [(ngModel)]="minRating" (keyup)="checkMinRating()">
+        <p *ngIf="minRatingMessage">
+            {{ minRatingMessage }}
+        </p>
+        Max: <input type="minmax" [(ngModel)]="maxRating" (keyup)="checkMaxRating()" (keyup)="checkRatings()">
+        <p *ngIf="maxRatingMessage">
+            {{ maxRatingMessage }}
+        </p>
+        <p *ngIf="ratingsMessage">
+            {{ ratingsMessage }}
+        </p>
+        <div class="advanced" (click)="advancedSearch()">
+            <span class="fa fa-search">Search</span>
+        </div>
+    </div>
+-->
+    <div class="advertisement-grid">
+        <app-adspreview [work]="work" *ngFor="let work of works"></app-adspreview>
+    </div>
 
 </div>
