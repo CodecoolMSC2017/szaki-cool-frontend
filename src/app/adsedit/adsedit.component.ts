@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AddAdvertisement } from '../addAdvertisement';
 import { HttpClient } from '@angular/common/http';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AdsError } from './adserror';
-import { CheckboxRequiredValidator } from '@angular/forms';
+import { Work } from './work';
 
 @Component({
   selector: 'app-adsedit',
@@ -21,6 +21,13 @@ export class AdseditComponent implements OnInit {
 
     currencies :any;
     currency;
+    currentDate = new Date();
+    minDate = this.currentDate.setHours(this.currentDate.getHours() + 24);
+    maxDate = this.currentDate.setHours(this.currentDate.getHours() + 48);
+    bidOn = false;
+    date = this.convertDateToString(this.currentDate);
+    bidRate;
+    work;
 
   ngOnInit() {
     this.checkError();
@@ -28,6 +35,17 @@ export class AdseditComponent implements OnInit {
   }
   asd() {
     console.log(this.currency);
+  }
+
+  convertDateToString(date: Date): string {
+    let result = "";
+    result += date.getFullYear() + "-" + date.getMonth() + 1 + "-" +date.getDate() + "T";
+    result += date.getHours() + ":" + date.getMinutes();
+    return result;
+  }
+
+  setDate(event) {
+    this.date = event.target.value;
   }
 
   getCurrency() {
@@ -46,17 +64,32 @@ export class AdseditComponent implements OnInit {
     }
     else {
       console.log(this.addAdvertisement.guarantee_value);
-    this.http.post('api/works/addnew', {
-      userId: this.getUserIdFromSession(),
-      workTitle: this.addAdvertisement.workTitle,
-      workDescription: this.addAdvertisement.workDescription,
-      currency: this.currency.currency,
-      price: this.addAdvertisement.price,
-      guarantee_length: 'Year',
-      guarantee_value: this.addAdvertisement.guarantee_value,
-      category: 'default'
-    }).subscribe(console.log);
+
+    let work = new Work();
+    work.userId = this.getUserIdFromSession();
+    work.workTitle = this.addAdvertisement.workTitle;
+    work.workDescription = this.addAdvertisement.workDescription;
+    work.currency = this.currency.currency;
+    work.price = this.addAdvertisement.price;
+    work.guarantee_length = "Year";
+    work.guarantee_value = this.addAdvertisement.guarantee_value;
+    work.category = "default";
+
+    if (this.bidOn) {
+      work.bid = this.bidOn;
+      work.bid_expire_date = this.convertDate(this.date);
+      work.in_bidder_user_rate = this.bidRate;
+      work.due_date = this.convertDate(this.date);
     }
+
+
+    this.http.post('api/works/addnew', work).subscribe(console.log);
+    }
+  }
+
+  convertDate(date: String): string {
+    let asd = date;
+    return asd.replace("T", " ") + ":00";
   }
 
   checkValidYear() {

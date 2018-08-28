@@ -45,13 +45,17 @@
         <p class="error">{{error.garanteeLength}}</p>
       </div>
     </div>
-
+    <p align="center"><button (click)="saveChanges()">SAVE</button></p>
+    <label class="switch">
+        <input type="checkbox" [checked]="bidOn" (change)="bidOn = !bidOn">
+        <span class="slider"></span>
+    </label>
   </div>
-
-  <div class="ads-long-decription">
-    Description:
-    <textarea [(ngModel)]="addAdvertisement.workDescription">{{addAdvertisement.workDescription}}</textarea>
+  <div *ngIf="bidOn" class="bid-details">
+    <p>expiration date</p>
+    <input type="datetime-local" value="{{currentDate | date:'yyyy-MM-ddTHH:mm'}}" (change)="setDate($event)"
+    min="{{minDate | date:'yyyy-MM-ddTHH:mm'}}"
+    max="{{maxDate | date:'yyyy-MM-ddTHH:mm'}}">
+    <input [(ngModel)]="bidRate" type="text" placeholder="bid increment">
   </div>
-
-  <p align="center"><button (click)="saveChanges()">SAVE</button></p>
 </div>
