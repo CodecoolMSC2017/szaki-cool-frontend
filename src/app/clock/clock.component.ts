@@ -75,7 +75,6 @@ export class ClockComponent implements OnInit, OnDestroy {
 
 
   onBidClick(){
-    console.log("LLLLLLLLLLLL  BID CLICKED");
     this.http.post("api/bid",
       {workId: this.workFull.id, price: this.bidMoney, userId: this.getUserId()}).subscribe((newPrice) =>
         {this.workFull.price = newPrice; console.log(this.workFull)});
@@ -84,8 +83,7 @@ export class ClockComponent implements OnInit, OnDestroy {
 
 
   onBuyClick(){
-    console.log("KKKKKKKKKKKK   BUY CLICKED");
-    this.http.post("api/bid", {workId: this.workFull.id, price: this.workFull.price, userId: this.getUserId()}).subscribe(console.log);
+    this.http.post("api/buy", {workId: this.workFull.id, price: this.workFull.price, userId: this.getUserId()}).subscribe(console.log);
 
     }
   }
