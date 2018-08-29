@@ -76,7 +76,7 @@ export class ClockComponent implements OnInit, OnDestroy {
 
 
   onBidClick(){
-    if(this.bidMoney > (this.service.workFull.price - this.workFull.min_bidder_user_rate)){
+    if((this.bidMoney > (this.service.workFull.price - this.workFull.min_bidder_user_rate)) || this.bidMoney < 0){
       this.bidError = true;
     } else{
       this.http.post("api/bid",
@@ -88,7 +88,7 @@ export class ClockComponent implements OnInit, OnDestroy {
 
 
   onBuyClick(){
-    if(this.bidMoney > (this.service.workFull.price - this.workFull.min_bidder_user_rate)){
+    if((this.bidMoney > (this.service.workFull.price - this.workFull.min_bidder_user_rate)) || this.bidMoney < 0){
       this.bidError = true;
     } else{
       this.http.post("api/buy", {workId: this.workFull.id, bid: this.workFull.price, userId: this.getUserId()}).subscribe(console.log);
