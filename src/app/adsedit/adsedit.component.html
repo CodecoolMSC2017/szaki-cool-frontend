@@ -41,19 +41,24 @@
           </select>
           <!-- <span class="error"> {{error.garanteeLength}}</span> -->
         </p>
+
+        <div class="ads-bid">
+          Bid:
+          <label class="switch">
+            <input type="checkbox" [checked]="bidOn" (change)="bidOn = !bidOn">
+            <span class="slider"></span>
+          </label>
+          <div *ngIf="bidOn" class="bid-details">
+            Expiration date: 
+            <input type="datetime-local" value="{{currentDate | date:'yyyy-MM-ddTHH:mm'}}" (change)="setDate($event)"
+            min="{{minDate | date:'yyyy-MM-ddTHH:mm'}}"
+            max="{{maxDate | date:'yyyy-MM-ddTHH:mm'}}">
+            <input [(ngModel)]="bidRate" type="number" class="bid-increment" placeholder="Bid increment">
+        </div>
+      </div>
+
       </div>
     </div>
-    <p align="center"><button (click)="saveChanges()">SAVE</button></p>
-    <label class="switch">
-        <input type="checkbox" [checked]="bidOn" (change)="bidOn = !bidOn">
-        <span class="slider"></span>
-    </label>
   </div>
-  <div *ngIf="bidOn" class="bid-details">
-    <p>expiration date</p>
-    <input type="datetime-local" value="{{currentDate | date:'yyyy-MM-ddTHH:mm'}}" (change)="setDate($event)"
-    min="{{minDate | date:'yyyy-MM-ddTHH:mm'}}"
-    max="{{maxDate | date:'yyyy-MM-ddTHH:mm'}}">
-    <input [(ngModel)]="bidRate" type="text" placeholder="bid increment">
-  </div>
+  <p align="center"><button (click)="saveChanges()">SAVE</button></p>
 </div>
