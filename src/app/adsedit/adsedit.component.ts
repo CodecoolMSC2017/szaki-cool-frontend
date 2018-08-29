@@ -21,6 +21,9 @@ export class AdseditComponent implements OnInit {
 
     currencies :any;
     currency;
+    guaranties :any;
+    guaranteeLength;
+
     currentDate = new Date();
     minDate = this.currentDate.setHours(this.currentDate.getHours() + 24);
     maxDate = this.currentDate.setHours(this.currentDate.getHours() + 48);
@@ -28,10 +31,14 @@ export class AdseditComponent implements OnInit {
     date = this.convertDateToString(this.currentDate);
     bidRate;
     work;
+    categories;
+    category;
 
   ngOnInit() {
     this.checkError();
     this.getCurrency();
+    this.getGuaranteeLength();
+    this.getCategories();
   }
   asd() {
     console.log(this.currency);
@@ -44,6 +51,11 @@ export class AdseditComponent implements OnInit {
     return result;
   }
 
+  getCategories() {
+    this.http.get("api/works/categories").subscribe((categories)=> {this.categories = categories;
+    console.log(this.categories)});
+  }
+
   setDate(event) {
     this.date = event.target.value;
   }
@@ -51,6 +63,12 @@ export class AdseditComponent implements OnInit {
   getCurrency() {
     this.http.get('api/currency/all').subscribe(response => {
       this.currencies = response;
+    });
+  }
+
+  getGuaranteeLength() {
+    this.http.get('api/guarantee_length/all').subscribe(response => {
+      this.guaranties = response;
     });
   }
 
@@ -73,7 +91,7 @@ export class AdseditComponent implements OnInit {
     work.price = this.addAdvertisement.price;
     work.guarantee_length = "Year";
     work.guarantee_value = this.addAdvertisement.guarantee_value;
-    work.category = "default";
+    work.category = this.category;
 
     if (this.bidOn) {
       work.bid = this.bidOn;
@@ -95,7 +113,7 @@ export class AdseditComponent implements OnInit {
   checkValidYear() {
     let num = Number(this.addAdvertisement.guarantee_value);
     if(!num && this.addAdvertisement.guarantee_value != "") {
-      this.error.garanteeLength = "Year must be a number!"
+      this.error.garanteeLength = "Guarantees must be set!"
       return false;
     }
     else {
@@ -107,7 +125,7 @@ export class AdseditComponent implements OnInit {
   checkValidPrice() {
     let num = Number(this.addAdvertisement.price);
     if(!num && this.addAdvertisement.price != "") {
-      this.error.price = "Price must be a number!"
+      this.error.price = "Price must be set!"
       return false;
     }
     else {

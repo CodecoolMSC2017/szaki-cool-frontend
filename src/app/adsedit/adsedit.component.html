@@ -1,7 +1,5 @@
 <div class="frame">
-
   <div class="current-ads-grid">
-
     <div class="ads-pics">
         Picture: <input type="file"><br>
         <br>
@@ -17,6 +15,12 @@
                 <!-- <span class="error"> {{error.title}}</span> -->
             </p>
         </div>
+        <div class="ads-category">
+          <b>Category: </b>
+          <select [(ngModel)]="category" id="category">
+              <option *ngFor="let item of categories; let i = index" [attr.data-index]="i"  [value]="categories[i]">{{categories[i]}}</option>
+          </select>
+        </div>
         <div class="ads-short-decription">
           <p>
             Description:
@@ -24,9 +28,11 @@
             <textarea [(ngModel)]="addAdvertisement.workDescription" placeholder="{{error.description}}">{{addAdvertisement.workDescription}}</textarea>
           </p>
         </div>
+      
+        
         <div class="ads-price" (click)="asd()">
           Price:
-          <select [(ngModel)]="currency"  >
+          <select [(ngModel)]="currency">
             <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.currency}}</option>
           </select>
           <input [(ngModel)]="addAdvertisement.price" type="number" value="{{addAdvertisement.price}}" placeholder="{{error.price}}">
@@ -36,8 +42,9 @@
         <p class="ads-guarantee">
           Seller Guarantees:
           <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}" placeholder="{{error.garanteeLength}}">
-          <select>
-            <option value="Year">Year</option>
+
+          <select [(ngModel)]="guarantee_length">
+            <option *ngFor="let guaranteeLength of guaranties" [ngValue]="guaranteeLength">{{guaranteeLength.guaranteeLength}}</option>
           </select>
           <!-- <span class="error"> {{error.garanteeLength}}</span> -->
         </p>
@@ -54,11 +61,11 @@
             min="{{minDate | date:'yyyy-MM-ddTHH:mm'}}"
             max="{{maxDate | date:'yyyy-MM-ddTHH:mm'}}">
             <input [(ngModel)]="bidRate" type="number" class="bid-increment" placeholder="Bid increment">
+          </div>
         </div>
-      </div>
-
       </div>
     </div>
   </div>
   <p align="center"><button (click)="saveChanges()">SAVE</button></p>
 </div>
+    
