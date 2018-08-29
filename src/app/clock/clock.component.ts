@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ClockserviceService } from '../clockservice.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-clock',
@@ -19,11 +20,12 @@ export class ClockComponent implements OnInit, OnDestroy {
   compareDates;
   endMessage = ' ';
 
-  constructor(private service: ClockserviceService) { }
+  constructor(private service: ClockserviceService, private http: HttpClient) { }
 
   ngOnInit() {
     this.workFull = this.service.workFull;
     this.processDueDate(this.workFull.due_date);
+    console.log(this.workFull);
     this.compareDates = this.processDueDate(this.workFull.due_date);
     this.timer = setInterval(() => this.timeRemaining(this.compareDates), 1000);
     this.bidMoney = this.service.workFull.price - this.workFull.min_bidder_user_rate ;
@@ -67,5 +69,26 @@ export class ClockComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
+  getUserId(){
+    return JSON.parse(sessionStorage.getItem("user")).id;
+  }
 
-}
+
+  onBidClick(){
+    console.log("LLLLLLLLLLLL  BID CLICKED");
+    this.http.post("api/bid",
+      {workId: this.workFull.id, price: this.bidMoney, userId: this.getUserId()}).subscribe((newPrice) =>
+        {this.workFull.price = newPrice; console.log(this.workFull)});
+
+  }
+
+
+  onBuyClick(){
+    console.log("KKKKKKKKKKKK   BUY CLICKED");
+    this.http.post("api/bid", {workId: this.workFull.id, price: this.workFull.price, userId: this.getUserId()}).subscribe(console.log);
+
+    }
+  }
+
+
+
