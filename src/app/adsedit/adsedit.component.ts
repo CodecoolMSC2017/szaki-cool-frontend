@@ -22,8 +22,8 @@ export class AdseditComponent implements OnInit {
     currencies :any;
     currency;
     currentDate = new Date();
-    minDate = this.currentDate.setHours(this.currentDate.getHours() + 24);
-    maxDate = this.currentDate.setHours(this.currentDate.getHours() + 48);
+    minDate = new Date().setHours(this.currentDate.getHours());
+    maxDate = new Date().setHours(this.currentDate.getHours() + 48);
     bidOn = false;
     date = this.convertDateToString(this.currentDate);
     bidRate;
@@ -39,8 +39,9 @@ export class AdseditComponent implements OnInit {
 
   convertDateToString(date: Date): string {
     let result = "";
-    result += date.getFullYear() + "-" + date.getMonth() + 1 + "-" +date.getDate() + "T";
+    result += date.getFullYear() + "-" + (  date.getMonth() + 1) + "-" +date.getDate() + "T";
     result += date.getHours() + ":" + date.getMinutes();
+    console.log(date.getMonth());
     return result;
   }
 
