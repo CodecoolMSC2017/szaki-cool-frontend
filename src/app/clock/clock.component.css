@@ -18,3 +18,9 @@
 .btn {
   height: auto;
 }
+
+.bid-error {
+  color: red;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}

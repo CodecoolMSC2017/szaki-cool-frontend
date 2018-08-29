@@ -4,7 +4,8 @@
   <div *ngIf="endMessage === ' '" class="bid-money">
       Minimum bid step is {{workFull.min_bidder_user_rate}} {{workFull.currency.currency}}.
 
-      <input [(ngModel)]="bidMoney" type="text" value="Bid here">
+      <input [(ngModel)]="bidMoney" type="number" value="Bid here" max="bidMoney">
+      <div class="bid-error" *ngIf="bidError">Wrong bidding value!</div>
   </div>
   </div>
 
