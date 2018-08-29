@@ -1,51 +1,58 @@
 <div class="frame">
-
-  <div class="current-ads-grid">
-
-    <div class="ads-pics">
-  <!--
-        <img class="bigPic" src="api/pics/{{bigPic}}">
-        <img class="smallPic" *ngFor="let pic of work.links" src="api/pics/{{pic}}" (click)=changeBigPic(pic)>
-  -->
-        <a href="api/pics/{{bigPic}}" data-fancybox="gallery"><img class="bigPic" src="api/pics/{{bigPic}}"></a>
-        <a *ngFor="let pic of work.links.slice(1)" href="api/pics/{{pic}}" data-fancybox="gallery"><img class="smallPic" src="api/pics/{{pic}}"></a>
-
-    </div>
-
-    <div class="details">
-      <div class="ads-details">
-        <p class="ads-tile">{{workDetails.workTitle}}</p>
-        <p class="ads-short-decription">{{workDetails.workDescription}}</p>
-        <p class="ads-price">{{work.currency.currency}} {{work.price}}</p>
-        <p class="ads-guarantee">Seller Guarantees: {{work.guarantee_value}} {{work.guarantee_length.guarantee_length}}(s)</p>
-        <app-clock></app-clock>
-
+  
+    <div class="current-ads-grid">
+  
+      <div class="ads-pics">
+    <!--
+          <img class="bigPic" src="api/pics/{{bigPic}}">
+          <img class="smallPic" *ngFor="let pic of work.links" src="api/pics/{{pic}}" (click)=changeBigPic(pic)>
+    -->
+          <a href="api/pics/{{bigPic}}" data-fancybox="gallery"><img class="bigPic" src="api/pics/{{bigPic}}"></a>
+          <a *ngFor="let pic of work.links.slice(1)" href="api/pics/{{pic}}" data-fancybox="gallery"><img class="smallPic" src="api/pics/{{pic}}"></a>
+  
       </div>
-      <div class="seller-details">
-        <p class="seller-tile">Seller information</p>
-        <p class="seller">
-          {{workDetails.userName}}
-          <span class="fa fa-star">{{workDetails.userRating}}</span>
-          <span class="seller-rating"><a href="#RATE-DETAILS">({{workDetails.numberOfRatings}})</a></span>
-        </p>
-        <hr class="dotted">
-        <div *ngIf="contactable(); else notAvailable">
-        <p><a routerLink="/chat/{{work.contractor.id}}">Contact to seller</a></p>
+  
+      <div class="details">
+        <div class="ads-details">
+          <p class="ads-tile">{{workDetails.workTitle}}</p>
+          <p class="ads-short-decription">{{workDetails.workDescription}}</p>
+          <p class="ads-price">{{work.currency.currency}} {{work.price}}</p>
+          <p class="ads-guarantee">Seller Guarantees: {{work.guarantee_value}} {{work.guarantee_length.guarantee_length}}(s)</p>
+          <app-clock></app-clock>
+  
         </div>
-        <ng-template #notAvailable>
-          <div ng-init="tooltip=false">
-            <div (mouseover)="tooltip=true" (mouseleave)="tooltip=false">
-              <p>Contact to seller</p>
-              <div *ngIf="tooltip" class="tooltip">You cannot contact with yourself!</div>
-            </div>
+        <div class="seller-details">
+          <p class="seller-tile">Seller information</p>
+          <p class="seller">
+            {{workDetails.userName}}
+            <span class="fa fa-star">{{workDetails.userRating}}</span>
+            <span class="seller-rating"><a href="#RATE-DETAILS">({{workDetails.numberOfRatings}})</a></span>
+          </p>
+          <hr class="dotted">
+          <div *ngIf="contactable(); else notAvailable">
+          <p><a routerLink="/chat/{{work.contractor.id}}">Contact to seller</a></p>
           </div>
-        </ng-template>
-        <p><a href="#VISIT-SHOP">Visit Shop</a></p>
+          <ng-template #notAvailable>
+            <div ng-init="tooltip=false">
+              <div (mouseover)="tooltip=true" (mouseleave)="tooltip=false">
+                <p>Contact to seller</p>
+                <div *ngIf="tooltip" class="tooltip">You cannot contact with yourself!</div>
+              </div>
+            </div>
+          </ng-template>
+          <p><a href="#VISIT-SHOP">Visit Shop</a></p>
+        </div>
       </div>
+  
     </div>
-
+  
+    <div class="ads-long-decription">{{workDetails.workDescription}}</div>
+    <div class="add-favourite" *ngIf="favourite">
+      <button (click)="addFavourite()">Add to Favourite</button>
+    </div>
+    <div class="remove-favourite" *ngIf="!favourite">
+      <button (click)="removeFavourite()">Remove from Favourite</button>
+    </div>
+  
   </div>
-
-  <div class="ads-long-decription">{{workDetails.workDescription}}</div>
-
-</div>
+  
