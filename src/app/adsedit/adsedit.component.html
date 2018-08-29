@@ -1,70 +1,71 @@
 <div class="frame">
-  
-    <div class="current-ads-grid">
-  
-      <div class="ads-pics">
-          Picture: <input type="file"><br>
-          <br>
-          <input type="button" value="Upload" (click)="uploadPic()">
-      </div>
-  
-      <div class="details" (keyup)="checkError()">
-        <div class="ads-details">
-          <div class="ads-titlee">
-              <p>
-                  Title:
-                  <input [(ngModel)]="addAdvertisement.workTitle" type="text" value="{{addAdvertisement.workTitle}}"  placeholder="{{error.title}}">
-                  <!-- <span class="error"> {{error.title}}</span> -->
-              </p>
-          </div>
-          <div class="ads-category">
-            <b>Category: </b>
-            <select [(ngModel)]="category" id="category">
-                <option *ngFor="let item of categories; let i = index" [attr.data-index]="i"  [value]="categories[i]">{{categories[i]}}</option>
-            </select>
-          </div>
-          <div class="ads-short-decription">
+  <div class="current-ads-grid">
+    <div class="ads-pics">
+        Picture: <input type="file"><br>
+        <br>
+        <input type="button" value="Upload" (click)="uploadPic()">
+    </div>
+
+    <div class="details" (keyup)="checkError()">
+      <div class="ads-details">
+        <div class="ads-titlee">
             <p>
-              Description:
-              <!--<span class="error desc-error"> {{error.description}}</span> -->
-              <textarea [(ngModel)]="addAdvertisement.workDescription" placeholder="{{error.description}}">{{addAdvertisement.workDescription}}</textarea>
+                Title:
+                <input [(ngModel)]="addAdvertisement.workTitle" type="text" value="{{addAdvertisement.workTitle}}"  placeholder="{{error.title}}">
+                <!-- <span class="error"> {{error.title}}</span> -->
             </p>
-          </div>
-          <div class="ads-price" (click)="asd()">
-            Price:
-            <select [(ngModel)]="currency"  >
-              <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.currency}}</option>
-            </select>
-            <input [(ngModel)]="addAdvertisement.price" type="number" value="{{addAdvertisement.price}}" placeholder="{{error.price}}">
-            <!-- <span class="error"> {{error.price}}</span> -->
-          </div>
-  
-          <p class="ads-guarantee">
-            Seller Guarantees:
-            <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}" placeholder="{{error.garanteeLength}}">
-            <select>
-              <option value="Year">Year</option>
-            </select>
-            <!-- <span class="error"> {{error.garanteeLength}}</span> -->
+        </div>
+        <div class="ads-category">
+          <b>Category: </b>
+          <select [(ngModel)]="category" id="category">
+              <option *ngFor="let item of categories; let i = index" [attr.data-index]="i"  [value]="categories[i]">{{categories[i]}}</option>
+          </select>
+        </div>
+        <div class="ads-short-decription">
+          <p>
+            Description:
+            <!--<span class="error desc-error"> {{error.description}}</span> -->
+            <textarea [(ngModel)]="addAdvertisement.workDescription" placeholder="{{error.description}}">{{addAdvertisement.workDescription}}</textarea>
           </p>
-  
-          <div class="ads-bid">
-            Bid:
-            <label class="switch">
-              <input type="checkbox" [checked]="bidOn" (change)="bidOn = !bidOn">
-              <span class="slider"></span>
-            </label>
-            <div *ngIf="bidOn" class="bid-details">
-              Expiration date: 
-              <input type="datetime-local" value="{{currentDate | date:'yyyy-MM-ddTHH:mm'}}" (change)="setDate($event)"
-              min="{{minDate | date:'yyyy-MM-ddTHH:mm'}}"
-              max="{{maxDate | date:'yyyy-MM-ddTHH:mm'}}">
-              <input [(ngModel)]="bidRate" type="number" class="bid-increment" placeholder="Bid increment">
-          </div>
+        </div>
+      
+        
+        <div class="ads-price" (click)="asd()">
+          Price:
+          <select [(ngModel)]="currency">
+            <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.currency}}</option>
+          </select>
+          <input [(ngModel)]="addAdvertisement.price" type="number" value="{{addAdvertisement.price}}" placeholder="{{error.price}}">
+          <!-- <span class="error"> {{error.price}}</span> -->
         </div>
 
+        <p class="ads-guarantee">
+          Seller Guarantees:
+          <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}" placeholder="{{error.garanteeLength}}">
+
+          <select [(ngModel)]="guarantee_length">
+            <option *ngFor="let guaranteeLength of guaranties" [ngValue]="guaranteeLength">{{guaranteeLength.guaranteeLength}}</option>
+          </select>
+          <!-- <span class="error"> {{error.garanteeLength}}</span> -->
+        </p>
+
+        <div class="ads-bid">
+          Bid:
+          <label class="switch">
+            <input type="checkbox" [checked]="bidOn" (change)="bidOn = !bidOn">
+            <span class="slider"></span>
+          </label>
+          <div *ngIf="bidOn" class="bid-details">
+            Expiration date: 
+            <input type="datetime-local" value="{{currentDate | date:'yyyy-MM-ddTHH:mm'}}" (change)="setDate($event)"
+            min="{{minDate | date:'yyyy-MM-ddTHH:mm'}}"
+            max="{{maxDate | date:'yyyy-MM-ddTHH:mm'}}">
+            <input [(ngModel)]="bidRate" type="number" class="bid-increment" placeholder="Bid increment">
+          </div>
+        </div>
       </div>
     </div>
-    <p align="center"><button (click)="saveChanges()">SAVE</button></p>
   </div>
-  
+  <p align="center"><button (click)="saveChanges()">SAVE</button></p>
+</div>
+    
