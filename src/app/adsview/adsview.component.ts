@@ -18,6 +18,7 @@ export class AdsviewComponent implements OnInit {
   smallPicUrl;
   bigPicEl;
   bigPic;
+  favourite = {};
   isContactValid = true;
 
 
@@ -36,7 +37,31 @@ export class AdsviewComponent implements OnInit {
     this.work = this.service.work;
     this.requestWork();
     this.getWorkDetailDto();
+    this.isFavourite();
+    
 
+  }
+
+  public getUserId() {
+    let userString = sessionStorage.getItem("user");
+    let userObject = JSON.parse(userString);
+    let userId = JSON.stringify(userObject.id);
+    return userId;
+}
+
+  isFavourite() {
+    let userId = this.getUserId();
+    this.http.get("api/works/isfavourite/" + userId + "/" + this.work.id).subscribe((favourite)=> {this.favourite = favourite;
+      console.log(this.favourite);
+    this.showFavourite()});
+  }
+
+  showFavourite() {
+    if (this.favourite) {
+      this.favourite = false;
+    }else {
+      this.favourite = true;
+    }
   }
 
   requestWork() {
@@ -46,6 +71,20 @@ export class AdsviewComponent implements OnInit {
       this.bigPic = this.work.links[0];
       this.work.userRating = Math.round(this.work.userRating * 10) / 10;
     });
+  }
+
+  addFavourite() {
+    let userId = this.getUserId();
+    this.http.get("api/works/add/favourite/" + userId + "/" + this.work.id).subscribe((favourite)=> {this.favourite = favourite;
+      console.log(this.favourite);
+    this.showFavourite()});
+  }
+
+  removeFavourite() {
+    let userId = this.getUserId();
+    this.http.get("api/works/remove/favourite/" + userId + "/" + this.work.id).subscribe((favourite)=> {this.favourite = favourite;
+      console.log(this.favourite);
+    this.showFavourite()});
   }
 
   getWorkDetailDto(){
