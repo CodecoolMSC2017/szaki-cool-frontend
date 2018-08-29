@@ -19,6 +19,7 @@ export class ClockComponent implements OnInit, OnDestroy {
   seconds;
   compareDates;
   endMessage = ' ';
+  bidError = false;
 
   constructor(private service: ClockserviceService, private http: HttpClient) { }
 
@@ -75,16 +76,24 @@ export class ClockComponent implements OnInit, OnDestroy {
 
 
   onBidClick(){
-    this.http.post("api/bid",
-      {workId: this.workFull.id, price: this.bidMoney, userId: this.getUserId()}).subscribe((newPrice) =>
+    if(this.bidMoney > (this.service.workFull.price - this.workFull.min_bidder_user_rate)){
+      this.bidError = true;
+    } else{
+      this.http.post("api/bid",
+      {workId: this.workFull.id, bid: this.bidMoney, userId: this.getUserId()}).subscribe((newPrice) =>
         {this.workFull.price = newPrice; console.log(this.workFull)});
-
+        this.bidError = false;
+    }
   }
 
 
   onBuyClick(){
-    this.http.post("api/buy", {workId: this.workFull.id, price: this.workFull.price, userId: this.getUserId()}).subscribe(console.log);
-
+    if(this.bidMoney > (this.service.workFull.price - this.workFull.min_bidder_user_rate)){
+      this.bidError = true;
+    } else{
+      this.http.post("api/buy", {workId: this.workFull.id, bid: this.workFull.price, userId: this.getUserId()}).subscribe(console.log);
+      }
+      this.bidError = false;
     }
   }
 
