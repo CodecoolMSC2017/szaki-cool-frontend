@@ -26,7 +26,7 @@
         </div>
         <div class="ads-price" (click)="asd()">
           Price:
-          <select [(ngModel)]="currency"  >
+          <select [(ngModel)]="currency">
             <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.currency}}</option>
           </select>
           <input [(ngModel)]="addAdvertisement.price" type="number" value="{{addAdvertisement.price}}" placeholder="{{error.price}}">
@@ -36,8 +36,9 @@
         <p class="ads-guarantee">
           Seller Guarantees:
           <input [(ngModel)]="addAdvertisement.guarantee_value" type="text" value="{{addAdvertisement.guarantee_value}}" placeholder="{{error.garanteeLength}}">
-          <select>
-            <option value="Year">Year</option>
+
+          <select [(ngModel)]="guarantee_length">
+            <option *ngFor="let guaranteeLength of guaranties" [ngValue]="guaranteeLength">{{guaranteeLength.guaranteeLength}}</option>
           </select>
           <!-- <span class="error"> {{error.garanteeLength}}</span> -->
         </p>
