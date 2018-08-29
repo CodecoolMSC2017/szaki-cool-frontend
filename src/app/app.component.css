@@ -49,3 +49,8 @@ button {
 .footer-grid-items p {
 	margin: 0px;
 }
+
+
+.category::first-letter {
+    text-transform: uppercase;
+}

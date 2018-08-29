@@ -18,17 +18,17 @@
             </div>
             <div>
                 <b>Price</b>
-                Min: <input type="number" [(ngModel)]="min" (keyup)="checkMinNumber()">
+                Min: <input type="number" min="0" [(ngModel)]="min" (keyup)="checkMinNumber()">
                 <p *ngIf="minMessage">{{ minMessage }}</p>
-                Max: <input type="number" [(ngModel)]="max" (keyup)="checkMaxNumber()" (keyup)="checkPrices()">
+                Max: <input type="number" min="0" [(ngModel)]="max" (keyup)="checkMaxNumber()" (keyup)="checkPrices()">
                 <p *ngIf="maxMessage">{{ maxMessage }}</p>
                 <p *ngIf="pricesMessage">{{ pricesMessage }}</p>
             </div>
             <div>
                 <b>Rating</b>
-                Min: <input type="number" [(ngModel)]="minRating" (keyup)="checkMinRating()">
+                Min: <input type="number" min="0" [(ngModel)]="minRating" (keyup)="checkMinRating()">
                 <p *ngIf="minRatingMessage">{{ minRatingMessage }}</p>
-                Max: <input type="number" [(ngModel)]="maxRating" (keyup)="checkMaxRating()" (keyup)="checkRatings()">
+                Max: <input type="number" min="0" [(ngModel)]="maxRating" (keyup)="checkMaxRating()" (keyup)="checkRatings()">
                 <p *ngIf="maxRatingMessage">{{ maxRatingMessage }}</p>
                 <p *ngIf="ratingsMessage">{{ ratingsMessage }}</p>
             </div>

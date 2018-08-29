@@ -17,7 +17,7 @@
           <p class="ads-tile">{{workDetails.workTitle}}</p>
           <p class="ads-short-decription">{{workDetails.workDescription}}</p>
           <p class="ads-price">{{work.currency.currency}} {{work.price}}</p>
-          <p class="ads-guarantee">Seller Guarantees: {{work.guarantee_value}} {{work.guarantee_length.guarantee_length}}(s)</p>
+          <p class="ads-guarantee">Seller Guarantees: {{work.guarantee_value}} {{work.guarantee_length.guaranteeLength}}(s)</p>
           <app-clock></app-clock>
   
         </div>
@@ -25,8 +25,8 @@
           <p class="seller-tile">Seller information</p>
           <p class="seller">
             {{workDetails.userName}}
-            <span class="fa fa-star">{{workDetails.userRating}}</span>
-            <span class="seller-rating"><a href="#RATE-DETAILS">({{workDetails.numberOfRatings}})</a></span>
+            <span class="fa fa-star">{{workDetails.userRating}} </span>
+            <span class="seller-rating"><a href="#RATE-DETAILS"> ({{workDetails.numberOfRatings}})</a></span>
           </p>
           <hr class="dotted">
           <div *ngIf="contactable(); else notAvailable">
@@ -45,14 +45,19 @@
       </div>
   
     </div>
-  
-    <div class="ads-long-decription">{{workDetails.workDescription}}</div>
+ <!-- 
     <div class="add-favourite" *ngIf="favourite">
-      <button (click)="addFavourite()">Add to Favourite</button>
+      <button (click)="addFavourite()" >Add to Favourite</button>
     </div>
     <div class="remove-favourite" *ngIf="!favourite">
       <button (click)="removeFavourite()">Remove from Favourite</button>
     </div>
+  -->
+    <p align="center">
+      <button *ngIf="favourite" (click)="addFavourite()">Add to Favourite</button>
+      <button *ngIf="!favourite" (click)="removeFavourite()">Remove from Favourite</button>
+    </p>
+
   
   </div>
   
