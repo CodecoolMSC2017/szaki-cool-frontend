@@ -406,3 +406,9 @@ footer {
 footer i {
 	padding: 0px 10px;
 }
+footer a:active, 
+footer a:visited, 
+footer a:link, 
+footer a:hover {
+    font-weight: normal;
+}

@@ -18,3 +18,19 @@
 .btn {
   height: auto;
 }
+
+input[type=number] {
+  display: inline-block;
+  padding: 0px 10px;
+  width: auto;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.bid-error {
+  color: red;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}

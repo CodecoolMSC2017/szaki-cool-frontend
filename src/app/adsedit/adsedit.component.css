@@ -56,12 +56,25 @@
     border: 1px solid grey;
     height: auto;
 }
+
+.ads-bid {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.bid-increment {
+    width: 140px;
+}
+.bid-details {
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
 input[type=text], input[type=email], input[type=password] {
     padding: 0px 10px;
     height: 30px;
     width: auto;
 }
-input[type=number] {
+input[type=number], input[type=datetime-local] {
     display: inline-block;
     padding: 0px 10px;
 	width: auto;
@@ -116,11 +129,12 @@ select {
     font-size: 1em;
 }
 
+/********** ON-OFF SWITCH **********/
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 60px; /* 60px; */
+    height: 24px; /* 34px; */
 }
 
 .slider {
@@ -138,7 +152,7 @@ select {
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
+    height: 16px;
     width: 26px;
     left: 4px;
     bottom: 4px;
@@ -148,11 +162,11 @@ select {
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #4CAF50;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #4CAF50;
   }
   
   input:checked + .slider:before {
