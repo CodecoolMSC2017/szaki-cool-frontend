@@ -28,10 +28,13 @@ export class AdseditComponent implements OnInit {
     date = this.convertDateToString(this.currentDate);
     bidRate;
     work;
+    categories;
+    category;
 
   ngOnInit() {
     this.checkError();
     this.getCurrency();
+    this.getCategories();
   }
   asd() {
     console.log(this.currency);
@@ -42,6 +45,11 @@ export class AdseditComponent implements OnInit {
     result += date.getFullYear() + "-" + date.getMonth() + 1 + "-" +date.getDate() + "T";
     result += date.getHours() + ":" + date.getMinutes();
     return result;
+  }
+
+  getCategories() {
+    this.http.get("api/works/categories").subscribe((categories)=> {this.categories = categories;
+    console.log(this.categories)});
   }
 
   setDate(event) {
@@ -73,7 +81,7 @@ export class AdseditComponent implements OnInit {
     work.price = this.addAdvertisement.price;
     work.guarantee_length = "Year";
     work.guarantee_value = this.addAdvertisement.guarantee_value;
-    work.category = "default";
+    work.category = this.category;
 
     if (this.bidOn) {
       work.bid = this.bidOn;
