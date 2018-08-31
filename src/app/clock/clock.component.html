@@ -4,25 +4,28 @@
   <div *ngIf="endMessage === ' '" class="bid-money">
       Minimum bid step is {{workFull.min_bidder_user_rate}} {{workFull.currency.currency}}.
 
-      <input [(ngModel)]="bidMoney" type="number" value="Bid here" max="bidMoney" min="0">
+      <input *ngIf="workFull.contractor.id !== getUserId()" [(ngModel)]="bidMoney" type="number" value="Bid here" max="bidMoney" min="0">
       <div class="bid-error" *ngIf="bidError">Wrong bidding value!</div>
   </div>
   </div>
 
+  <div class="bid-owner" *ngIf="workFull.contractor.id === getUserId()">
+    <p>This is your auction!</p>
+  </div>
   <div id="timer">
       <div id="endMessage" *ngIf='endMessage'>{{endMessage}}</div>
       <span *ngIf="days !== undefined" [ngStyle]="{'color': days >= '1' ? 'green' : 'red'}">
-        {{days}} days {{hours}} hours {{minutes}} minutes {{seconds}} seconds remaining
+        <p>{{days}} days {{hours}} hours {{minutes}} minutes {{seconds}} seconds remaining</p>
       </span>
 
   </div>
 <div *ngIf='workFull.bid'>
-  <button *ngIf="endMessage === ' '" (click)="onBidClick()">Bid now!</button>
+  <button *ngIf="endMessage === ' ' && workFull.contractor.id !== getUserId()" (click)="onBidClick()">Bid now!</button>
 </div>
 
-<div class="buy-mode" *ngIf="workFull.bid === false && endMessage === ' '">
+<div class="buy-mode" *ngIf="workFull.bid === false && endMessage === ' ' && workFull.contractor.id !== getUserId() ">
   <button (click)="onBuyClick()">Buy now!</button>
-
 </div>
+
 
 

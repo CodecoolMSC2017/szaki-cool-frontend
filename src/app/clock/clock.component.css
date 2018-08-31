@@ -34,3 +34,11 @@ input[type=number] {
   font-family: Arial, sans-serif;
   font-size: 18px;
 }
+
+.bid-owner {
+  color:green;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+
+
+}
