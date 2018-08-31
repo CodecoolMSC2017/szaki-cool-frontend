@@ -26,10 +26,10 @@ export class ClockComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.workFull = this.service.workFull;
     this.processDueDate(this.workFull.due_date);
-    console.log(this.workFull);
     this.compareDates = this.processDueDate(this.workFull.due_date);
     this.timer = setInterval(() => this.timeRemaining(this.compareDates), 1000);
     this.bidMoney = this.service.workFull.price - this.workFull.min_bidder_user_rate ;
+    this.moneyIsZero();
 
   }
 
@@ -67,6 +67,17 @@ export class ClockComponent implements OnInit, OnDestroy {
     }
   }
 
+  moneyIsZero(){
+    if(this.bidMoney <= 0){
+      this.days = 0;
+      this.hours = 0;
+      this.minutes = 0;
+      this.seconds = 0;
+      this.endMessage = 'This offer is already taken for free...';
+      clearInterval(this.timer);
+    }
+  }
+
   ngOnDestroy() {
   }
 
@@ -76,6 +87,7 @@ export class ClockComponent implements OnInit, OnDestroy {
 
 
   onBidClick(){
+    this.moneyIsZero();
     if((this.bidMoney > (this.service.workFull.price - this.workFull.min_bidder_user_rate)) || this.bidMoney < 0){
       this.bidError = true;
     } else{

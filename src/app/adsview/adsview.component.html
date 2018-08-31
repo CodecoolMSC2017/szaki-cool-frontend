@@ -1,7 +1,7 @@
 <div class="frame">
-  
+
     <div class="current-ads-grid">
-  
+
       <div class="ads-pics">
     <!--
           <img class="bigPic" src="api/pics/{{bigPic}}">
@@ -9,17 +9,17 @@
     -->
           <a href="api/pics/{{bigPic}}" data-fancybox="gallery"><img class="bigPic" src="api/pics/{{bigPic}}"></a>
           <a *ngFor="let pic of work.links.slice(1)" href="api/pics/{{pic}}" data-fancybox="gallery"><img class="smallPic" src="api/pics/{{pic}}"></a>
-  
+
       </div>
-  
+
       <div class="details">
         <div class="ads-details">
           <p class="ads-tile">{{workDetails.workTitle}}</p>
           <p class="ads-short-decription">{{workDetails.workDescription}}</p>
-          <p class="ads-price">{{work.currency.currency}} {{work.price}}</p>
+          <p class="ads-price">Current price: {{work.price}} {{work.currency.currency}}</p>
           <p class="ads-guarantee">Seller Guarantees: {{work.guarantee_value}} {{work.guarantee_length.guaranteeLength}}(s)</p>
           <app-clock></app-clock>
-  
+
         </div>
         <div class="seller-details">
           <p class="seller-tile">Seller information</p>
@@ -43,9 +43,9 @@
           <p><a href="#VISIT-SHOP">Visit Shop</a></p>
         </div>
       </div>
-  
+
     </div>
- <!-- 
+ <!--
     <div class="add-favourite" *ngIf="favourite">
       <button (click)="addFavourite()" >Add to Favourite</button>
     </div>
@@ -58,6 +58,5 @@
       <button *ngIf="!favourite" (click)="removeFavourite()">Remove from Favourite</button>
     </p>
 
-  
+
   </div>
-  
