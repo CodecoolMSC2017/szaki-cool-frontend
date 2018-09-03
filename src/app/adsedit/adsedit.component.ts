@@ -33,6 +33,8 @@ export class AdseditComponent implements OnInit {
     work;
     categories;
     category;
+    selectedFile;
+    links = "";
 
   ngOnInit() {
     this.checkError();
@@ -93,6 +95,7 @@ export class AdseditComponent implements OnInit {
     work.guarantee_length = "Year";
     work.guarantee_value = this.addAdvertisement.guarantee_value;
     work.category = this.category;
+    work.links = this.links;
 
     if (this.bidOn) {
       work.bid = this.bidOn;
@@ -178,5 +181,22 @@ export class AdseditComponent implements OnInit {
     this.checkValidPrice();
     this.checkTitleEmpty(); 
     this.checkDescriptionEmpty();
+  }
+
+  uploadPic() {
+    let myarray = [];
+    let that = this;
+    let fd = new FormData();
+    fd.append('file', this.selectedFile, this.selectedFile.name);
+    this.http.post('api/file', fd).subscribe(resp => {
+      this.links = this.links+ this.selectedFile.name + ",";
+      console.log(this.links);
+    });
+    
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
   }
 }
