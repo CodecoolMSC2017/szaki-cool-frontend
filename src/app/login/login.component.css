@@ -7,3 +7,7 @@ a:active, a:visited, a:link {
 a:hover {
     color: #3E8E41;
 }
+
+.error {
+    color: red;
+}

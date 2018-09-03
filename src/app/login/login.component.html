@@ -9,6 +9,9 @@
     <hr>
     Not a member yet? <a routerLink="/register">Join now!</a>
   </div>
+  <div class="error">
+    <span *ngIf="error">{{error}}</span>
+  </div>
 </div>
 
 <div class="dark-filter animated fadeIn"></div>

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   loginDetails: LoginDetails = new LoginDetails();
   loggedin: boolean;
+  error;
 
   ngOnInit() {
   }
@@ -31,7 +32,13 @@ export class LoginComponent implements OnInit {
       this.loggedin = true;
       this.ws.loggedin();
       this.router.navigate(["/main"]);
-    }, error => alert(error.message));
+    }, error => {this.handleError(error)});
+  }
+
+  handleError(error) {
+    if (error.status == 401) {
+      this.error = "invalid username or password";
+    }
   }
 
   
