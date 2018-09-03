@@ -14,10 +14,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   getAuth(loginDetails: LoginDetails): Observable<User> {
+    let headers = new HttpHeaders({
+      'Authorization': 'Basic ' + window.btoa(loginDetails.username + ':' + loginDetails.password)
+    });
     return this.http.get<User>('/api/auth', {
-      headers: new HttpHeaders({
-        'Authorization': 'Basic ' + window.btoa(loginDetails.username + ':' + loginDetails.password)
-      })
+      headers: headers
     });
   }
 

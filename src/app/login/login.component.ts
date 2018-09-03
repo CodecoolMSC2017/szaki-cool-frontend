@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { LoginDetails } from '../login-details';
 import { Route, Router } from '@angular/router';
@@ -23,10 +23,6 @@ export class LoginComponent implements OnInit {
   loggedin: boolean;
 
   ngOnInit() {
-  }
-
-  login() {
-    this.http.post("api/login", {username:this.loginDetails.username, password:this.loginDetails.password}).subscribe(console.log);
   }
 
   getAuth() {

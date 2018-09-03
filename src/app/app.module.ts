@@ -24,6 +24,7 @@ import { AdseditComponent } from './adsedit/adsedit.component';
 import { MyadsComponent } from './myads/myads.component';
 import { ClockComponent } from './clock/clock.component';
 import { BiddingComponent } from './bidding/bidding.component';
+import { XRequestedWithInterceptor } from './interceptors/x-requestedwith';
 
 
 @NgModule({
@@ -57,7 +58,11 @@ import { BiddingComponent } from './bidding/bidding.component';
     AppRoutingModule,
     AngularFontAwesomeModule
   ],
-  providers: [
+  providers: [{
+      provide : HTTP_INTERCEPTORS,
+      useClass : XRequestedWithInterceptor,
+      multi : true
+  }
   ],
   bootstrap: [AppComponent]
 })
