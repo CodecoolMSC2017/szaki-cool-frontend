@@ -1,9 +1,9 @@
 <div class="frame">
   <div class="current-ads-grid">
     <div class="ads-pics">
-        Picture: <input type="file"><br>
+        Picture: <input type="file" (change)="onFileSelected($event)"> <input type="button" value="Upload" (click)="uploadPic()">
         <br>
-        <input type="button" value="Upload" (click)="uploadPic()">
+        
     </div>
 
     <div class="details" (keyup)="checkError()">

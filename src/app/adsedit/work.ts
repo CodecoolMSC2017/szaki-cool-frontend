@@ -11,4 +11,5 @@ export class Work {
     bid_expire_date;
     in_bidder_user_rate;
     due_date;
+    links;
 }
